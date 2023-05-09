@@ -1,7 +1,5 @@
 import React from "react";
 import Widget from "../../components/widget/Widget";
-import BarSide from "../../components/barside/BarSide";
-import BarNav from "../../components/navbar/BarNav";
 
 export default function Home() {
   return (

@@ -1,8 +1,5 @@
-
-
 import * as React from 'react';
 import MailIcon from '@mui/icons-material/Mail';
-// k
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import BurgerModal from "../burgers/burgerModal"
@@ -33,9 +30,7 @@ export default function BarNav() {
             <div className=''>
              
             </div>
-            <div className=' flex'>            
-              
-              
+            <div className=' flex'>              
               <IconButton aria-label={notificationsLabel(100)}>
                 <Badge badgeContent={100} color="primary">
                   <MailIcon />
