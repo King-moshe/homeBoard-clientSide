@@ -73,12 +73,6 @@ export default function UsersList() {
       editable: true,
     },
     {
-      field: 'role',
-      headerName: 'Role',
-      width: 130,
-      editable: true,
-    },
-    {
       field: 'building_name',
       headerName: 'Building',
       width: 100,
@@ -96,6 +90,12 @@ export default function UsersList() {
       headerName: 'Apartment',
       width: 100,
       type: 'number',
+      editable: true,
+    },
+    {
+      field: 'role',
+      headerName: 'Role',
+      width: 130,
       editable: true,
     },
   ];
