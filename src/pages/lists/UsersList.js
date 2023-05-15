@@ -1,16 +1,15 @@
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
+import { DataGrid,  GridToolbar } from '@mui/x-data-grid';
 import { Button, Box } from "@mui/material";
 import { API_URL } from '../../constant/url';
 import React, { useState, useEffect } from 'react';
 import { apiDelete, apiGet } from '../../services/apiServices';
 import { Link, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
-
 export default function UsersList() {
 
   const [data, setData] = useState([]);
   const [query] = useSearchParams();
+  
 
 
   useEffect(() => {
@@ -45,6 +44,7 @@ export default function UsersList() {
       }
     }
   }
+ 
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 40 },
@@ -95,15 +95,18 @@ export default function UsersList() {
     {
       field: 'role',
       headerName: 'Role',
-      width: 130,
+      width: 80,
       editable: true,
     },
+
   ];
 
 
+
+  
   return (
 
-    <div className='p-[20px] md:m-[20px] md:w-auto w-screen'>
+    <div className='p-[20px] md:m-[20px] md:w-auto '>
       <div className='font-medium text-neutral-400 mb-0.5 border-2 p-[8px]  flex justify-between'>
         Users Table
         <Button size="small" variant="contained" className='items-end' >
