@@ -1,17 +1,19 @@
-import { DataGrid, GridToolbar } from '@mui/x-data-grid';
-import { Button, Box } from "@mui/material";
+import { Button,  TableContainer, Paper, Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
 import { API_URL } from '../../constant/url';
 import React, { useState, useEffect } from 'react';
 import { apiDelete, apiGet } from '../../services/apiServices';
 import { Link, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import BusinessIcon from '@mui/icons-material/Business';
+import DomainAddIcon from '@mui/icons-material/DomainAdd';
 
 export default function ProjectsList() {
 
   const [data, setData] = useState([]);
   const [query] = useSearchParams();
-
+  const page = query.get("page") || 1;
 
   useEffect(() => {
     doApi();
@@ -29,14 +31,14 @@ export default function ProjectsList() {
     }
   }
 
-  const deleteProject = async (_idDel) => {
-    if (window.confirm("Delete user?")) {
+  const deleteProject = async (_idDel, _name) => {
+    if (window.confirm(`Are you sore to remove ${_name} Project ?`)) {
       try {
         const url = API_URL + "/projects/" + _idDel;
         const data = await apiDelete(url, "DELETE");
         if (data.deletedCount) {
           doApi();
-          toast.info("Project deleted")
+          toast.success("User deleted successfully")
         }
       }
       catch (err) {
@@ -46,72 +48,48 @@ export default function ProjectsList() {
     }
   }
 
-  const columns = [
-    
-    {
-      field: 'city_name',
-      headerName: 'City',
-      width: 160,
-      editable: true,
-    },
-    {
-      field: 'street_name',
-      headerName: 'Street',
-      width: 140,
-      editable: true,
-    },
-    {
-      field: 'p_name',
-      headerName: 'Project name',
-      width: 130,
-      editable: true,
-    },
-    {
-      field: 'building_name',
-      headerName: 'Building',
-      width: 100,
-      editable: true,
-    },
-    {
-      field: 'contractor_name',
-      headerName: 'Constructor',
-      width: 150,
-      editable: true,
-    },
-   
-  ];
+ 
 
 
   return (
 
     <div className='p-[20px] md:m-[20px] md:w-auto w-screen'>
-      <div className='font-medium text-neutral-400 mb-0.5 border-2 p-[8px]  flex justify-between'>
-        Projects Table
+      <div className='font-medium text-neutral-500 mb-0.5 border-2 p-[10px] flex justify-between'>
+      <span className="pt-2">Projects Table</span>
         <Button size="small" variant="contained" className='items-end' >
-          <Link to='/projects/newProject' className='hover:text-white'>Add new project</Link>
+          <Link to='/projects/newProject' className='hover:text-white p-1'><DomainAddIcon/></Link>
         </Button>
       </div>
-      <Box sx={{ height: 400, width: '100%' }}>
-        <DataGrid
-          rows={data}
-          columns={columns}
-          editMode='row'
-          slots={{
-            toolbar: GridToolbar,
-          }}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 5,
-              },
-            },
-          }}
-          pageSizeOptions={[5]}
-          checkboxSelection
-          disableRowSelectionOnClick
-        />
-
-      </Box>
+      <TableContainer component={Paper} className="drop-shadow-xl md:h-[400px] mh-[400px]">
+        <Table className="border-collapse border border-slate-400">
+          <TableHead>
+            <TableRow className=" bg-[#0009] ">
+              <TableCell className="border border-slate-300 text-white text-center">#</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">City</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">Street</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">Project Name</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">Building (Name or Number)</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">Constructor</TableCell>         
+              <TableCell className="border border-slate-300 text-white text-center">Edit</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">Delete</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.map((row, i) => (
+              <TableRow key={row._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>                
+                <TableCell align='center'>{((page - 1) * 15) + i + 1}</TableCell>
+                <TableCell className="border border-slate-300">{row.city_name}</TableCell>
+                <TableCell className="border border-slate-300">{row.street_name}</TableCell>
+                <TableCell align='center' className="border border-slate-300"><button className="border p-2 px-4 rounded-md hover:text-blue-800 ">{row.p_name } <BusinessIcon/></button></TableCell>
+                <TableCell align='center' className="border border-slate-300">{row.building_name}</TableCell>              
+                <TableCell align='center' className="border border-slate-300">{row.contractor_name}</TableCell>              
+                <TableCell align='center' className="border border-slate-300"><Button className="border border-blue-500 rounded-xl"><EditIcon className=" hover:text-blue-700" /></Button></TableCell>
+                <TableCell align='center' className=""><Button className="border border-red-600 rounded-xl" onClick={() => { deleteProject(row._id, row.p_name) }}><DeleteIcon className="text-red-600" /></Button></TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   )
 }
