@@ -16,7 +16,7 @@ export default function Widget({ type }) {
     case 'users':
       data = {
         title: "USERS",
-        link: <Link to='users'>Users list</Link>,
+        link: <Link className='hover:text-yellow-500' to='users'>רשימת משתמשים</Link>,
         icon:
           <PersonOutlineOutlinedIcon className='icon' style={{ color: "crimson", background: "rgba(220, 20, 60, 0.219)" }} />
       };
@@ -24,7 +24,7 @@ export default function Widget({ type }) {
     case 'projects':
       data = {
         title: "PROJECTS ",
-        link: <Link to="projects">View all projects</Link>,
+        link: <Link className='hover:text-yellow-500' to="projects">רשימת פרוייקטים</Link>,
         icon:
           <BusinessOutlinedIcon className='icon' style={{ color: "goldenrod", background: "rgba(218, 165, 32, 0.284)" }} />
       };
@@ -32,7 +32,7 @@ export default function Widget({ type }) {
     case 'contractors':
       data = {
         title: "CONTRACTORS",
-        link: <Link to='...'>Contractor list</Link>,
+        link: <Link className='hover:text-yellow-500' to='/contractors'>רשימת קבלנים</Link>,
         icon:
           <EngineeringOutlinedIcon className='icon' style={{ color: "rgb(2, 66, 2)", background: "rgba(0, 128, 0, 0.223)" }} />
       };
@@ -43,16 +43,16 @@ export default function Widget({ type }) {
   }
   return (
     <>
-      <div className='widget mr-[20px] flex flex-[1] p-[10px] justify-between rounded-lg h-28 w-full md:1/3 mb-4'>
+      <div className='widget mr-[20px] flex flex-[1] p-[10px] justify-between rounded-lg h-28 w-full md:1/3 mb-4 bg-slate-700 text-white'>
         <div className='left flex flex-col justify-between'>
           <span className='title font-bold text-sm text-gray-400'>{data.title}</span>
           <span className='counter text-xl font-light'>{amount}</span>
           <span className='link text-xs border-b-[1px] border-b-[gray] w-max'>{data.link}</span>
         </div>
         <div className='right flex flex-col justify-between'>
-          <div className='percentage positive flex items-center text-sm'>
-            <KeyboardArrowUpIcon />
-            {diff} %
+          <div className='percentage positive flex items-center text-sm'>        
+             {diff}% 
+              <KeyboardArrowUpIcon />
           </div>
           <div className='self-end'>
             {data.icon}

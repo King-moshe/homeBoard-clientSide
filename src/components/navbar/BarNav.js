@@ -22,25 +22,26 @@ export default function BarNav() {
 
   let showBurgerElement = width <= 768;
 
-    return (
-      <>
-      {showBurgerElement && <BurgerModal/>}
-        <div className='navbar border text-stone-600 hidden md:flex'>
-          <div className='mx-3 flex w-full justify-between'>
-            <div className=''>
-             
-            </div>
-            <div className=' flex'>              
-              <IconButton aria-label={notificationsLabel(100)}>
+  return (
+    <>
+      {showBurgerElement && <BurgerModal />}
+      <div className='navbar border-e-slate-950 text-stone-600 hidden md:flex h-[70px] bg-slate-700'>
+        {/* <div className='mx-3 flex w-full justify-between'>
+          <div className=''>
+
+          </div>
+          <div className=' flex'>
+            <IconButton aria-label={notificationsLabel(100)}>
                 <Badge badgeContent={100} color="primary">
                   <MailIcon />
                 </Badge>
               </IconButton>            
-            </div>
           </div>
-        </div>
-      </>
-    )
-  }
+        </div> */}
+      </div>
+      <hr />
+    </>
+  )
+}
 
 

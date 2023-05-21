@@ -1,11 +1,11 @@
 import React from "react"
 
 
-export default function Single() {
+export default function SingleProject() {
 
   return (
     <div>
-    name
+    name of project
     </div>
   )
 }

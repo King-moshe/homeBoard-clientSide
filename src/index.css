@@ -6,6 +6,7 @@ body,
 #root,
 .app,
 .content{
+    direction: rtl;
     height: 100%;
     width: 100%;
 }

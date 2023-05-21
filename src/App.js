@@ -11,6 +11,9 @@ import BarNav from "./components/navbar/BarNav";
 import BarSide from "./components/barside/BarSide";
 
 import UsersList from "./pages/lists/UsersList";
+import SingleProject from "./pages/single/Single";
+import EditProject from "./pages/edit/editProject";
+import ContractorsList from "./pages/lists/contractorsList";
 
 
 function App() {
@@ -33,6 +36,10 @@ function App() {
 
                 <Route path="/projects" element={<ProjectsList />} />
                 <Route path="/projects/newProject" element={<NewProject />} />
+                <Route path="/projects/singleProject" element={<SingleProject />} />
+                <Route path="/projects/editProject" element={<EditProject />} />
+
+                <Route path="/contractors" element={<ContractorsList/>}/>
               </Routes>
               <ToastContainer theme="colored" />
             </div >

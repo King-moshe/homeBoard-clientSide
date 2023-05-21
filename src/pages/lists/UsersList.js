@@ -8,6 +8,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+
 
 export default function UsersList() {
   const [data, setData] = useState([]);
@@ -33,7 +36,7 @@ export default function UsersList() {
   }
 
   const deleteUser = async (_idDel, _name) => {
-    if (window.confirm(`Are you sore to remove ${_name} User?`)) {
+    if (window.confirm(`להסיר את ${_name} מרשימת המשתמשים?`)) {
       try {
         const url = API_URL + "/users/" + _idDel;
         const data = await apiDelete(url, "DELETE");
@@ -54,34 +57,39 @@ export default function UsersList() {
 
   return (
     <div className='p-[20px] md:m-[20px] md:w-auto '>
-      <div className='font-medium text-neutral-500 mb-0.5 border-2 p-[10px] flex justify-between'>
-        <span className="pt-2">Users Table</span>
+      <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between bg-slate-700'>
+        <span className="pt-2">טבלת משתמשים</span>
+        <div>
+      <Button><KeyboardArrowRightIcon className="text-white "/></Button>
+         <span>1</span>
+         <Button><KeyboardArrowLeftIcon className="text-white"/></Button>        
+      </div>
         <Button size="small" variant="contained" className='items-end' >
-          <Link to='/users/newUser' className='hover:text-white p-1'><PersonAddIcon/></Link>
+          <Link to='/users/newUser' className='hover:text-white p-1'>הוספת משתמש <PersonAddIcon/> </Link>
         </Button>
       </div>
       <TableContainer component={Paper} className="drop-shadow-xl md:h-[400px] mh-[400px]">
         <Table className="border-collapse border border-slate-400">
           <TableHead>
-            <TableRow className=" bg-[#0009] ">
+            <TableRow className=" bg-slate-600 ">
               <TableCell className="border border-slate-300 text-white text-center">#</TableCell>
-              <TableCell className="border border-slate-300 text-white text-center">Name</TableCell>
-              <TableCell className="border border-slate-300 text-white text-center">Email</TableCell>
-              <TableCell className="border border-slate-300 text-white text-center">Phone</TableCell>
-              <TableCell className="border border-slate-300 text-white text-center">Project</TableCell>
-              <TableCell className="border border-slate-300 text-white text-center">Building</TableCell>
-              <TableCell className="border border-slate-300 text-white text-center">Floor</TableCell>
-              <TableCell className="border border-slate-300 text-white text-center">Apartment</TableCell>
-              <TableCell className="border border-slate-300 text-white text-center">Role</TableCell>
-              <TableCell className="border border-slate-300 text-white text-center">Edit</TableCell>
-              <TableCell className="border border-slate-300 text-white text-center">Delete</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">שם</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">אימייל</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">טלפון</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">שיוך לפרוייקט</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">מס' בנין</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">קומה</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">דירה</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">גישה</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">עריכה</TableCell>
+              <TableCell className="border border-slate-300 text-white text-center">מחיקה</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data.map((row, i) => (
               <TableRow key={row._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell align='center'>{((page - 1) * 15) + i + 1}</TableCell>
-                <TableCell className="border border-slate-300"><AccountCircleIcon/> {row.name}</TableCell>
+                <TableCell  className="border border-slate-300"><AccountCircleIcon/> {row.name}</TableCell>
                 <TableCell className="border border-slate-300">{row.email}</TableCell>
                 <TableCell className="border border-slate-300">{row.phone}</TableCell>
                 <TableCell className="border border-slate-300">{row.p_name}</TableCell>
