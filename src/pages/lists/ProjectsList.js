@@ -63,7 +63,7 @@ export default function ProjectsList() {
 
   return (
 
-    <div className='p-[20px] md:m-[20px] md:w-auto w-screen'>
+    <div className='p-[20px] md:m-[20px] md:w-auto '>
       <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between bg-slate-700'>
       <span className="pt-2">טבלת פרוייקטים</span>
       <div>
@@ -77,9 +77,9 @@ export default function ProjectsList() {
         </Button>
       </div>
       <TableContainer component={Paper} className="drop-shadow-xl md:h-[400px] mh-[400px]">
-        <Table className="border-collapse border border-slate-400">
-          <TableHead>
-            <TableRow className=" bg-slate-600 ">
+        <Table  className="border-collapse border border-slate-400">
+          <TableHead >
+            <TableRow stickyHeader className=" bg-slate-600 ">
               <TableCell className="border border-slate-300 text-white text-center">#</TableCell>
               <TableCell className="border border-slate-300 text-white text-center">עיר</TableCell>
               <TableCell className="border border-slate-300 text-white text-center">רחוב</TableCell>

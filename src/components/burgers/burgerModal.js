@@ -142,7 +142,7 @@ export default function BurgerModal() {
               <span className='mt-1 mx-2'>פרוייקטים</span>
             </li>
           </Link>
-          <Link to=''>
+          <Link to='/contractors'>
             <li className='px-3 mb-12 mt-3 cursor-pointer hover:text-yellow-500'><EngineeringRounded />
               <span className='mt-1 mx-2'>קבלנים</span>
             </li>
