@@ -2,8 +2,6 @@ import React, {  useState } from "react";
 import { LOGIN_ROUTE } from "../../constant/url";
 import { useNavigate } from "react-router-dom";
 import { apiPost } from "../../services/apiServices";
-import MyStore from "../../context/context";
-// MUI
 import Button from '@mui/material/Button'
 import { toast } from "react-toastify";
 import Avatar from '@mui/material/Avatar';
@@ -48,7 +46,6 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [err, setErr] = useState("")
-    // const { updateUser } = useContext(MyStore)
     function CircularProgressWithLabel(props) {
       return (
         <Box sx={{ position: 'relative', display: 'inline-flex' }}>
@@ -74,11 +71,7 @@ function Login() {
     }
     
     CircularProgressWithLabel.propTypes = {
-      /**
-       * The value of the progress indicator for the determinate variant.
-       * Value between 0 and 100.
-       * @default 0
-       */
+     
       value: PropTypes.number.isRequired,
     };
 
@@ -112,7 +105,6 @@ function Login() {
               <Box sx={{ display: 'flex' }}>
               <CircularProgress />
             </Box>
-                //  updateUser(resp.user, resp.token)
                 toast.success("Log in Successfuly");
                 nav("/")
             }

@@ -1,6 +1,6 @@
 import { Button, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow, Table } from "@mui/material";
 import React, { useState, useEffect } from 'react';
-import {  useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
@@ -14,6 +14,8 @@ export default function ContractorsList() {
     useEffect(() => {
         doApiContractors();
     }, [query])
+
+    
 
     const doApiContractors = async () => {
         let url = "https://data.gov.il/api/3/action/datastore_search?resource_id=4eb61bd6-18cf-4e7c-9f9c-e166dfa0a2d8&limit=150";
@@ -35,12 +37,9 @@ export default function ContractorsList() {
                     <Button><KeyboardArrowRightIcon className="text-white " /></Button>
                     <span>1</span>
                     <Button><KeyboardArrowLeftIcon className="text-white" /></Button>
-                </div>
-                {/* <Button size="small" variant="contained" className='items-end' >
-                    <Link to='...' className='hover:text-white p-1'>הוספת קבלן <PersonAddIcon /> </Link>
-                </Button> */}
+                </div>               
             </div>
-            <TableContainer  component={Paper} className="drop-shadow-xl md:h-[400px] mh-[400px]">
+            <TableContainer component={Paper} className="drop-shadow-xl md:h-[400px] mh-[400px]">
                 <Table className="border-collapse border border-slate-400">
                     <TableHead>
                         <TableRow className=" bg-slate-600 ">
