@@ -48,10 +48,25 @@ export default function NewUser() {
   }
 
 
+
   const onSubForm = (_bodyData) => {
     console.log(_bodyData);
-    doApiPost(_bodyData);
+    const [projectName, cityName, streetName, buildingNumber] = _bodyData.p_name.split("@");
+    doApiPost({
+      "name": _bodyData.name,
+      "email": _bodyData.email,
+      "password": _bodyData.password,
+      "phone": _bodyData.phone,
+      "p_name": projectName,
+      "city_name": cityName,
+      "street_name": streetName,
+      "building_name": buildingNumber,
+      "story": _bodyData.story,
+      "apartment": _bodyData.apartment,
+    });
   }
+
+
 
 
   return (
@@ -88,20 +103,14 @@ export default function NewUser() {
           <div className="block md:flex">
             <div className="md:w-1/2 md:pe-4 md:p-1 mt-3">
               <label className="text-white">שם הפרוייקט</label>
-              {/* <input placeholder="בחר פרויקט מרשימת פרוייקטים" {...register("p_name", { required: true, minLength: 2 })} className="w-full p-2 mt-2 border-solid border-2 rounded-lg" /> */}
               <select {...register("p_name", { required: true, minLength: 2 })} className="w-full p-2 mt-2 border-solid border-2 rounded-lg">
-               <option hidden>בחר פרויקט מרשימת הפרוייקטים</option>
+                <option hidden>בחר פרויקט מרשימת הפרוייקטים</option>
                 {projectsList.map((projectName) => {
                   return (
-                    <option key={projectName._id} value={projectName.p_name}>{projectName.p_name}</option>
+                    <option key={projectName._id} value={projectName.p_name + "@" + projectName.city_name + "@" + projectName.street_name + "@" + projectName.building_name}> {projectName.p_name} - {projectName.city_name}, {projectName.street_name}, {projectName.building_name}</option>
                   )
                 })}
-
               </select>
-            </div>
-            <div className="md:w-1/2 md:pe-4 md:p-1 mt-3">
-              <label className="text-white">שם הבניין</label>
-              <input placeholder="שם הבניין..."  {...register("building_name", { required: true, minLength: 2 })} className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
             </div>
           </div>
           <div className="block md:flex">

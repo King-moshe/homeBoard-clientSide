@@ -3,6 +3,7 @@ import { API_URL } from '../../constant/url';
 import React, { useState, useEffect } from 'react';
 import { apiDelete, apiGet } from '../../services/apiServices';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { useStateContext } from "../../context";
 import { toast } from 'react-toastify';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -15,6 +16,7 @@ export default function ProjectsList() {
 
   const [data, setData] = useState([]);
   const [query] = useSearchParams();
+   const {setSProject} = useStateContext();
   const nav = useNavigate();
   const page = query.get("page") || 1;
 
@@ -41,29 +43,26 @@ export default function ProjectsList() {
         const data = await apiDelete(url, "DELETE");
         if (data.deletedCount) {
           doApi();
-          toast.success("User deleted successfully")
+          toast.success("הפרוייקט הוסר בהצלחה")
         }
       }
       catch (err) {
         console.log(err);
-        toast.error("There problem")
+        toast.error("ישנה בעיה, נסו שנית")
       }
     }
   }
 
-  const onSubShowOne = () =>{
+  const onSubShowOne = (p_name, building_name ) =>{
+    setSProject([p_name, building_name])
     nav('/projects/singleProject')
-  }
-
-  const editProject = () =>{
-    nav('/projects/editProject')
   }
  
 
 
   return (
 
-    <div className='p-[20px] md:m-[20px] md:w-auto '>
+    <div className='p-[20px] md:m-[20px] md:w-auto'>
       <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between bg-slate-700'>
       <span className="pt-2">טבלת פרוייקטים</span>
       <div>
@@ -77,9 +76,9 @@ export default function ProjectsList() {
         </Button>
       </div>
       <TableContainer component={Paper} className="drop-shadow-xl md:h-[400px] mh-[400px]">
-        <Table  className="border-collapse border border-slate-400">
-          <TableHead >
-            <TableRow stickyHeader className=" bg-slate-600 ">
+        <Table className="border-collapse border border-slate-400">
+          <TableHead>
+            <TableRow className=" bg-slate-600 ">
               <TableCell className="border border-slate-300 text-white text-center">#</TableCell>
               <TableCell className="border border-slate-300 text-white text-center">עיר</TableCell>
               <TableCell className="border border-slate-300 text-white text-center">רחוב</TableCell>
@@ -96,10 +95,12 @@ export default function ProjectsList() {
                 <TableCell align='center'>{((page - 1) * 15) + i + 1}</TableCell>
                 <TableCell align="center" className="border border-slate-300">{row.city_name}</TableCell>
                 <TableCell align="center" className="border border-slate-300">{row.street_name}</TableCell>
-                <TableCell align='center' className="border border-slate-300"><button onClick={onSubShowOne} className="border p-2 px-4 rounded-md hover:bg-blue-600  hover:text-white"><BusinessIcon/> {row.p_name } </button></TableCell>
+                <TableCell align='center' className="border border-slate-300"><button onClick={()=>onSubShowOne(row.p_name, row.building_name )} className="border p-2 px-4 rounded-md hover:bg-blue-600  hover:text-white"><BusinessIcon/> {row.p_name } </button></TableCell>
                 <TableCell align='center' className="border border-slate-300">{row.building_name}</TableCell>              
                 <TableCell align='center' className="border border-slate-300">{row.contractor_name}</TableCell>              
-                <TableCell align='center' className="border border-slate-300"><Button className="border rounded-xl" onClick={editProject}><EditIcon className=" hover:text-blue-700" /></Button></TableCell>
+                <TableCell align='center' className="border border-slate-300"><Button className="border rounded-xl" onClick={()=>{
+                  nav("/projects/editProject/" + row._id )
+                }}><EditIcon className=" hover:text-blue-700" /></Button></TableCell>
                 <TableCell align='center' className=""><Button className="border border-red-600 rounded-xl" onClick={() => { deleteProject(row._id, row.p_name) }}><DeleteIcon className="text-red-600" /></Button></TableCell>
               </TableRow>
             ))}

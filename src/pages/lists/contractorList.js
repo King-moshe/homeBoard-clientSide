@@ -1,6 +1,6 @@
 import { Button, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow, Table } from "@mui/material";
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import {  useSearchParams } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
@@ -15,10 +15,8 @@ export default function ContractorsList() {
         doApiContractors();
     }, [query])
 
-    
-
     const doApiContractors = async () => {
-        let url = "https://data.gov.il/api/3/action/datastore_search?resource_id=4eb61bd6-18cf-4e7c-9f9c-e166dfa0a2d8&limit=150";
+        let url = "https://data.gov.il/api/3/action/datastore_search?resource_id=4eb61bd6-18cf-4e7c-9f9c-e166dfa0a2d8&limit=1150";
         fetch(url)
             .then((resp) => resp.json())
             .then((constructorsData) => {
@@ -37,7 +35,10 @@ export default function ContractorsList() {
                     <Button><KeyboardArrowRightIcon className="text-white " /></Button>
                     <span>1</span>
                     <Button><KeyboardArrowLeftIcon className="text-white" /></Button>
-                </div>               
+                </div>
+                {/* <Button size="small" variant="contained" className='items-end' >
+                    <Link to='...' className='hover:text-white p-1'>הוספת קבלן <PersonAddIcon /> </Link>
+                </Button> */}
             </div>
             <TableContainer component={Paper} className="drop-shadow-xl md:h-[400px] mh-[400px]">
                 <Table className="border-collapse border border-slate-400">
@@ -50,6 +51,8 @@ export default function ContractorsList() {
                             <TableCell className="border border-slate-300 text-white text-center">גישה</TableCell>
                             <TableCell className="border border-slate-300 text-white text-center">עיר</TableCell>
                             <TableCell className="border border-slate-300 text-white text-center">רחוב</TableCell>
+                            <TableCell className="border w-40 border-slate-300 text-white text-center">תיאור ענף</TableCell>
+                            <TableCell className="border border-slate-300 text-white text-center">עובדים</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -62,6 +65,8 @@ export default function ContractorsList() {
                                 <TableCell align='center' className="border border-slate-300">{row.KABLAN_MUKAR}</TableCell>
                                 <TableCell align='center' className="border border-slate-300">{row.SHEM_YISHUV}</TableCell>
                                 <TableCell align='center' className="border border-slate-300">{row.SHEM_REHOV}</TableCell>
+                                <TableCell align='center' className="border border-slate-300">{row.TEUR_ANAF}</TableCell>
+                                <TableCell align='center' className="border border-slate-300">{row.OVDIM}</TableCell>
 
                             </TableRow>
                         ))}

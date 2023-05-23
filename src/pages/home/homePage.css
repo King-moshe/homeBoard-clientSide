@@ -1,0 +1,20 @@
+.home{
+    background-image: url(https://images.pexels.com/photos/6044217/pexels-photo-6044217.jpeg?auto=compress&cs=tinysrgb&w=1600);
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+
+}
+
+.contact{
+    background-image: url(https://images.pexels.com/photos/950737/pexels-photo-950737.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.insta{
+    
+    background: rgb(131,58,180);
+background: linear-gradient(319deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}

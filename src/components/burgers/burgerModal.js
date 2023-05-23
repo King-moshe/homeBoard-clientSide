@@ -39,8 +39,8 @@ function MyApp() {
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        bgcolor: 'background.default',
-        color: 'text.primary',
+        bgcolor: 'bg-slate-700',
+        color: 'text.white',
         borderRadius: 1,
         p: 3,
       }}
@@ -142,7 +142,7 @@ export default function BurgerModal() {
               <span className='mt-1 mx-2'>פרוייקטים</span>
             </li>
           </Link>
-          <Link to='/contractors'>
+          <Link to=''>
             <li className='px-3 mb-12 mt-3 cursor-pointer hover:text-yellow-500'><EngineeringRounded />
               <span className='mt-1 mx-2'>קבלנים</span>
             </li>
@@ -175,7 +175,7 @@ export default function BurgerModal() {
   );
 
   return (
-    <div>
+    <div >
       <Box sx={{ flexGrow: 1 }}>
         <div className='bg-slate-700 flex justify-between w-full' position="static">
           <div>

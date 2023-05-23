@@ -99,7 +99,7 @@ export default function NewProject() {
             </div>
             <div className="md:w-1/2 md:pe-4 md:p-1 mt-3">
               <label className="text-white">בחר רחוב</label>
-              <input placeholder="לחץ לבחירת עיר"  {...register("street_name", { required: true, minLength: 2 })} list="street-name" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
+              <input placeholder="לחץ לבחירת רחוב"  {...register("street_name", { required: true, minLength: 2 })} list="street-name" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
               <datalist id="street-name" >
                 {streetData.map((street, i) => (
 

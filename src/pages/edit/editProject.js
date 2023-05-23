@@ -16,7 +16,7 @@ export default function EditProject() {
   const params = useParams();
   const nav = useNavigate();
   const { register, handleSubmit } = useForm();
- 
+
   useEffect(() => {
     doApiInit();
     doApiCity();
@@ -73,12 +73,12 @@ export default function EditProject() {
       const data = await apiPut(url, _bodyData);
       console.log(data);
       if (data.modifiedCount) {
-        toast.success("Project updated");
-        nav("/admin/projects")
+        toast.success("!שינויים נשמרו בהצלחה");
+        nav("/projects")
       }
     } catch (error) {
       console.log(error);
-      toast.error("There problem, try again later")
+      toast.error("ישנה בעיה, נסה שנית")
     }
   }
 
@@ -94,22 +94,21 @@ export default function EditProject() {
         </Button>
       </div>
       <div className=" md:h-[400px] mh-[400px] border flex p-4 bg-slate-600  drop-shadow-xl">
-      {info.p_name ?
         <form className="w-full " onSubmit={handleSubmit(onSubForm)}>
           <div className="md:flex block">
             <div className="md:w-1/2 md:pe-4 md:p-1">
               <label className="text-white">שם הפרויקט</label>
-              <input defaultValue={info.p_name} {...register("p_name", { required: true, minLength: 2 })} type="text" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
+              <input defaultValue={info.p_name} {...register("p_name", { minLength: 2 })} type="text" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
             </div>
             <div className="md:w-1/2 md:pe-4 md:p-1">
               <label className="text-white">קבלן מבצע</label>
-              <input defaultValue={info.contractor_name} {...register("contractor_name", { required: true, minLength: 2 })} type="text" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
+              <input defaultValue={info.contractor_name} {...register("contractor_name", { minLength: 2 })} type="text" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
             </div>
           </div>
           <div className="block md:flex">
             <div className="md:w-1/2 md:pe-4 md:p-1 mt-3">
               <label className="text-white">בחר עיר</label>
-              <input defaultValue={info.city_name} {...register("city_name", { required: true, minLength: 2 })} list="city-name" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" onBlur={(e) => { setCitySelected(e.target.value) }} />
+              <input defaultValue={info.city_name} {...register("city_name", { minLength: 0 })} list="city-name" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" onBlur={(e) => { setCitySelected(e.target.value) }} />
               <datalist id="city-name" >
                 {cityData.map((city, i) => (
                   <option value={city.שם_ישוב} key={i}></option>
@@ -118,7 +117,7 @@ export default function EditProject() {
             </div>
             <div className="md:w-1/2 md:pe-4 md:p-1 mt-3">
               <label className="text-white">בחר רחוב</label>
-              <input defaultValue={info.street_name} {...register("street_name", { required: true, minLength: 2 })} list="street-name" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
+              <input defaultValue={info.street_name} {...register("street_name", { minLength: 0 })} list="street-name" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
               <datalist id="street-name" >
                 {streetData.map((street, i) => (
 
@@ -129,13 +128,13 @@ export default function EditProject() {
           </div>
           <div className=" w-full md:pe-4 md:p-1 mt-3">
             <label className="text-white">בנין (מספר או כינוי)</label>
-            <input defaultValue={info.building_name} {...register("building_name", { required: true, minLength: 1 })} type="text" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" required />
+            <input defaultValue={info.building_name} {...register("building_name", { minLength: 0 })} type="text" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" required />
 
           </div>
           <div className="items-center justify-center flex mt-4">
             <button className="border btn btn-primary">עדכן שינויים בפרויקט</button>
           </div>
-        </form> : <h2>...Loading</h2>}
+        </form>
       </div>
     </div>
   )
