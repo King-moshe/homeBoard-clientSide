@@ -53,10 +53,11 @@ export default function ProjectsList() {
     }
   }
 
-  const onSubShowOne = (p_name, building_name ) =>{
+  const onSubShowOne = (p_name, building_name) =>{
     setSProject([p_name, building_name])
     nav('/projects/singleProject')
   }
+
  
 
 
@@ -95,7 +96,7 @@ export default function ProjectsList() {
                 <TableCell align='center'>{((page - 1) * 15) + i + 1}</TableCell>
                 <TableCell align="center" className="border border-slate-300">{row.city_name}</TableCell>
                 <TableCell align="center" className="border border-slate-300">{row.street_name}</TableCell>
-                <TableCell align='center' className="border border-slate-300"><button onClick={()=>onSubShowOne(row.p_name, row.building_name )} className="border p-2 px-4 rounded-md hover:bg-blue-600  hover:text-white"><BusinessIcon/> {row.p_name } </button></TableCell>
+                <TableCell align='center' className="border border-slate-300"><button onClick={()=>onSubShowOne(row.p_name, row.building_name)} className="border p-2 px-4 rounded-md hover:bg-blue-600  hover:text-white"><BusinessIcon/> {row.p_name } </button></TableCell>
                 <TableCell align='center' className="border border-slate-300">{row.building_name}</TableCell>              
                 <TableCell align='center' className="border border-slate-300">{row.contractor_name}</TableCell>              
                 <TableCell align='center' className="border border-slate-300"><Button className="border rounded-xl" onClick={()=>{
