@@ -112,12 +112,12 @@ export default function BarSide() {
             </li>
           </Link>
           <Link to='...'>
-          <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><LogoutIcon />
-             <span className='mt-1 mx-2 ' onClick={() => {
-               localStorage.token = ''
-               window.location.reload()
-             }}>יציאה</span>
-           </li>
+            <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><LogoutIcon />
+              <span className='mt-1 mx-2 ' onClick={() => {
+                localStorage.token = ''
+                window.location.reload()
+              }}>יציאה</span>
+            </li>
           </Link>
           <Link to='/login'>
             <li className='ps-1 mb-12 mt-3 cursor-pointer hover:text-yellow-500'> <LoginIcon />

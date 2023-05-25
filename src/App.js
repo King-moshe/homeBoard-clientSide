@@ -20,9 +20,8 @@ import Landing from "./pages/home/Landing";
 import { apiGet } from "./services/apiServices";
 import { USER_INFO } from "./constant/url";
 import Contact from "./pages/home/Contact";
-// import ContractorList from "./pages/lists/contractorList";
 import ContractorsList from "./pages/lists/contractorList";
-import SingleProject from "./pages/single/Single";
+import SingleProject from "./pages/single/SingleProject";
 
 
 function App() {
@@ -90,14 +89,14 @@ function App() {
                     <Routes>
                       <Route path="/*" element={<Home />} />
                       <Route path="/users" element={<UsersList />} />
-                      <Route path="users/newUser" element={<NewUser />} />   
+                      <Route path="users/newUser" element={<NewUser />} />
 
                       <Route path="/projects" element={<ProjectsList />} />
                       <Route path="/projects/newProject" element={<NewProject />} />
-                      <Route path="/projects/editProject/:id" element={<EditProject />} />  
-                      <Route path="/projects/singleProject" element={<SingleProject/>} /> 
+                      <Route path="/projects/editProject/:id" element={<EditProject />} />
+                      <Route path="/projects/singleProject" element={<SingleProject />} />
 
-                      <Route path="/contractors" element={<ContractorsList/>}/>
+                      <Route path="/contractors" element={<ContractorsList />} />
                     </Routes>
                     <ToastContainer theme="colored" />
                   </div >
