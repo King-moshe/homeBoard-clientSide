@@ -7,7 +7,7 @@ import { apiGet } from "../../services/apiServices";
 export default function SingleProject() {
   const { sProject } = useStateContext();
   const [data, setDate] = useState([])
- 
+
 
   useEffect(() => {
     doApi();
@@ -24,7 +24,7 @@ export default function SingleProject() {
     }
   }
 
- 
+
 
 
 
@@ -36,8 +36,10 @@ export default function SingleProject() {
 
 
   return (
-    <div>
-      name of project
+    <div className="p-5">
+      
+        כאן יוצג מערך של כרטיסיות המציג את כל הדיירים המשוייכים לאותו הפרויקט
+      (המידע קיים אך אינו מרונדר לעמוד)
     </div>
   )
 }
