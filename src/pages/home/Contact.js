@@ -1,6 +1,5 @@
 import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
-import SendIcon from '@mui/icons-material/Send';
+import { Row, Col } from 'react-bootstrap'
 
 export default function Contact() {
 
@@ -15,15 +14,12 @@ export default function Contact() {
             </Row>
             <Row className='rounded-lg'>
                 <Col lg='5' className=' mb-5'>
-                    <div className='text-[#00bf9a] text-xl pb-2'>חשוב לנו להיות בקשר ולשמוע ממכם, אנא שמרו על קשר</div>
+                    <div className='text-black text-xl pb-2'>אנחנו מאמינים שהכל  מתחיל בחיוך ושירות</div>
                     <address>
-                        <div className='font-bold text-gray-500'>  Exemple@gmail.com : אימייל</div>
+                        <div className='font-bold text-blue-700 ' ><p className='text-black'>אימייל :</p>Exemple@gmail.com</div>
                         <br />
                         <p>
-                            <div className='font-bold text-gray-500'> מס' טלפון : +972 584767475</div>
-                        </p>
-                        <p className='text-[#00bf9a] py-4'>
-                           ! אולי יש לך רעיון לשיפור או כל דבר שעולה על דעתך, נשמח לשמוע
+                            <div className='font-bold text-blue-700'><p className='text-black'>טלפון :</p> 97252-8857298+</div>
                         </p>
                     </address>
                 </Col>
@@ -44,8 +40,8 @@ export default function Contact() {
                         <textarea className='form-control border-0 shadow bg-slate-900 bg-opacity-90 ' id='massage' name='massage' placeholder=':הודעה' rows={5}></textarea>
                         <br />
                         <Row>
-                            <Col lg='12' className='form-group'>
-                                <button className='text-[#00bf9a] hover:bg-gray-700 rounded-md  border-[0.1px] bg-slate-900 bg-opacity-60 shadow p-1 px-4' type='submit'>שליחה</button>
+                            <Col lg='12' className='form-group items-center flex justify-center'>
+                                <button className='text-white hover:bg-gray-700 rounded-md  border-[0.1px] bg-slate-900 bg-opacity-60 shadow p-1 px-4' type='submit'>שליחה</button>
                             </Col>
                         </Row>
                     </form>

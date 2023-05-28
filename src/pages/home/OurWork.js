@@ -10,7 +10,7 @@ export default function OurWork() {
             <div className='w-full px-4 md:px-8 py-3 text-slate-400 bg-black md:h-[720px]' id='our'>
                 <div className='md:flex lg:ml-5 justify-between  md:my-5'>
                     <div className='md:w-[80%] justify-center'>
-                        <ImageList sx={{ height: 650 }} className=' md:border-r border-r-[#00bf9a] md:border-b border-b-[#00bf9a] md:border-t border-t-[#00bf9a]  md:rounded-r-xl'>
+                        <ImageList sx={{ height: 650 }} className='   md:rounded-r-xl'>
                             {itemData.map((item) => (
                                 <ImageListItem key={item.img} className='shadow-xl shadow-gray-400'>
                                     <img
@@ -29,10 +29,10 @@ export default function OurWork() {
                             ))}
                         </ImageList>
                     </div>
-                    <div className='md:pr-10 border-l-[#00bf9a] md:border-b border-b-[#00bf9a] md:border-t border-t-[#00bf9a] md:rounded-l-2xl'>
+                    <div className='md:pr-10  md:rounded-l-2xl'>
                         <h1 className='font-bold py-8 text-2xl'>דוגמאות לפרוייקטים שעשינו</h1>
-                        <p className='text-[#00bf9a] font-bold '>כדי שנוכל לקבל פרספקטיבה על העיצוב שאנחנו רוצים, כדאי שנסתכל על פרויקטים שנעשו ולקבל רעיונות עיצוביים ממעצבים ופרויקטים שכבר נעשו</p>
-                        <img className='justify-center my-20 lg:w-[500px] md:w-[350px] shadow' src={home1jpg} alt='back' />
+                        <p className='text-white font-bold '>כדי שנוכל לקבל פרספקטיבה על העיצוב שאנחנו רוצים, כדאי שנסתכל על פרויקטים שנעשו ולקבל רעיונות עיצוביים ממעצבים ופרויקטים שכבר נעשו</p>
+                        <img className='justify-center my-20 lg:w-[500px] md:w-[350px] shadow md:mt-32' src={home1jpg} alt='back' />
                     </div>
                 </div>
             </div>
@@ -40,17 +40,7 @@ export default function OurWork() {
     );
 }
 
-const itemData = [
-    {
-        img: 'https://images.pexels.com/photos/1571470/pexels-photo-1571470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        title: 'Living room',
-        author: '@Y&M-design@gmail.com',
-    },
-    {
-        img: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=600',
-        title: 'House in Miami',
-        author: 'Y&M-design@gmail.com',
-    },
+const itemData = [   
     {
         img: 'https://images.pexels.com/photos/276514/pexels-photo-276514.jpeg?auto=compress&cs=tinysrgb&w=600',
         title: 'A lamp',
@@ -90,16 +80,6 @@ const itemData = [
         img: 'https://images.pexels.com/photos/162539/architecture-building-amsterdam-blue-sky-162539.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         title: 'Ministry of Defence',
         author: '@shelleypauls',
-    },
-    {
-        img: 'https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=600',
-        title: 'Bedroom',
-        author: '@peterlaster',
-    },
-    {
-        img: 'https://images.pexels.com/photos/1457841/pexels-photo-1457841.jpeg?auto=compress&cs=tinysrgb&w=600',
-        title: 'Living room',
-        author: '@southside_customs',
-    },
+    },  
 ];
 

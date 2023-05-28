@@ -101,7 +101,7 @@ export default function NewUser() {
             </div>
           </div>
           <div className="block md:flex">
-            <div className="md:w-1/2 md:pe-4 md:p-1 mt-3">
+            <div className="md:w-1/3 md:pe-2 md:p-1 mt-3">
               <label className="text-white">שם הפרוייקט</label>
               <select {...register("p_name", { required: true, minLength: 2 })} className="w-full p-2 mt-2 border-solid border-2 rounded-lg">
                 <option hidden>בחר פרויקט מרשימת הפרוייקטים</option>
@@ -112,13 +112,12 @@ export default function NewUser() {
                 })}
               </select>
             </div>
-          </div>
-          <div className="block md:flex">
-            <div className="md:w-1/2 md:pe-4 md:p-1 mt-3">
+          
+            <div className="md:w-1/3 md:pe-3 md:p-1 mt-3">
               <label className="text-white">מספר קומה</label>
               <input placeholder="קומה..."  {...register("story", { required: true, minLength: 1 })} type="number" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
             </div>
-            <div className="md:w-1/2 md:pe-4 md:p-1 mt-3">
+            <div className="md:w-1/3 md:pe-4 md:p-1 mt-3">
               <label className="text-white">מספר דירה</label>
               <input placeholder="דירה..."  {...register("apartment", { required: true, minLength: 1 })} type="number" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
             </div>
