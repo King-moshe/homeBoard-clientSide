@@ -26,7 +26,7 @@ function MyApp() {
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        bgcolor: 'background.default',
+        bgcolor: 'background.inherit',
         color: 'text.primary',
         borderRadius: 1,
         p: 1,
@@ -62,7 +62,7 @@ export default function BarSide() {
     [mode],
   );
   return (
-    <div className='border-e-2 border-e-slate-950 min-h-screen hidden md:block bg-slate-700 text-white'>
+    <div className='border-e-2 border-e-slate-950 min-h-screen fixed hidden md:block bg-slate-700 text-white w-[20%]'>
       <div className=' text-center h-[70px] '>
         <Button>
           <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-20' />
