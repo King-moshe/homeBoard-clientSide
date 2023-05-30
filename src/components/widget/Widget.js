@@ -17,8 +17,8 @@ export default function Widget({ type, url, text }) {
   switch (type) {
     case 'users':
       data = {
-        title: "USERS",
-        link: <Link className='hover:text-yellow-500' to='users'>רשימת משתמשים</Link>,
+        title: type.toUpperCase(),
+        link: <Link className='hover:text-yellow-500' to='users'>{text}</Link>,
         icon:
           <PersonOutlineOutlinedIcon className='icon' style={{ color: "crimson", background: "rgba(220, 20, 60, 0.219)" }} />
       };
@@ -33,8 +33,8 @@ export default function Widget({ type, url, text }) {
       break;
     case 'comments':
       data = {
-        title: "COMMENTS",
-        link: <Link className='hover:text-yellow-500' to='/comments'>רשימת קבלנים</Link>,
+        title: type.toUpperCase(),
+        link: <Link className='hover:text-yellow-500' to='/comments'>{text}</Link>,
         icon:
           <EngineeringOutlinedIcon className='icon' style={{ color: "rgb(2, 66, 2)", background: "rgba(0, 128, 0, 0.223)" }} />
       };

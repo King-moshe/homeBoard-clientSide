@@ -21,7 +21,8 @@ import { apiGet } from "./services/apiServices";
 import { USER_INFO } from "./constant/url";
 import Contact from "./pages/home/Contact";
 import ContractorsList from "./pages/lists/contractorList";
-import SingleProject from "./pages/single/SingleProject";
+import ProjectCard from "./pages/cards/ProjectsCards";
+import SingleClient from "./pages/single/SingleClient";
 
 
 function App() {
@@ -94,7 +95,8 @@ function App() {
                       <Route path="/projects" element={<ProjectsList />} />
                       <Route path="/projects/newProject" element={<NewProject />} />
                       <Route path="/projects/editProject/:id" element={<EditProject />} />
-                      <Route path="/projects/singleProject" element={<SingleProject />} />
+                      <Route path="/projects/singleProject" element={<ProjectCard />} />
+                      <Route path="/projects/singleClient" element={<SingleClient />} />
 
                       <Route path="/contractors" element={<ContractorsList />} />
                     </Routes>
