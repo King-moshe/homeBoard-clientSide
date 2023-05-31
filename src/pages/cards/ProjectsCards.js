@@ -35,9 +35,8 @@ export default function ProjectCard() {
     }
   }
 
-  const onSubShowUser = (user_id, user_name) => {
-    setClient([user_id, user_name])
-    console.log(setClient);
+  const onSubShowUser = (user) => {
+    setClient(user)
     nav('/projects/singleClient')
   }
 
@@ -58,13 +57,12 @@ export default function ProjectCard() {
         <div className=" mh-[400px] border-2 flex flex-wrap pt-4 justify-between items-center">
           {data.map((item) => (
             <Card key={item._id} className=" xs:w-[48%] sm:w-[47%] md:w-[32%] lg:w-[22%]  bg-slate-600 text-white shadow-2xl sm:mb-0 mb-5 flex m-0.5">
-              {/* <Card.Img variant="top" className="p-2" src="https://images.pexels.com/photos/425160/pexels-photo-425160.jpeg?auto=compress&cs=tinysrgb&w=600" /> */}
               <Card.Body>
                 <Card.Title className="text-end p-1 mb-1"><Person2OutlinedIcon className="text-green-600" /> {item.name}</Card.Title>
                 <Card.Text className="text-end p-1 mb-1"><AccountTreeIcon className="text-[goldenrod] bg-[#]" /> {item.p_name}</Card.Text>
                 <Card.Text className="text-end p-1 mb-1"><BusinessIcon /> {item.city_name}</Card.Text>
                 <Card.Text className="text-end p-1 mb-1"><CottageOutlinedIcon /> {item.street_name} - {item.building_name}</Card.Text>
-                <button className="border text-white p-1 rounded" onClick={() => onSubShowUser(item._id, item.name)}>ראה לקוח</button>
+                <button className="border text-white p-1 rounded" onClick={() => onSubShowUser(item)}>ראה לקוח</button>
               </Card.Body>
             </Card>
           ))}
