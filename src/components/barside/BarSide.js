@@ -106,12 +106,12 @@ export default function BarSide() {
               <span className='mt-1 mx-2'>צור קשר</span>
             </li>
           </Link>
-          <Link to='...'>
+          <Link to='userProfile'>
             <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><AssignmentIndIcon />
               <span className='mt-1 mx-2'>פרופיל</span>
             </li>
           </Link>
-          <Link to='...'>
+          <Link to='/'>
             <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><LogoutIcon />
               <span className='mt-1 mx-2 ' onClick={() => {
                 localStorage.token = ''

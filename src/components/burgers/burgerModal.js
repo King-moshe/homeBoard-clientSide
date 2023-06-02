@@ -146,29 +146,36 @@ export default function BurgerModal() {
             <li className='px-3 mb-12 mt-3 cursor-pointer hover:text-yellow-500'><EngineeringRounded />
               <span className='mt-1 mx-2'>קבלנים</span>
             </li>
-          </Link>        
+          </Link>
           <p className='title text-gray-300 mt-6'>SERVICE</p>
           <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><ConnectWithoutContactIcon />
             <span className='mt-1 mx-2'>צור קשר</span>
           </li>
-          <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><AssignmentIndIcon />
-            <span className='mt-1 mx-2'>פרופיל</span>
-          </li>
-          <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><LogoutIcon />
-            <span className='mt-1 mx-2 '>יציאה</span>
-          </li>
+          <Link to='userProfile'>
+            <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><AssignmentIndIcon />
+              <span className='mt-1 mx-2'>פרופיל</span>
+            </li>
+          </Link>
+          <Link to='/'>
+            <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><LogoutIcon />
+              <span className='mt-1 mx-2 ' onClick={() => {
+                localStorage.token = ''
+                window.location.reload()
+              }}>יציאה</span>
+            </li>
+          </Link>
           <Link to="/login" className='icon'>
             <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'>
               <LoginIcon />
               <span className='mt-1 mx-2'>כניסה</span>
             </li>
           </Link>
-         <p className='title text-gray-300 mt-6'>DARK MODE</p>
-        <ColorModeContext.Provider value={colorMode}>
-          <ThemeProvider theme={theme}>
-            <MyApp />
-          </ThemeProvider>
-        </ColorModeContext.Provider>
+          <p className='title text-gray-300 mt-6'>DARK MODE</p>
+          <ColorModeContext.Provider value={colorMode}>
+            <ThemeProvider theme={theme}>
+              <MyApp />
+            </ThemeProvider>
+          </ColorModeContext.Provider>
         </ul>
       </List>
     </Box>
@@ -184,7 +191,7 @@ export default function BurgerModal() {
                 <Button onClick={toggleDrawer(anchor, true)}>
                   <MenuIcon fontSize='large' className='text-white' />
                 </Button>
-                <Drawer                
+                <Drawer
                   anchor={anchor}
                   open={state[anchor]}
                   onClose={toggleDrawer(anchor, false)}
@@ -195,7 +202,7 @@ export default function BurgerModal() {
             ))}
           </div>
           <Button className='text-center'>
-          <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-12'/>
+            <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-12' />
           </Button>
         </div>
       </Box>

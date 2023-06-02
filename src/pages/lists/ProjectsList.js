@@ -92,17 +92,17 @@ export default function ProjectsList() {
           </TableHead>
           <TableBody>
             {data.map((row, i) => (
-              <TableRow key={row._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>                
-                <TableCell align='center'>{((page - 1) * 15) + i + 1}</TableCell>
-                <TableCell align="center" className="border border-slate-300">{row.city_name}</TableCell>
-                <TableCell align="center" className="border border-slate-300">{row.street_name}</TableCell>
-                <TableCell align='center' className="border border-slate-300"><button onClick={()=>onSubShowOne(row.p_name, row.building_name)} className="border p-2 px-4 rounded-md hover:bg-blue-600  hover:text-white"><BusinessIcon/> {row.p_name } </button></TableCell>
-                <TableCell align='center' className="border border-slate-300">{row.building_name}</TableCell>              
-                <TableCell align='center' className="border border-slate-300">{row.contractor_name}</TableCell>              
-                <TableCell align='center' className="border border-slate-300"><Button className="border rounded-xl" onClick={()=>{
+              <TableRow key={row._id}  className=" bg-slate-500">                
+                <TableCell align='center' className="text-white">{((page - 1) * 15) + i + 1}</TableCell>
+                <TableCell align="center" className="border border-slate-300 text-white">{row.city_name}</TableCell>
+                <TableCell align="center" className="border border-slate-300 text-white">{row.street_name}</TableCell>
+                <TableCell align='center' className="border border-slate-300 text-white"><button onClick={()=>onSubShowOne(row.p_name, row.building_name)} className="border p-2 px-4 rounded-md hover:bg-blue-600  hover:text-white"><BusinessIcon/> {row.p_name } </button></TableCell>
+                <TableCell align='center' className="border border-slate-300 text-white">{row.building_name}</TableCell>              
+                <TableCell align='center' className="border border-slate-300 text-white">{row.contractor_name}</TableCell>              
+                <TableCell align='center' className="border border-slate-300 text-white"><Button className="border rounded-xl" onClick={()=>{
                   nav("/projects/editProject/" + row._id )
-                }}><EditIcon className=" hover:text-blue-700" /></Button></TableCell>
-                <TableCell align='center' className=""><Button className="border border-red-600 rounded-xl" onClick={() => { deleteProject(row._id, row.p_name) }}><DeleteIcon className="text-red-600" /></Button></TableCell>
+                }}><EditIcon className=" text-blue-700 hover:text-amber-600" /></Button></TableCell>
+                <TableCell align='center' className=""><Button className="border border-red-600 rounded-xl" onClick={() => { deleteProject(row._id, row.p_name) }}><DeleteIcon className="text-red-700" /></Button></TableCell>
               </TableRow>
             ))}
           </TableBody>

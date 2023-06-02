@@ -38,9 +38,6 @@ function Copyright(props) {
 
 
 
-
-
-
 function Login() {
 
     const { currentMode, setLogin } = useStateContext();
@@ -112,7 +109,7 @@ function Login() {
 
             if (resp.msg) {
                 toast.error("מייל או סיסמה אינם נכונים, נסה/י שוב");
-                 setErr(resp.msg)
+                setErr(resp.msg)
             }
             else if (resp.token) {
                 <Box sx={{ display: 'flex' }}>
@@ -121,15 +118,22 @@ function Login() {
                 </Box>
                 localStorage.setItem('token', resp.token)
                 //  updateUser(resp.user, resp.token)
-                toast.success("נכנסת בהצלחה !");
-                setLogin(2)
-                nav("/")
+                if (resp.role === 'Admin') {
+                    toast.success(`Wellcome Back - ${resp.role}`);
+                    setLogin(2);
+                    nav("/");
+                }
+                if (resp.role === 'User') {
+                    toast.success(`Wellcome Back - ${resp.role}`);
+                    setLogin(1);
+                    nav('/')
+                }
+
             }
         }
 
         catch (err) {
-             setErr("מייל או סיסמה אינם נכונים, נסה/י שוב");
-             toast.error("מייל או סיסמה אינם נכונים, נסה/י שוב");
+            setErr("מייל או סיסמה אינם נכונים, נסה/י שוב");
         }
     }
 
@@ -149,7 +153,7 @@ function Login() {
                         <LockOutlinedIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                       כניסה
+                        כניסה
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                         <TextField

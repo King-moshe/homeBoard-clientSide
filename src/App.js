@@ -23,6 +23,7 @@ import Contact from "./pages/home/Contact";
 import ContractorsList from "./pages/lists/contractorList";
 import ProjectCard from "./pages/cards/ProjectsCards";
 import SingleClient from "./pages/single/SingleClient";
+import UserInfo from "./pages/single/UserInfo";
 
 
 function App() {
@@ -53,7 +54,7 @@ function App() {
         // console.log(resp);
       } else setLogin(1)
     } catch (error) {
-      alert('Must reconect');
+      // alert('Must reconect');
       setLogin(1);
     }
   };
@@ -89,6 +90,8 @@ function App() {
                   <div >
                     <Routes>
                       <Route path="/*" element={<Home />} />
+                      <Route path="/userProfile" element={<UserInfo/>}/>
+
                       <Route path="/users" element={<UsersList />} />
                       <Route path="users/newUser" element={<NewUser />} />
 
@@ -100,12 +103,12 @@ function App() {
 
                       <Route path="/contractors" element={<ContractorsList />} />
                     </Routes>
-                    <ToastContainer theme="colored" />
                   </div >
                 </div >
               </div>
             </>
           }
+          <ToastContainer theme="colored" />
         </BrowserRouter >
       </div >
 
