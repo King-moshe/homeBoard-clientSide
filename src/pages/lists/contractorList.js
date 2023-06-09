@@ -35,10 +35,7 @@ export default function ContractorsList() {
                     <Button><KeyboardArrowRightIcon className="text-white " /></Button>
                     <span>1</span>
                     <Button><KeyboardArrowLeftIcon className="text-white" /></Button>
-                </div>
-                {/* <Button size="small" variant="contained" className='items-end' >
-                    <Link to='...' className='hover:text-white p-1'>הוספת קבלן <PersonAddIcon /> </Link>
-                </Button> */}
+                </div>             
             </div>
             <TableContainer component={Paper} className="drop-shadow-xl md:h-[400px] mh-[400px]">
                 <Table className="border-collapse border border-slate-400">
@@ -57,7 +54,7 @@ export default function ContractorsList() {
                     </TableHead>
                     <TableBody>
                         {constructorsData.map((row, i) => (
-                            <TableRow key={row.MISPAR_YESHUT} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                            <TableRow key={row._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                 <TableCell align='center'>{((page - 1) * 15) + i + 1}</TableCell>
                                 <TableCell align='center' className="border border-slate-300"><AccountCircleIcon /> {row.SHEM_YESHUT}</TableCell>
                                 <TableCell align='center' className="border border-slate-300">{row.EMAIL}</TableCell>

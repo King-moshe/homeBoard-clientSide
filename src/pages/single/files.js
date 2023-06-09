@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button } from 'antd';
+import { AiOutlineDelete } from "react-icons/ai";
+import { toast } from 'react-toastify';
+
+
 
 export default function Files({ setFileResp }) {
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadedFileUrl, setUploadedFileUrl] = useState('');
+  const [inputKey, setInputKey] = useState(Date.now());
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
@@ -27,58 +33,105 @@ export default function Files({ setFileResp }) {
               (progressEvent.loaded * 100) / progressEvent.total
             );
             setUploadProgress(progress);
+
           },
         }
       );
+      setUploadedFiles((prevUploadedFiles) => [
+        ...prevUploadedFiles,
+        response.data.secure_url,
+      ]);
 
       setUploadedFileUrl(response.data.secure_url);
-
       setFileResp(response.data.secure_url)
+      setInputKey(Date.now());
+      handleClear()
+      toast.success("קובץ הועלה בהצלחה")
+
     } catch (error) {
       console.error('Error uploading file: ', error);
+      toast.warning("ישנה בעיה נסו שנית")
     }
   };
 
+  const handleClear = () => {
+    setSelectedFile(null);
+    setUploadProgress(0);
+    setUploadedFileUrl('');
+    setInputKey('')
+  };
+
+  const getFileExtension = (fileUrl) => {
+    const lastDotIndex = fileUrl.lastIndexOf('.');
+    return fileUrl.substring(lastDotIndex).toLowerCase();
+  };
+  
+  const isImageExtension = (extension) => {
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+    return imageExtensions.includes(extension);
+  };
+  
 
   return (
-    <div className=' h-[70vh] bg-slate-600'>
-      <input type="file" onChange={handleFileChange} />
-      <Button onClick={handleUpload}>Upload</Button>
+    <div className='h-[90vh] bg-slate-600 overflow-y-scroll '>
+      <div className=' flex justify-between'>
+        <div className='text-center m-3 w-[48%] mx-auto border-dashed border-2 p-3 rounded-lg border-blue-200 custom-shadow'>
+          <p className='text-blue-200 font-bold pb-2'>גרור קובץ לכאן </p>
+          <input key={inputKey} type="file" className='text-blue-200 bg-slate-500 w-full  h-32 rounded-lg cursor-pointer' onChange={handleFileChange} />
+          <button className='text-blue-200 mt-3 border-2 p-1 px-3 rounded-lg border-blue-200 ' onClick={handleUpload} onChange={handleClear}>שלח/י</button>
+        </div>
+        <div className='text-center m-3 w-[48%] mx-auto border-2 p-3  rounded-lg border-blue-200 custom-shadow'>
+          {selectedFile && (
+            <div>
+              <p className='text-blue-200 font-bold pb-2'>קובץ שהועלה:</p>
 
-      {selectedFile && (
-        <div>
-          <h3>קובץ שהועלה:</h3>
+              {selectedFile.type.startsWith('image/') ? (
+                <div>
+                  <img
+                    src={URL.createObjectURL(selectedFile)}
+                    alt="File Preview"
+                    className='mx-auto h-32 rounded-md'
 
-          {selectedFile.type.startsWith('image/') ? (
-            <img
-              src={URL.createObjectURL(selectedFile)}
-              alt="File Preview"
-              style={{ maxWidth: '100%', maxHeight: '300px' }}
-            />
-          ) : (
-            <p>{selectedFile.name}</p>
+                  />
+                  <button onClick={handleClear}><AiOutlineDelete className='text-3xl text-red-500 mt-3' /> </button>
+                </div>
+              ) : (
+                <div>{selectedFile.name} <button onClick={handleClear}><AiOutlineDelete className='text-3xl text-red-700 ' /> </button></div>
+              )}
+              {uploadProgress > 0 && <p className='text-blue-200 '>העלאה בתהליך: <div class="container">
+                <div class="progress2 progress-moved">
+                  <div class="progress-bar2" >
+                  </div>
+                </div>
+              </div>
+              </p>}
+              <p className='text-blue-200'>{uploadProgress}%</p>
+
+            </div>
           )}
         </div>
-      )}
 
-      {uploadProgress > 0 && <p>העלאה בתהליך: {uploadProgress}%</p>}
+      </div>
+      <div className='flex flex-wrap p-2 m-3 rounded-lg border-blue-200 custom-shadow overflow-y-scroll overflow-x-scroll justify-around'>
+  {uploadedFiles.map((fileUrl, index) => {
+    const extension = getFileExtension(fileUrl);
+    return (
+      <div key={index} className="m-2 p-2  border-blue-200 custom-shadow rounded-lg text-white">
+        {isImageExtension(extension) ? (
+          <img
+            src={fileUrl}
+            alt="Uploaded File"
+            className='w-full max-w-full max-h-48 rounded-lg '
+          />
+        ) : (
+          <p>{fileUrl}</p>
+        )}
+      </div>
+    );
+  })}
+</div>
 
 
-      {uploadedFileUrl && (
-        <div>
-          <h3>Uploaded File:</h3>
-          {uploadedFileUrl.startsWith('image/') ? (
-            <img
-              src={uploadedFileUrl}
-              alt="Uploaded File"
-              style={{ maxWidth: '100%', maxHeight: '300px' }}
-            />
-          ) : (
-            <p>{uploadedFileUrl}</p>
-          )}
-
-        </div>
-      )}
-    </div>
-  );
+</div>
+);
 };

@@ -17,10 +17,17 @@ export default function ProjectCard() {
   const nav = useNavigate();
   const { sProject } = useStateContext();
   const { setClient } = useStateContext();
-  const [data, setDate] = useState([]);
+  const [data, setData] = useState([]);
+  const [dataProject, setDataProject] = useState([]);
 
   useEffect(() => {
     sProject.length < 1 ? nav('/projects') : doApi();
+   
+    const projectId = sProject[2];
+    localStorage.setItem('projectId', projectId);
+    if (projectId) {
+      doApiProject(projectId)
+    }
   }, [])
 
 
@@ -29,11 +36,26 @@ export default function ProjectCard() {
     try {
       const data = await apiGet(url);
       console.log(data);
-      setDate(data);
+      setData(data);
     } catch (error) {
       console.log(error);
     }
   }
+
+  const doApiProject = async (projectId) => {
+    const url2 = API_URL + `/projects/single/${projectId}`;
+    try {
+      const dataProject = await apiGet(url2);
+      console.log(dataProject);
+      setDataProject(dataProject);
+      // const projectId = dataProject._id;
+      // localStorage.setItem('projectId', projectId);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
 
   const onSubShowUser = (user) => {
     setClient(user)
@@ -45,7 +67,7 @@ export default function ProjectCard() {
 
     <div className="p-[20px] m-[20px]">
       <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between bg-slate-700'>
-        <span className="pt-2">רשימת דיירים בבנין</span>
+        <span className="pt-2">רשימת דיירים בבנין {dataProject.p_name}</span>
         <Button size="small" variant="contained" className='items-end' >
           <Link to='/projects' className='hover:text-white p-1'>חזור < ArrowBackIcon /></Link>
         </Button>
@@ -53,7 +75,7 @@ export default function ProjectCard() {
       {data.length === 0 ? <div className="mt-3"><Alert severity="info">
         <AlertTitle>מידע </AlertTitle>
         לידיעתך - <strong>אין שיוך דיירים לפרויקט זה !</strong>
-      </Alert></div> :
+      </Alert> </div> :
         <div className=" mh-[400px] border-2 flex flex-wrap pt-4 justify-between items-center">
           {data.map((item) => (
             <Card key={item._id} className=" xs:w-[48%] sm:w-[47%] md:w-[32%] lg:w-[22%]  bg-slate-600 text-white shadow-2xl sm:mb-0 mb-5 flex m-0.5">
@@ -72,5 +94,3 @@ export default function ProjectCard() {
   );
 }
 
-
-//{/* <strong>אין דיירים בפרויקט !</strong> */}

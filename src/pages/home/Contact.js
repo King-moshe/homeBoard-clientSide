@@ -27,17 +27,17 @@ export default function Contact() {
                     <form className='w-full lg:border-b '>
                         <Row>
                             <Col lg='3' className='mb-2'>
-                                <input className='form-control border-0 shadow bg-slate-900 bg-opacity-90' name='name' placeholder=':שם' type='text' />
+                                <input className='form-control border-0 shadow bg-slate-900 bg-opacity-90' name='name' placeholder='שם :' type='text' />
                             </Col>
                             <Col lg='6' className='mb-2'>
-                                <input className='form-control border-0 shadow bg-slate-900 bg-opacity-90 ' name='email' placeholder=':מייל' type='email' />
+                                <input className='form-control border-0 shadow bg-slate-900 bg-opacity-90 ' name='email' placeholder='מייל :' type='email' />
                             </Col>
                             <Col lg='3' className='mb-2 '>
-                                <input className='form-control border-0 shadow bg-slate-900 bg-opacity-90 ' name='phone' placeholder=':טל' type='phone' />
+                                <input className='form-control border-0 shadow bg-slate-900 bg-opacity-90 ' name='phone' placeholder='טל :' type='phone' />
                             </Col>
                         </Row>
 
-                        <textarea className='form-control border-0 shadow bg-slate-900 bg-opacity-90 ' id='massage' name='massage' placeholder=':הודעה' rows={5}></textarea>
+                        <textarea className='form-control border-0 shadow bg-slate-900 bg-opacity-90 ' id='massage' name='massage' placeholder='הודעה :' rows={5}></textarea>
                         <br />
                         <Row>
                             <Col lg='12' className='form-group items-center flex justify-center'>

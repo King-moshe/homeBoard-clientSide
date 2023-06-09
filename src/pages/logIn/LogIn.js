@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { LOGIN_ROUTE } from "../../constant/url";
 import { useNavigate } from "react-router-dom";
 import { apiPost } from "../../services/apiServices";
-import MyStore from "../../context/context";
 // MUI
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
 import { toast } from "react-toastify";
 import Avatar from '@mui/material/Avatar';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -15,9 +14,6 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme } from '@mui/material/styles';
-import PropTypes from 'prop-types';
-import CircularProgress from '@mui/material/CircularProgress';
 import { useStateContext } from "../../context";
 
 
@@ -39,65 +35,11 @@ function Copyright(props) {
 
 
 function Login() {
-
-    const { currentMode, setLogin } = useStateContext();
-    const darkTheme = createTheme({
-        palette: {
-            mode: currentMode,
-        },
-    });
-
+    const { setLogin } = useStateContext();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [err, setErr] = useState("")
-    function CircularProgressWithLabel(props) {
-        return (
-            <Box sx={{ position: 'relative', display: 'inline-flex' }} >
-                <CircularProgress variant="determinate" {...props} />
-                <Box
-                    sx={{
-                        top: 0,
-                        left: 0,
-                        bottom: 0,
-                        right: 0,
-                        position: 'absolute',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}
-                >
-                    <Typography variant="caption" component="div" color="text.secondary">
-                        {`${Math.round(props.value)}%`}
-                    </Typography>
-                </Box>
-            </Box>
-        );
-    }
-
-    CircularProgressWithLabel.propTypes = {
-        /**
-         * The value of the progress indicator for the determinate variant.
-         * Value between 0 and 100.
-         * @default 0
-         */
-        value: PropTypes.number.isRequired,
-    };
-
-    function CircularStatic() {
-        const [progress, setProgress] = React.useState(10);
-
-        React.useEffect(() => {
-            const timer = setInterval(() => {
-                setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
-            }, 800);
-            return () => {
-                clearInterval(timer);
-            };
-        }, []);
-
-    }
-
     const nav = useNavigate()
 
     const handleSubmit = async (event) => {
@@ -108,27 +50,25 @@ function Login() {
             console.log(resp);
 
             if (resp.msg) {
-                toast.error("מייל או סיסמה אינם נכונים, נסה/י שוב");
-                setErr(resp.msg)
+                setErr(resp.msg);
             }
             else if (resp.token) {
-                <Box sx={{ display: 'flex' }}>
-                    <CircularProgress />
-
-                </Box>
                 localStorage.setItem('token', resp.token)
-                //  updateUser(resp.user, resp.token)
                 if (resp.role === 'Admin') {
-                    toast.success(`Wellcome Back - ${resp.role}`);
+                    toast.success(`ברוך הבא - ${resp.name}`);
                     setLogin(2);
                     nav("/");
                 }
-                if (resp.role === 'User') {
-                    toast.success(`Wellcome Back - ${resp.role}`);
-                    setLogin(1);
-                    nav('/')
+                else if (resp.role === 'User') {
+                    toast.success(`ברוך הבא - ${resp.name}`);
+                    setLogin(3);
+                    nav('/');
                 }
-
+                else if (resp.role === "Constructor") {
+                    toast.success(`ברוך הבא - ${resp.name}`);
+                    setLogin(0);
+                    nav("/");
+                }
             }
         }
 

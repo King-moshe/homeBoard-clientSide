@@ -6,7 +6,7 @@ import home1jpg from './images/home1jpg.jpg'
 
 export default function OurWork() {
     return (
-        <>
+        
             <div className='w-full px-4 md:px-8 py-3 text-slate-400 bg-black md:h-[720px]' id='our'>
                 <div className='md:flex lg:ml-5 justify-between  md:my-5'>
                     <div className='md:w-[80%] justify-center'>
@@ -36,7 +36,7 @@ export default function OurWork() {
                     </div>
                 </div>
             </div>
-        </>
+       
     );
 }
 

@@ -1,6 +1,6 @@
 import "./index.css"
 import Home from "./pages/home/Home";
-import Login from "./pages/logIn/LogIn";
+
 import NewUser from "./pages/new/newUser";
 import UsersList from "./pages/lists/UsersList";
 import NewProject from "./pages/new/NewProject";
@@ -24,6 +24,10 @@ import ContractorsList from "./pages/lists/contractorList";
 import ProjectCard from "./pages/cards/ProjectsCards";
 import SingleClient from "./pages/single/SingleClient";
 import UserInfo from "./pages/single/UserInfo";
+import Login from "./pages/logIn/LogIn";
+// import FilesList from "./pages/lists/FilesList";
+
+
 
 
 function App() {
@@ -39,7 +43,7 @@ function App() {
     }
   })
 
-  useEffect(() => {
+  useEffect(() => {    
     checkIfUserConnect();
   }, []);
 
@@ -50,12 +54,19 @@ function App() {
         let resp = await apiGet(USER_INFO);
         console.log(resp);
         setUser(resp);
-        setLogin(2);
-        // console.log(resp);
-      } else setLogin(1)
-    } catch (error) {
-      // alert('Must reconect');
+        if (resp.role === 'Admin') {
+          setLogin(2);
+        }
+        else if (resp.role === 'User') {
+          setLogin(3);
+        }
+      }
+      else
+        setLogin(1);
+    }
+    catch (error) {
       setLogin(1);
+      console.log(error);
     }
   };
 
@@ -63,13 +74,14 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className={currentMode === 'dark' ? 'dark' : 'light'}>
         <BrowserRouter>
-          {login === 0 && <div className='w-full h-[100vh] bg-white dark:bg-secondary'>
-            <div className='absolute right-1/2 bottom-1/2 transform translate-x-1/2 translate-y-1/2 '>
-              <div
-                className={` border-t-transparent border-solid animate-spin border-[var(--current-color)] rounded-full border-8 h-64 w-64`}
-              ></div>
+          {login === 0 &&
+            <div className='w-full h-[100vh] bg-white dark:bg-secondary'>
+              <div className='absolute right-1/2 bottom-1/2 transform translate-x-1/2 translate-y-1/2 '>
+                <div className={` border-t-transparent border-solid animate-spin border-[var(--current-color)] rounded-full border-8 h-64 w-64`}></div>
+                Loading...
+              </div>
             </div>
-          </div>}
+          }
           {login === 1 &&
             <Routes  >
               <Route path="/*" element={<Landing />} />
@@ -90,16 +102,17 @@ function App() {
                   <div >
                     <Routes>
                       <Route path="/*" element={<Home />} />
-                      <Route path="/userProfile" element={<UserInfo/>}/>
+                      <Route path="/userProfile" element={<UserInfo />} />
+                      <Route path="/users" element={<UsersList />} />                     
+                      <Route path="/users/newUser" element={<NewUser />} />
 
-                      <Route path="/users" element={<UsersList />} />
-                      <Route path="users/newUser" element={<NewUser />} />
 
                       <Route path="/projects" element={<ProjectsList />} />
                       <Route path="/projects/newProject" element={<NewProject />} />
                       <Route path="/projects/editProject/:id" element={<EditProject />} />
                       <Route path="/projects/singleProject" element={<ProjectCard />} />
                       <Route path="/projects/singleClient" element={<SingleClient />} />
+                      {/* <Route path="/projects/userFiles" element={<FilesList />} /> */}
 
                       <Route path="/contractors" element={<ContractorsList />} />
                     </Routes>
@@ -108,6 +121,28 @@ function App() {
               </div>
             </>
           }
+          {login === 3 &&
+            <>
+              <div className="flex">
+                <div className='flex-[10] w-[20%] '>
+                  <BarSide />
+                </div>
+                <div className='w-full md:w-[80%]'>
+                  <BarNav />
+                  <div>
+                    <Routes>
+                    <Route path="/*" element={<Home />} />
+                    <Route path="/userProfile" element={<UserInfo />} />
+                    <Route path="/contractors" element={<ContractorsList />} />
+
+                    </Routes>
+                  </div>
+                </div>
+              </div>
+            </>
+          }
+
+
           <ToastContainer theme="colored" />
         </BrowserRouter >
       </div >
@@ -117,3 +152,12 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+

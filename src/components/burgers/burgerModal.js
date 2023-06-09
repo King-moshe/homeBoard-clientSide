@@ -12,7 +12,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Clear, EngineeringRounded } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
-import { Badge, IconButton } from '@mui/material';
+import { IconButton } from '@mui/material';
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -25,6 +25,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { createTheme } from '@mui/system';
 import LoginIcon from '@mui/icons-material/Login';
+import { useStateContext } from '../../context';
 
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
@@ -56,25 +57,26 @@ function MyApp() {
 
 export default function BurgerModal() {
 
-  const [mode, setMode] = React.useState('light');
-  const colorMode = React.useMemo(
-    () => ({
-      toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-      },
-    }),
-    [],
-  );
+  const { login } = useStateContext()
+  // const [mode, setMode] = React.useState('light');
+  // const colorMode = React.useMemo(
+  //   () => ({
+  //     toggleColorMode: () => {
+  //       setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+  //     },
+  //   }),
+  //   [],
+  // );
 
-  const theme = React.useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode,
-        },
-      }),
-    [mode],
-  );
+  // const theme = React.useMemo(
+  //   () =>
+  //     createTheme({
+  //       palette: {
+  //         mode,
+  //       },
+  //     }),
+  //   [mode],
+  // );
 
 
 
@@ -108,11 +110,9 @@ export default function BurgerModal() {
             </ListItemButton>
           </ListItem>
         ))}
-
-
       </List>
       <Divider />
-      <List className='bg-slate-700 text-white'>
+      <List className='bg-slate-700 text-white min-h-screen'>
         {[].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
@@ -131,18 +131,21 @@ export default function BurgerModal() {
               <span className='mt-1 mx-2'>דף הבית</span>
             </li>
           </Link>
-          <p className='title text-gray-300 mt-6'>LIST</p>
-          <Link to='/users'>
-            <li className='px-3 cursor-pointer hover:text-yellow-500'><PeopleAltIcon />
-              <span className='mt-1 mx-2'>משתמשים</span>
-            </li>
-          </Link>
-          <Link to='/projects'>
-            <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><AccountTreeIcon />
-              <span className='mt-1 mx-2'>פרוייקטים</span>
-            </li>
-          </Link>
-          <Link to=''>
+          {login === 2 &&
+            <>
+              <p className='title text-gray-300 mt-6'>LIST</p>
+              <Link to='/users'>
+                <li className='px-3 cursor-pointer hover:text-yellow-500'><PeopleAltIcon />
+                  <span className='mt-1 mx-2'>משתמשים</span>
+                </li>
+              </Link>
+              <Link to='/projects'>
+                <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><AccountTreeIcon />
+                  <span className='mt-1 mx-2'>פרוייקטים</span>
+                </li>
+              </Link>
+            </>}
+          <Link to='/contractors'>
             <li className='px-3 mb-12 mt-3 cursor-pointer hover:text-yellow-500'><EngineeringRounded />
               <span className='mt-1 mx-2'>קבלנים</span>
             </li>
@@ -163,19 +166,13 @@ export default function BurgerModal() {
                 window.location.reload()
               }}>יציאה</span>
             </li>
-          </Link>
-          <Link to="/login" className='icon'>
-            <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'>
-              <LoginIcon />
-              <span className='mt-1 mx-2'>כניסה</span>
-            </li>
-          </Link>
+          </Link>          
           <p className='title text-gray-300 mt-6'>DARK MODE</p>
-          <ColorModeContext.Provider value={colorMode}>
-            <ThemeProvider theme={theme}>
+          {/* <ColorModeContext.Provider value={colorMode}>
+            <ThemeProvider theme={theme}> */}
               <MyApp />
-            </ThemeProvider>
-          </ColorModeContext.Provider>
+            {/* </ThemeProvider>
+          </ColorModeContext.Provider> */}
         </ul>
       </List>
     </Box>

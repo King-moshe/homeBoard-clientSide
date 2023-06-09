@@ -123,6 +123,7 @@ export default function UsersList() {
                 <TableCell align="center" className="border border-slate-300">{row.story}</TableCell>
                 <TableCell align='center' className="border border-slate-300">{row.apartment}</TableCell>
 
+                {/* print row._id send to function */}
                 <TableCell className="border border-slate-300">{!edit ? row.role :
                   <select defaultValue={row.role} onBlur={(e) => { row.role = e.target.value }}>
                     <option value={""} className="d-none"></option>

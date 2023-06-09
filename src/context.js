@@ -9,10 +9,12 @@ export const Context = ({ children }) => {
     const [user, setUser] = useState(null);
     const [currentMode, setCurrentMode] = useState(localStorage.themeMode || 'light');
     const [sProject, setSProject] = useState([]);
-    const [client, setClient] = useState([])
+    const [client, setClient] = useState([]);
+    const [dataProject, setDataProject] = useState([]);
+
     return (
         <StateContext.Provider
-            value={{ login, setLogin, user, setUser, currentMode, setCurrentMode, sProject, setSProject, client, setClient }}
+            value={{ login, setLogin, user, setUser, currentMode, setCurrentMode, sProject, setSProject, client, setClient, dataProject, setDataProject }}
         >
             {children}
         </StateContext.Provider>

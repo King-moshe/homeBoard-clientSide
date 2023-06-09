@@ -4,7 +4,7 @@ import green from './images/pexels-igor-starkov-1117452.jpg'
 
 export default function Main() {
     return (
-        <>         
+               
             <div className='w-full px-8 my-3 ' id='about'>
                 <div className='max-w-[1240px] mx-auto grid md:grid-cols-2'>
                     <img className='md:w-[500px] h-[87%] mx-auto my-4 shadow-md shadow-black rounded-2xl' src={green} alt='back' />
@@ -16,6 +16,6 @@ export default function Main() {
                 </div>
 
             </div>
-        </>
+       
     )
 }
