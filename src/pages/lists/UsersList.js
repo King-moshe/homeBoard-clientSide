@@ -79,7 +79,7 @@ export default function UsersList() {
 
   return (
     <div className='p-[20px] md:m-[20px] md:w-auto '>
-      <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between bg-slate-700'>
+      <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between login2'>
         <span className="pt-2">טבלת משתמשים</span>
         <div>
           <Button><KeyboardArrowRightIcon className="text-white " /></Button>
@@ -93,7 +93,7 @@ export default function UsersList() {
       <TableContainer component={Paper} className="drop-shadow-xl md:h-[400px] mh-[400px]">
         <Table className="border-collapse border border-slate-400">
           <TableHead>
-            <TableRow className=" bg-slate-600 ">
+            <TableRow className=" colors2 ">
               <TableCell className="border border-slate-300 text-white text-center">#</TableCell>
               <TableCell className="border border-slate-300 text-white text-center">שם</TableCell>
               <TableCell className="border border-slate-300 text-white text-center">אימייל</TableCell>
@@ -111,7 +111,7 @@ export default function UsersList() {
           </TableHead>
           <TableBody>
             {data.map((row, i) => (
-              <TableRow key={row._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+              <TableRow className="bg-slate-300" key={row._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell align='center'>{((page - 1) * 15) + i + 1}</TableCell>
                 <TableCell align="right" className="border border-slate-300"><AccountCircleIcon /> {row.name}</TableCell>
                 <TableCell align='center' className="border border-slate-300">{row.email}</TableCell>

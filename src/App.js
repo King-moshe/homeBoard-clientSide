@@ -1,6 +1,5 @@
 import "./index.css"
 import Home from "./pages/home/Home";
-
 import NewUser from "./pages/new/newUser";
 import UsersList from "./pages/lists/UsersList";
 import NewProject from "./pages/new/NewProject";

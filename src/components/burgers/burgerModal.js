@@ -1,4 +1,5 @@
 import * as React from 'react';
+import '../../style/colorKit.css'
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
@@ -20,11 +21,9 @@ import DashboardCustomizeRoundedIcon from '@mui/icons-material/DashboardCustomiz
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import MenuIcon from '@mui/icons-material/Menu';
-import { ThemeProvider, useTheme } from '@mui/private-theming';
+import { useTheme } from '@mui/private-theming';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { createTheme } from '@mui/system';
-import LoginIcon from '@mui/icons-material/Login';
 import { useStateContext } from '../../context';
 
 
@@ -58,27 +57,6 @@ function MyApp() {
 export default function BurgerModal() {
 
   const { login } = useStateContext()
-  // const [mode, setMode] = React.useState('light');
-  // const colorMode = React.useMemo(
-  //   () => ({
-  //     toggleColorMode: () => {
-  //       setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-  //     },
-  //   }),
-  //   [],
-  // );
-
-  // const theme = React.useMemo(
-  //   () =>
-  //     createTheme({
-  //       palette: {
-  //         mode,
-  //       },
-  //     }),
-  //   [mode],
-  // );
-
-
 
   const [state, setState] = React.useState({
     left: false
@@ -93,46 +71,45 @@ export default function BurgerModal() {
   };
 
   const list = (anchor) => (
-    <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 190 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List className='bg-slate-700 text-white'>
-        {[""].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <Clear className='mb-2'>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </Clear>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List className='bg-slate-700 text-white min-h-screen'>
-        {[].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-
-        <ul className='px-2'>
-          <p className='title text-gray-300 mt-6 '>MAIN</p>
-          <Link to='/'>
-            <li className='px-3 mb-12 cursor-pointer hover:text-yellow-500'><DashboardCustomizeRoundedIcon />
-              <span className='mt-1 mx-2'>דף הבית</span>
-            </li>
-          </Link>
-          {login === 2 &&
-            <>
+    <>
+      {login === 2 &&
+        <Box
+          sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 190 }}
+          role="presentation"
+          onClick={toggleDrawer(anchor, false)}
+          onKeyDown={toggleDrawer(anchor, false)}
+        >
+          <List className='bg-slate-700 text-white'>
+            {[""].map((text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <Clear className='mb-2'>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </Clear>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          <List className='bg-slate-700 text-white min-h-screen'>
+            {[].map((text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+            <ul className='px-2'>
+              <p className='title text-gray-300 mt-6 '>MAIN</p>
+              <Link to='/'>
+                <li className='px-3 mb-12 cursor-pointer hover:text-yellow-500'><DashboardCustomizeRoundedIcon />
+                  <span className='mt-1 mx-2'>דף הבית</span>
+                </li>
+              </Link>
               <p className='title text-gray-300 mt-6'>LIST</p>
               <Link to='/users'>
                 <li className='px-3 cursor-pointer hover:text-yellow-500'><PeopleAltIcon />
@@ -144,64 +121,153 @@ export default function BurgerModal() {
                   <span className='mt-1 mx-2'>פרוייקטים</span>
                 </li>
               </Link>
-            </>}
-          <Link to='/contractors'>
-            <li className='px-3 mb-12 mt-3 cursor-pointer hover:text-yellow-500'><EngineeringRounded />
-              <span className='mt-1 mx-2'>קבלנים</span>
-            </li>
-          </Link>
-          <p className='title text-gray-300 mt-6'>SERVICE</p>
-          <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><ConnectWithoutContactIcon />
-            <span className='mt-1 mx-2'>צור קשר</span>
-          </li>
-          <Link to='userProfile'>
-            <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><AssignmentIndIcon />
-              <span className='mt-1 mx-2'>פרופיל</span>
-            </li>
-          </Link>
-          <Link to='/'>
-            <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><LogoutIcon />
-              <span className='mt-1 mx-2 ' onClick={() => {
-                localStorage.token = ''
-                window.location.reload()
-              }}>יציאה</span>
-            </li>
-          </Link>          
-          <p className='title text-gray-300 mt-6'>DARK MODE</p>
-          {/* <ColorModeContext.Provider value={colorMode}>
-            <ThemeProvider theme={theme}> */}
+              <Link to='/contractors'>
+                <li className='px-3 mb-12 mt-3 cursor-pointer hover:text-yellow-500'><EngineeringRounded />
+                  <span className='mt-1 mx-2'>קבלנים</span>
+                </li>
+              </Link>
+              <p className='title text-gray-300 mt-6'>SERVICE</p>
+              <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><ConnectWithoutContactIcon />
+                <span className='mt-1 mx-2'>צור קשר</span>
+              </li>
+              <Link to='userProfile'>
+                <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><AssignmentIndIcon />
+                  <span className='mt-1 mx-2'>פרופיל</span>
+                </li>
+              </Link>
+              <Link to='/'>
+                <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><LogoutIcon />
+                  <span className='mt-1 mx-2 ' onClick={() => {
+                    localStorage.token = ''
+                    window.location.reload()
+                  }}>יציאה</span>
+                </li>
+              </Link>
+              <p className='title text-white mt-6'>DARK MODE</p>
               <MyApp />
-            {/* </ThemeProvider>
-          </ColorModeContext.Provider> */}
-        </ul>
-      </List>
-    </Box>
+            </ul>
+          </List>
+        </Box>
+      }
+      {login === 3 &&
+        <Box
+          sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 190 }}
+          role="presentation"
+          onClick={toggleDrawer(anchor, false)}
+          onKeyDown={toggleDrawer(anchor, false)}
+        >
+          <List className=' text-white login3'>
+            {[""].map((text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <Clear className='mb-2'>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </Clear>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          <List className='text-white min-h-screen login3'>
+            {[].map((text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+            <ul className='px-2'>
+              <p className='title text-gray-300 mt-6 '>MAIN</p>
+              <Link to='/'>
+                <li className='px-3 mb-12 cursor-pointer hover:text-yellow-500'><DashboardCustomizeRoundedIcon />
+                  <span className='mt-1 mx-2'>דף הבית</span>
+                </li>
+              </Link>
+              <p className='title text-gray-300 mt-6'>LIST</p>
+              <Link to='/contractors'>
+                <li className='px-3 mb-12 mt-3 cursor-pointer hover:text-yellow-500'><EngineeringRounded />
+                  <span className='mt-1 mx-2'>קבלנים</span>
+                </li>
+              </Link>
+              <p className='title text-gray-300 mt-6'>SERVICE</p>
+              <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><ConnectWithoutContactIcon />
+                <span className='mt-1 mx-2'>צור קשר</span>
+              </li>
+              <Link to='userProfile'>
+                <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><AssignmentIndIcon />
+                  <span className='mt-1 mx-2'>פרופיל</span>
+                </li>
+              </Link>
+              <Link to='/'>
+                <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><LogoutIcon />
+                  <span className='mt-1 mx-2 ' onClick={() => {
+                    localStorage.token = ''
+                    window.location.reload()
+                  }}>יציאה</span>
+                </li>
+              </Link>
+              <p className='title text-white mt-6'>DARK MODE</p>
+              <MyApp />
+            </ul>
+          </List>
+        </Box>
+      }
+    </>
   );
 
   return (
     <div >
       <Box sx={{ flexGrow: 1 }}>
-        <div className='bg-slate-700 flex justify-between w-full' position="static">
-          <div>
-            {['right'].map((anchor) => (
-              <React.Fragment key={anchor} >
-                <Button onClick={toggleDrawer(anchor, true)}>
-                  <MenuIcon fontSize='large' className='text-white' />
-                </Button>
-                <Drawer
-                  anchor={anchor}
-                  open={state[anchor]}
-                  onClose={toggleDrawer(anchor, false)}
-                >
-                  {list(anchor)}
-                </Drawer>
-              </React.Fragment>
-            ))}
+        {login === 2 &&
+          <div className=' flex justify-between w-full login2' position="static">
+            <div>
+              {['right'].map((anchor) => (
+                <React.Fragment key={anchor} >
+                  <Button onClick={toggleDrawer(anchor, true)}>
+                    <MenuIcon fontSize='large' className='text-white' />
+                  </Button>
+                  <Drawer
+                    anchor={anchor}
+                    open={state[anchor]}
+                    onClose={toggleDrawer(anchor, false)}
+                  >
+                    {list(anchor)}
+                  </Drawer>
+                </React.Fragment>
+              ))}
+            </div>
+            <Button className='text-center'>
+              <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-12' />
+            </Button>
           </div>
-          <Button className='text-center'>
-            <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-12' />
-          </Button>
-        </div>
+        }
+        {login === 3 &&
+          <div className=' flex justify-between w-full login3' position="static">
+            <div>
+              {['right'].map((anchor) => (
+                <React.Fragment key={anchor} >
+                  <Button onClick={toggleDrawer(anchor, true)}>
+                    <MenuIcon fontSize='large' className='text-white' />
+                  </Button>
+                  <Drawer
+                    anchor={anchor}
+                    open={state[anchor]}
+                    onClose={toggleDrawer(anchor, false)}
+                  >
+                    {list(anchor)}
+                  </Drawer>
+                </React.Fragment>
+              ))}
+            </div>
+            <Button className='text-center'>
+              <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-12' />
+            </Button>
+          </div>
+        }
       </Box>
     </div>
   );

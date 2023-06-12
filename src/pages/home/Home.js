@@ -3,7 +3,6 @@ import Widget from "../../components/widget/Widget";
 import { useStateContext } from "../../context";
 import { API_URL } from "../../constant/url";
 import { apiGet } from "../../services/apiServices";
-import SingleClient from "../single/SingleClient";
 
 
 
@@ -40,10 +39,10 @@ export default function Home() {
       </>}
       {login === 3 &&
         <div className="p-[20px] m-[20px]">
-        <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between bg-slate-700'>
-          <h2>pannel of all the user and his project</h2>
-          
-        </div>
+          <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between login3'>
+            <h2>pannel of all the user and his project</h2>
+           
+          </div>
         </div>
       }
     </div>

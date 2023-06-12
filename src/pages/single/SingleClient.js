@@ -70,16 +70,16 @@ export default function SingleClient() {
             <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong>דירה :</strong> {client.apartment}</div>
             <div className='w-full p-2 ps-2 text-xs lg:text-lg mb-4 shadow-xl'><strong>אימייל :</strong> {client.email}</div>
             <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong>טלפון :</strong> {client.phone}</div>
-            <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong><AdminPanelSettingsOutlinedIcon /> :</strong> {client.role === 'Constructor' ? client.role : 'User'}</div>
+            <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong><AdminPanelSettingsOutlinedIcon /> :</strong> {client.role === 'Constructor' ? client.role : 'User'}</div>      
           </div>
           <div className='md:w-1/5 w-full md:block flex  border-r-2 p-4 justify-between'>
             <button onClick={() => { setOpenModal(true) }} className='bg-orange-400 max-sm:text-lg text-xs lg:text-lg md:w-full w-[46%] border-1 p-2 rounded-lg text-center md:mt-3 mb-3 shadow-2xl hover:text-black hover:border-black'>
-              <div >העלה <br/> מסמכים</div>
+              <div >העלה <br /> מסמכים</div>
             </button>
             <button onClick={() => { setOpenModalComment(true) }} className='bg-green-600 max-sm:text-lg text-xs lg:text-lg md:w-full w-[46%] border-1 p-2 rounded-lg text-center md:mt-3 mb-3 shadow-2xl hover:text-black hover:border-black'>
               <div >צ'אט</div>
             </button>
-            <button onClick={() => {setOpenFilesModal(true) }} className='bg-green-600 max-sm:text-lg text-xs lg:text-lg md:w-full w-[46%] border-1 p-2 rounded-lg text-center md:mt-3 mb-3 shadow-2xl hover:text-black hover:border-black'>
+            <button onClick={() => { setOpenFilesModal(true) }} className='bg-green-600 max-sm:text-lg text-xs lg:text-lg md:w-full w-[46%] border-1 p-2 rounded-lg text-center md:mt-3 mb-3 shadow-2xl hover:text-black hover:border-black'>
               <div >מסמכים</div>
             </button>
             <Modal style={{ paddingLeft: '0px', margin: '0px' }}
@@ -88,7 +88,7 @@ export default function SingleClient() {
               onCancel={() => setOpenModalComment(false)}
               width={600}
               footer={null}
-            ><Comments/>
+            ><Comments />
             </Modal>
 
 
@@ -101,7 +101,7 @@ export default function SingleClient() {
             ><Files setFileResp={setFileResp} />
             </Modal>
 
-            
+
             <Modal style={{ paddingLeft: '0px' }}
               centered
               open={openFilesModal}
@@ -110,13 +110,11 @@ export default function SingleClient() {
               footer={null}
             ><FilesList />
             </Modal>
-           
+
           </div>
         </div>
       </div>
     </div>
   )
 }
-
-
 
