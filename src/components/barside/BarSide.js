@@ -62,25 +62,25 @@ export default function BarSide() {
     [mode],
   );
   return (
-    <div className='border-e-2 border-e-slate-950 min-h-screen fixed hidden md:block bg-slate-700 text-white w-[20%]'>
-      <div className=' text-center h-[70px] '>
-        <Button>
-          <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-20' />
-        </Button>
-      </div>
-      <hr />
-      <div className=' px-4 hidden md:block '>
-        <ul className='px-2'>
-          <p className='title text-gray-300 mt-6 '>MAIN</p>
-          <Link to='/'  >
-            <li className='ps-1 mb-12 cursor-pointer mt-3 hover:text-yellow-500'>
-              <DashboardCustomizeRoundedIcon />
-              <span className='mt-1 mx-2' >דף הבית</span>
-            </li>
-          </Link>
-          <p className='title text-gray-300 mt-6'>LIST</p>
-          {login === 2 &&
-            <>
+    <>
+      {login === 2 &&
+        <div className='border-e-2 border-e-slate-950 min-h-screen fixed hidden md:block bg-slate-700 text-white w-[20%]'>
+          <div className=' text-center h-[70px] '>
+            <Button>
+              <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-20' />
+            </Button>
+          </div>
+          <hr />
+          <div className=' px-4 hidden md:block '>
+            <ul className='px-2'>
+              <p className='title text-gray-300 mt-6 '>MAIN</p>
+              <Link to='/'  >
+                <li className='ps-1 mb-12 cursor-pointer mt-3 hover:text-yellow-500'>
+                  <DashboardCustomizeRoundedIcon />
+                  <span className='mt-1 mx-2' >דף הבית</span>
+                </li>
+              </Link>
+              <p className='title text-gray-300 mt-6'>LIST</p>
               <Link to='/users'>
                 <li className='ps-1 cursor-pointer mt-3 hover:text-yellow-500'>
                   <PeopleAltIcon />
@@ -97,46 +97,181 @@ export default function BarSide() {
                   </span>
                 </li>
               </Link>
-            </>}
-          <Link to='/contractors'>
-            <li className='ps-1 mb-12 mt-3 cursor-pointer hover:text-yellow-500'><EngineeringRounded />
-              <span className='mt-1 mx-2'>קבלנים</span>
-            </li>
-          </Link>
-          <p className='title text-gray-300 mt-6'>SERVICE</p>
-          <Link to='...'>
-            <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><ConnectWithoutContactIcon />
-              <span className='mt-1 mx-2'>צור קשר</span>
-            </li>
-          </Link>
-          <Link to='userProfile'>
-            <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><AssignmentIndIcon />
-              <span className='mt-1 mx-2'>פרופיל</span>
-            </li>
-          </Link>
-          <Link to='/'>
-            <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><LogoutIcon />
-              <span className='mt-1 mx-2 ' onClick={() => {
-                localStorage.token = ''
-                window.location.reload()
-              }}>יציאה</span>
-            </li>
-          </Link>
-          {/* <Link to='/login'>
-            <li className='ps-1 mb-12 mt-3 cursor-pointer hover:text-yellow-500'> <LoginIcon />
-              <span className='mt-1 mx-2 '>כניסה</span>
-            </li>
-          </Link> */}
-          <p className='title text-gray-300 mt-6'>MODE</p>
-          <ColorModeContext.Provider value={colorMode} >
-            <ThemeProvider theme={theme}>
-              <MyApp />
-            </ThemeProvider>
-          </ColorModeContext.Provider>
-        </ul>
-      </div>
-    </div>
+              <Link to='/contractors'>
+                <li className='ps-1 mb-12 mt-3 cursor-pointer hover:text-yellow-500'><EngineeringRounded />
+                  <span className='mt-1 mx-2'>קבלנים</span>
+                </li>
+              </Link>
+              <p className='title text-gray-300 mt-6'>SERVICE</p>
+              <Link to='...'>
+                <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><ConnectWithoutContactIcon />
+                  <span className='mt-1 mx-2'>צור קשר</span>
+                </li>
+              </Link>
+              <Link to='userProfile'>
+                <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><AssignmentIndIcon />
+                  <span className='mt-1 mx-2'>פרופיל</span>
+                </li>
+              </Link>
+              <Link to='/'>
+                <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><LogoutIcon />
+                  <span className='mt-1 mx-2 ' onClick={() => {
+                    localStorage.token = ''
+                    window.location.reload()
+                  }}>יציאה</span>
+                </li>
+              </Link>
+              <p className='title text-gray-300 mt-6'>MODE</p>
+              <ColorModeContext.Provider value={colorMode} >
+                <ThemeProvider theme={theme}>
+                  <MyApp />
+                </ThemeProvider>
+              </ColorModeContext.Provider>
+            </ul>
+          </div>
+        </div>
+      }
+      {/* Customer */}
+      {login === 3 &&
+        <div className='border-e-2 border-e-slate-950 min-h-screen fixed hidden md:block bg-emerald-950 text-white w-[20%]'>
+          <div className=' text-center h-[70px] '>
+            <Button>
+              <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-20' />
+            </Button>
+          </div>
+          <hr />
+          <div className=' px-4 hidden md:block '>
+            <ul className='px-2'>
+              <p className='title text-gray-300 mt-6 '>MAIN</p>
+              <Link to='/'  >
+                <li className='ps-1 mb-12 cursor-pointer mt-3 hover:text-yellow-500'>
+                  <DashboardCustomizeRoundedIcon />
+                  <span className='mt-1 mx-2' >דף הבית</span>
+                </li>
+              </Link>
+              <p className='title text-gray-300 mt-6'>LIST</p>
+              {/* <Link to='/users'>
+                <li className='ps-1 cursor-pointer mt-3 hover:text-yellow-500'>
+                  <PeopleAltIcon />
+                  <span className='mt-1 mx-2'>
+                    לקוחות
+                  </span>
+                </li>
+              </Link> */}
+              {/* <Link to='/projects'>
+                <li className='ps-1 mt-3  cursor-pointer hover:text-yellow-500'>
+                  <AccountTreeIcon />
+                  <span className='mt-1 mx-2'>
+                    פרוייקטים
+                  </span>
+                </li>
+              </Link> */}
+              <Link to='/contractors'>
+                <li className='ps-1 mb-12 mt-3 cursor-pointer hover:text-yellow-500'><EngineeringRounded />
+                  <span className='mt-1 mx-2'>קבלנים</span>
+                </li>
+              </Link>
+              <p className='title text-gray-300 mt-6'>SERVICE</p>
+              <Link to='...'>
+                <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><ConnectWithoutContactIcon />
+                  <span className='mt-1 mx-2'>צור קשר</span>
+                </li>
+              </Link>
+              <Link to='userProfile'>
+                <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><AssignmentIndIcon />
+                  <span className='mt-1 mx-2'>פרופיל</span>
+                </li>
+              </Link>
+              <Link to='/'>
+                <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><LogoutIcon />
+                  <span className='mt-1 mx-2 ' onClick={() => {
+                    localStorage.token = ''
+                    window.location.reload()
+                  }}>יציאה</span>
+                </li>
+              </Link>
+              <p className='title text-gray-300 mt-6'>MODE</p>
+              <ColorModeContext.Provider value={colorMode} >
+                <ThemeProvider theme={theme}>
+                  <MyApp />
+                </ThemeProvider>
+              </ColorModeContext.Provider>
+            </ul>
+          </div>
+        </div>
+      }
 
+
+      {/* <div className='border-e-2 border-e-slate-950 min-h-screen fixed hidden md:block bg-slate-700 text-white w-[20%]'>
+        <div className=' text-center h-[70px] '>
+          <Button>
+            <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-20' />
+          </Button>
+        </div>
+        <hr />
+        <div className=' px-4 hidden md:block '>
+          <ul className='px-2'>
+            <p className='title text-gray-300 mt-6 '>MAIN</p>
+            <Link to='/'  >
+              <li className='ps-1 mb-12 cursor-pointer mt-3 hover:text-yellow-500'>
+                <DashboardCustomizeRoundedIcon />
+                <span className='mt-1 mx-2' >דף הבית</span>
+              </li>
+            </Link>
+            <p className='title text-gray-300 mt-6'>LIST</p>
+            {login === 2 &&
+              <>
+                <Link to='/users'>
+                  <li className='ps-1 cursor-pointer mt-3 hover:text-yellow-500'>
+                    <PeopleAltIcon />
+                    <span className='mt-1 mx-2'>
+                      לקוחות
+                    </span>
+                  </li>
+                </Link>
+                <Link to='/projects'>
+                  <li className='ps-1 mt-3  cursor-pointer hover:text-yellow-500'>
+                    <AccountTreeIcon />
+                    <span className='mt-1 mx-2'>
+                      פרוייקטים
+                    </span>
+                  </li>
+                </Link>
+              </>}
+            <Link to='/contractors'>
+              <li className='ps-1 mb-12 mt-3 cursor-pointer hover:text-yellow-500'><EngineeringRounded />
+                <span className='mt-1 mx-2'>קבלנים</span>
+              </li>
+            </Link>
+            <p className='title text-gray-300 mt-6'>SERVICE</p>
+            <Link to='...'>
+              <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><ConnectWithoutContactIcon />
+                <span className='mt-1 mx-2'>צור קשר</span>
+              </li>
+            </Link>
+            <Link to='userProfile'>
+              <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><AssignmentIndIcon />
+                <span className='mt-1 mx-2'>פרופיל</span>
+              </li>
+            </Link>
+            <Link to='/'>
+              <li className='ps-1 mt-3 cursor-pointer hover:text-yellow-500'><LogoutIcon />
+                <span className='mt-1 mx-2 ' onClick={() => {
+                  localStorage.token = ''
+                  window.location.reload()
+                }}>יציאה</span>
+              </li>
+            </Link>
+            <p className='title text-gray-300 mt-6'>MODE</p>
+            <ColorModeContext.Provider value={colorMode} >
+              <ThemeProvider theme={theme}>
+                <MyApp />
+              </ThemeProvider>
+            </ColorModeContext.Provider>
+          </ul>
+        </div>
+      </div> */}
+    </>
   )
 }
 

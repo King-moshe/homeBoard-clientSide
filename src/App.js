@@ -25,7 +25,6 @@ import ProjectCard from "./pages/cards/ProjectsCards";
 import SingleClient from "./pages/single/SingleClient";
 import UserInfo from "./pages/single/UserInfo";
 import Login from "./pages/logIn/LogIn";
-// import FilesList from "./pages/lists/FilesList";
 
 
 
@@ -112,7 +111,6 @@ function App() {
                       <Route path="/projects/editProject/:id" element={<EditProject />} />
                       <Route path="/projects/singleProject" element={<ProjectCard />} />
                       <Route path="/projects/singleClient" element={<SingleClient />} />
-                      {/* <Route path="/projects/userFiles" element={<FilesList />} /> */}
 
                       <Route path="/contractors" element={<ContractorsList />} />
                     </Routes>

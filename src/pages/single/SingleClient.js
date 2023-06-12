@@ -13,6 +13,7 @@ import FilesList from '../lists/FilesList';
 
 
 
+
 export default function SingleClient() {
   const [openModal, setOpenModal] = useState("")
   const [openModalComment, setOpenModalComment] = useState("")
@@ -87,9 +88,10 @@ export default function SingleClient() {
               onCancel={() => setOpenModalComment(false)}
               width={600}
               footer={null}
-
-            ><Comments setFileResp={setFileResp} />
+            ><Comments/>
             </Modal>
+
+
             <Modal style={{ paddingLeft: '0px' }}
               centered
               open={openModal}
@@ -98,14 +100,17 @@ export default function SingleClient() {
               footer={null}
             ><Files setFileResp={setFileResp} />
             </Modal>
+
+            
             <Modal style={{ paddingLeft: '0px' }}
               centered
               open={openFilesModal}
               onCancel={() => setOpenFilesModal(false)}
               width={900}
               footer={null}
-            ><FilesList setFileResp={setFileResp} />
+            ><FilesList />
             </Modal>
+           
           </div>
         </div>
       </div>
@@ -115,4 +120,3 @@ export default function SingleClient() {
 
 
 
-// 
