@@ -32,15 +32,20 @@ export default function Home() {
     <div>
       {login === 2 && <>
         <div className="widgets block md:flex me-10 pt-4">
-          <Widget type='users' url='/users/' text='משתמשים' />
-          <Widget type='projects' url='/projects/' text='פרוייקטים' />
-          <Widget type='comments' url='/comments/' text='תגובות' />
+          <Widget type='projects' url='/projects/' text='פרוייקטים'/>
+          <Widget type='users' url='/users/' text='דיירים'/>
+          <Widget type='messages' url='/comments/' text='הודעות'/>
         </div>
       </>}
       {login === 3 &&
         <div className="p-[20px] m-[20px]">
-          <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between login3'>
-            <h2>pannel of all the user and his project</h2>
+          <div className='font-medium  mb-0.5 border-2  flex justify-between colors3  rounded-lg colors3 shadow-2xl h-full p-4  m-3 text-lg text-white'>           
+            <div className="w-3/12  block h-full ">
+            <button className="w-full h-1/6 border mb-3 mt-3 rounded-lg bg-lime-700 hover:transition-colors">צ'אט</button>
+            <button className="w-full h-1/6 border mb-3 rounded-lg bg-blue-900">מסמכים</button>
+            <button className="w-full h-1/6 border mb-3 rounded-lg bg-sky-700">העלאת מסמכים</button>
+            
+            </div>
            
           </div>
         </div>

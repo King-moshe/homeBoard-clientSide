@@ -84,7 +84,7 @@ export default function EditProject() {
 
 
   return (
-    <div className='p-[20px] md:m-[20px] md:w-auto w-screen'>
+    <div className='p-[10px] md:m-[10px] md:w-auto w-screen'>
       <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between bg-slate-700'>
         <span className="pt-2">ערוך פרוייקט</span>
 

@@ -31,7 +31,7 @@ export default function Widget({ type, url, text }) {
           <BusinessOutlinedIcon className='icon' style={{ color: "goldenrod", background: "rgba(218, 165, 32, 0.284)" }} />
       };
       break;
-    case 'comments':
+    case 'messages':
       data = {
         title: type.toUpperCase(),
         link: <Link className='hover:text-yellow-500' to='/comments'>{text}</Link>,
@@ -54,7 +54,7 @@ const doApi = async ()=>{
 
   return (
     <>
-      <div className='widget mr-[20px] flex flex-[1] p-[10px] justify-between rounded-lg h-28 w-full md:1/3 mb-4 bg-slate-700 text-white'>
+      <div className='widget mr-[20px] flex flex-[1] p-[10px] justify-between rounded-lg h-28 w-full md:1/3 mb-4 bg-stone-800 text-white'>
         <div className='left flex flex-col justify-between'>
           <span className='title font-bold text-sm text-gray-400'>{data.title}</span>
           <span className='counter text-xl font-light'>{amount}</span>

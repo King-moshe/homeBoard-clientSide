@@ -1,10 +1,7 @@
 import React, { createContext, useContext, useState } from 'react'
-
 const StateContext = createContext();
 
-
 export const Context = ({ children }) => {
-
     const [login, setLogin] = useState(0)
     const [user, setUser] = useState(null);
     const [currentMode, setCurrentMode] = useState(localStorage.themeMode || 'light');

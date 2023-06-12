@@ -30,7 +30,7 @@ export default function ContractorsList() {
 
 
     return (
-        <div className='p-[20px] md:m-[20px] md:w-auto '>
+        <div className='p-[10px] md:m-[10px] md:w-auto '>
             {login === 2 && 
             <>
             <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between login2'>

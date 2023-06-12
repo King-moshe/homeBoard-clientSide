@@ -65,7 +65,7 @@ export default function ProjectCard() {
 
   return (
 
-    <div className="p-[20px] m-[20px]">
+    <div className="p-[10px] m-[10px]">
       <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between bg-slate-700'>
         <span className="pt-2">רשימת דיירים בבנין {dataProject.p_name}</span>
         <Button size="small" variant="contained" className='items-end' >

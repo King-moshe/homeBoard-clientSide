@@ -58,13 +58,13 @@ export default function UsersList() {
 
 
   const deleteUser = async (_idDel, _name) => {
-    if (window.confirm(`להסיר את ${_name} מרשימת המשתמשים?`)) {
+    if (window.confirm(`להסיר את ${_name} מרשימת הלקוחות?`)) {
       try {
         const url = API_URL + "/users/" + _idDel;
         const data = await apiDelete(url, "DELETE");
         if (data.deletedCount) {
           doApi();
-          toast.success("User deleted successfully")
+          toast.success("! לקוח הוסר בהצלחה מהרשימה")
         }
       }
       catch (err) {
@@ -78,7 +78,7 @@ export default function UsersList() {
 
 
   return (
-    <div className='p-[20px] md:m-[20px] md:w-auto '>
+    <div className='p-[10px] md:m-[10px] md:w-auto '>
       <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between login2'>
         <span className="pt-2">טבלת משתמשים</span>
         <div>
@@ -111,7 +111,7 @@ export default function UsersList() {
           </TableHead>
           <TableBody>
             {data.map((row, i) => (
-              <TableRow className="bg-slate-300" key={row._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+              <TableRow className="bg-slate-400" key={row._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell align='center'>{((page - 1) * 15) + i + 1}</TableCell>
                 <TableCell align="right" className="border border-slate-300"><AccountCircleIcon /> {row.name}</TableCell>
                 <TableCell align='center' className="border border-slate-300">{row.email}</TableCell>
@@ -127,9 +127,9 @@ export default function UsersList() {
                 <TableCell className="border border-slate-300">{!edit ? row.role :
                   <select defaultValue={row.role} onBlur={(e) => { row.role = e.target.value }}>
                     <option value={""} className="d-none"></option>
-                    <option value={"User"}>User</option>
-                    <option value={"Admin"}>Admin</option>
-                    <option value={"Constructor"}>Constructor</option>
+                    <option value={"User"}>דייר</option>
+                    <option value={"Admin"}>מנהל</option>
+                    <option value={"Constructor"}>קבלן</option>
                   </select>}
                 </TableCell>
 

@@ -2,15 +2,14 @@
 /* navBar, sideBar, burger, */
 .login2 {
     --tw-bg-opacity: 1;
-    background-color: rgb(30 41 59 / var(--tw-bg-opacity));
-    /* --tw-bg-opacity: 1;
-    background-color: rgb(51 65 85 / var(--tw-bg-opacity)); */
+    background-color: rgb(28 25 23 / var(--tw-bg-opacity));
+   
 }
 
 /* all the themes - tabel, userInfo */
 .colors2 {
     --tw-bg-opacity: 1;
-    background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+    background-color: rgb(41 37 36 / var(--tw-bg-opacity));
 }
 
 
