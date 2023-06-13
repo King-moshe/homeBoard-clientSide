@@ -52,13 +52,13 @@ export default function SingleClient() {
 
   return (
     <div className="p-[10px] m-[10px]">
-      <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between bg-slate-700 rounded-lg'>
+      <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between login2 rounded-lg'>
         <span className="pt-2 text-lg"><strong>שם הדייר :</strong> {client.name}</span>
         <Button size="small" variant="contained" className='items-end' >
           <Link to='/projects/singleProject' className='hover:text-white p-1'>חזור לרשימת הדיירים < ArrowBackIcon /></Link>
         </Button>
       </div>
-      <div className=" md:mh-[300px] mh-[400px] drop-shadow-xl  text-lg rounded-lg bg-slate-600 p-4 m-0.5 text-white">
+      <div className=" md:mh-[300px] mh-[400px] drop-shadow-xl  text-lg rounded-lg colors2 p-4 m-0.5 text-white">
         <div className='border-2 mh-[35%] block md:flex rounded-lg'>
           <div className='md:w-2/5 w-full h-1/2 md:h-full flex flex-wrap p-6 ps-8 pe-8'>
             <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong>שם הפרויקט :</strong> {client.p_name}</div>
@@ -68,7 +68,7 @@ export default function SingleClient() {
           </div>
           <div className='md:w-2/5 w-full h-1/2 md:h-full flex flex-wrap md:p-6 ps-8 pe-8'>
             <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong>דירה :</strong> {client.apartment}</div>
-            <div className='w-full p-2 ps-2 text-xs lg:text-lg mb-4 shadow-xl'><strong>אימייל :</strong> {client.email}</div>
+            <div className='w-full p-2 ps-2 text-xs lg:text-lg mb-4 shadow-xl hover:cursor-pointer  underline underline-offset-1' onClick={()=> window.location.href = `mailto:${client.email}`}><strong>אימייל :</strong> {client.email}</div>
             <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong>טלפון :</strong> {client.phone}</div>
             <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong><AdminPanelSettingsOutlinedIcon /> :</strong> {client.role === 'Constructor' ? client.role : 'User'}</div>      
           </div>

@@ -38,12 +38,13 @@ export default function Home() {
         </div>
       </>}
       {login === 3 &&
-        <div className="p-[20px] m-[20px]">
-          <div className='font-medium  mb-0.5 border-2  flex justify-between colors3  rounded-lg colors3 shadow-2xl h-full p-4  m-3 text-lg text-white'>           
-            <div className="w-3/12  block h-full ">
-            <button className="w-full h-1/6 border mb-3 mt-3 rounded-lg bg-lime-700 hover:transition-colors">צ'אט</button>
+        <div className="p-[10px] m-[10px]">
+          <div className='font-medium  mb-0.5 border-2  flex justify-between colors3  rounded-lg colors3 shadow-2xl h-[400px] p-4  m-3 text-lg text-white'>           
+            <div className="w-1/4 md:w-2/12 h-full">
+            <button className="w-full h-1/6 border mb-3 mt-4 rounded-lg bg-lime-700 hover:transition-colors">צ'אט</button>
             <button className="w-full h-1/6 border mb-3 rounded-lg bg-blue-900">מסמכים</button>
             <button className="w-full h-1/6 border mb-3 rounded-lg bg-sky-700">העלאת מסמכים</button>
+            <button className="w-full h-1/6 border mb-3 rounded-lg bg-yellow-500">סטטוס פרויקט</button>
             
             </div>
            

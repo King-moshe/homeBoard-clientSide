@@ -114,7 +114,7 @@ export default function UsersList() {
               <TableRow className="bg-slate-400" key={row._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell align='center'>{((page - 1) * 15) + i + 1}</TableCell>
                 <TableCell align="right" className="border border-slate-300"><AccountCircleIcon /> {row.name}</TableCell>
-                <TableCell align='center' className="border border-slate-300">{row.email}</TableCell>
+              <TableCell align='center' className="border border-slate-300 hover:cursor-pointer hover:text-blue-700 underline underline-offset-1"><Link onClick={()=>window.location.href = `mailto:${row.email}`}>{row.email}</Link></TableCell>
                 <TableCell align='center' className="border border-slate-300">{row.phone}</TableCell>
                 <TableCell align='center' className="border border-slate-300">{row.p_name}</TableCell>
                 <TableCell align="center" className="border border-slate-300">{row.city_name}</TableCell>

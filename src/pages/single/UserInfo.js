@@ -5,6 +5,7 @@ import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettin
 import { useStateContext } from '../../context';
 import { API_URL } from '../../constant/url';
 import { apiGet } from '../../services/apiServices';
+import { Link } from 'react-router-dom';
 
 
 export default function UserInfo() {
@@ -77,7 +78,7 @@ export default function UserInfo() {
                                 <div className='w-full p-2 ps-2  mb-4 shadow-xl'>דירה : {data.apartment}</div>
                             </div>
                             <div className='flex flex-wrap md:w-1/2 rounded-xl p-6 ps-8 pe-8'>
-                                <div className='w-full p-2 ps-2  mb-4 shadow-xl'>אימייל : {data.email}</div>
+                               <div className='w-full p-2 ps-2  mb-4 shadow-xl'>אימייל : {data.email}</div>
                                 <div className='w-full p-2 ps-2  mb-4 shadow-xl'>טלפון : {data.phone}</div>
                                 <div className='w-full p-2 ps-2  mb-4 shadow-xl'> <AdminPanelSettingsOutlinedIcon />הרשאת גישה : {data.role}</div>
                                 <div className='w-full p-2 ps-2  mb-4 shadow-xl'>התווסף בתאריך : {data.date_created}</div>

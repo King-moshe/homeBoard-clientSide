@@ -66,19 +66,19 @@ export default function ProjectCard() {
   return (
 
     <div className="p-[10px] m-[10px]">
-      <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between bg-slate-700'>
-        <span className="pt-2">רשימת דיירים בבנין {dataProject.p_name}</span>
+      <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between login2'>
+        <span className="pt-2">רשימת דיירים בבנין </span>
         <Button size="small" variant="contained" className='items-end' >
           <Link to='/projects' className='hover:text-white p-1'>חזור < ArrowBackIcon /></Link>
         </Button>
       </div>
       {data.length === 0 ? <div className="mt-3"><Alert severity="info">
         <AlertTitle>מידע </AlertTitle>
-        לידיעתך - <strong>אין שיוך דיירים לפרויקט זה !</strong>
+        לידיעתך - <strong>אין שיוך דיירים לבנין זה !</strong>
       </Alert> </div> :
-        <div className=" mh-[400px] border-2 flex flex-wrap pt-4 justify-between items-center">
+        <div className=" mh-[400px] flex flex-wrap pt-3 justify-between items-center">
           {data.map((item) => (
-            <Card key={item._id} className=" xs:w-[48%] sm:w-[47%] md:w-[32%] lg:w-[22%]  bg-slate-600 text-white shadow-2xl sm:mb-0 mb-5 flex m-0.5">
+            <Card key={item._id} className=" xs:w-[48%] sm:w-[47%] md:w-[32%] lg:w-[22%] colors2 text-white shadow-2xl sm:mb-0 mb-5 flex m-0.5 rounded-xl">
               <Card.Body>
                 <Card.Title className="text-end p-1 mb-1"><Person2OutlinedIcon className="text-green-600" /> {item.name}</Card.Title>
                 <Card.Text className="text-end p-1 mb-1"><AccountTreeIcon className="text-[goldenrod] bg-[#]" /> {item.p_name}</Card.Text>
