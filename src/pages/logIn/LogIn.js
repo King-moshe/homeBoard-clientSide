@@ -47,8 +47,6 @@ function Login() {
         try {
             let resp = await apiPost(LOGIN_ROUTE, { email, password })
 
-            console.log(resp);
-
             if (resp.msg) {
                 setErr(resp.msg);
             }

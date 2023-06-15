@@ -90,7 +90,7 @@ export default function UsersList() {
           <Link to='/users/newUser' className='hover:text-white p-1'>הוספת משתמש <PersonAddIcon /> </Link>
         </Button>
       </div>
-      <TableContainer component={Paper} className="drop-shadow-xl md:h-[400px] mh-[400px]">
+      <TableContainer component={Paper} className="drop-shadow-xl md:h-[68vh] mh-[400px]">
         <Table className="border-collapse border border-slate-400">
           <TableHead>
             <TableRow className=" colors2 ">

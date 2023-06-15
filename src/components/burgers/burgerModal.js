@@ -79,7 +79,7 @@ export default function BurgerModal() {
           onClick={toggleDrawer(anchor, false)}
           onKeyDown={toggleDrawer(anchor, false)}
         >
-          <List className='bg-slate-700 text-white'>
+          <List className='login2 text-white'>
             {[""].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
@@ -92,7 +92,7 @@ export default function BurgerModal() {
             ))}
           </List>
           <Divider />
-          <List className='bg-slate-700 text-white min-h-screen'>
+          <List className='login2 text-white min-h-screen'>
             {[].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>

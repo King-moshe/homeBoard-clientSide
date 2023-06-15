@@ -9,16 +9,19 @@ import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettin
 import { Modal } from 'antd';
 import Files from './files';
 import Comments from '../cards/Comments';
-import FilesList from '../lists/FilesList';
-
+ import FilesList from '../lists/FilesList';
+import { IoIosCloseCircle } from 'react-icons/io';
 
 
 
 export default function SingleClient() {
   const [openModal, setOpenModal] = useState("")
   const [openModalComment, setOpenModalComment] = useState("")
-  const [openFilesModal, setOpenFilesModal] = useState("")
   const [fileResp, setFileResp] = useState("")
+  const [openFilesModal, setOpenFilesModal] = useState("")
+
+  const [commentResp, setCommentResp] = useState("")
+  const [openFiles, setOpenFiles] = useState("")
   const [myId, setMyId] = useState("")
   const { client } = useStateContext();
   const nav = useNavigate()
@@ -30,6 +33,7 @@ export default function SingleClient() {
     delete newClient.role
     delete newClient.date_created
     delete newClient.__v
+    delete newClient.comments
     uploadFile(newClient, myId)
   }
 
@@ -37,8 +41,8 @@ export default function SingleClient() {
     console.log(API_URL + '/users/' + id);
     const data = await apiPut(API_URL + '/users/' + id, newClient)
     console.log(data);
-    console.log("this is data");
   }
+
 
   useEffect(() => {
 
@@ -46,9 +50,7 @@ export default function SingleClient() {
     setMyId(client._id)
     console.log(client);
     fileResp.length > 0 && updateClient()
-
   }, [fileResp])
-
 
   return (
     <div className="p-[10px] m-[10px]">
@@ -68,9 +70,9 @@ export default function SingleClient() {
           </div>
           <div className='md:w-2/5 w-full h-1/2 md:h-full flex flex-wrap md:p-6 ps-8 pe-8'>
             <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong>דירה :</strong> {client.apartment}</div>
-            <div className='w-full p-2 ps-2 text-xs lg:text-lg mb-4 shadow-xl hover:cursor-pointer  underline underline-offset-1' onClick={()=> window.location.href = `mailto:${client.email}`}><strong>אימייל :</strong> {client.email}</div>
+            <div className='w-full p-2 ps-2 text-xs lg:text-lg mb-4 shadow-xl hover:cursor-pointer  underline underline-offset-1' onClick={() => window.location.href = `mailto:${client.email}`}><strong>אימייל :</strong> {client.email}</div>
             <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong>טלפון :</strong> {client.phone}</div>
-            <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong><AdminPanelSettingsOutlinedIcon /> :</strong> {client.role === 'Constructor' ? client.role : 'User'}</div>      
+            <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong><AdminPanelSettingsOutlinedIcon /> :</strong> {client.role === 'Constructor' ? client.role : 'User'}</div>
           </div>
           <div className='md:w-1/5 w-full md:block flex  border-r-2 p-4 justify-between'>
             <button onClick={() => { setOpenModal(true) }} className='bg-orange-400 max-sm:text-lg text-xs lg:text-lg md:w-full w-[46%] border-1 p-2 rounded-lg text-center md:mt-3 mb-3 shadow-2xl hover:text-black hover:border-black'>
@@ -82,7 +84,10 @@ export default function SingleClient() {
             <button onClick={() => { setOpenFilesModal(true) }} className='bg-green-600 max-sm:text-lg text-xs lg:text-lg md:w-full w-[46%] border-1 p-2 rounded-lg text-center md:mt-3 mb-3 shadow-2xl hover:text-black hover:border-black'>
               <div >מסמכים</div>
             </button>
-            <Modal style={{ paddingLeft: '0px', margin: '0px' }}
+            {/* comments modal */}
+            <Modal
+              closable={true}
+              closeIcon={<IoIosCloseCircle className='text-white text-2xl mt-0.5 absolute ml-12' />}
               centered
               open={openModalComment}
               onCancel={() => setOpenModalComment(false)}
@@ -90,23 +95,26 @@ export default function SingleClient() {
               footer={null}
             ><Comments />
             </Modal>
-
-
+            {/* files modal */}
             <Modal style={{ paddingLeft: '0px' }}
+              closable={true}
+              closeIcon={<IoIosCloseCircle className='text-white text-2xl  absolute ml-24 mt-6' />}
               centered
               open={openModal}
               onCancel={() => setOpenModal(false)}
-              width={900}
+              width={1200}
               footer={null}
+              CSSProperties={{ padding: '0px', margin: '0px' }}
             ><Files setFileResp={setFileResp} />
             </Modal>
-
-
+            {/* filesList modal */}
             <Modal style={{ paddingLeft: '0px' }}
+              closable={true}
+              closeIcon={<IoIosCloseCircle className='text-white text-3xl mt-2.5 absolute ml-20' />}
               centered
               open={openFilesModal}
               onCancel={() => setOpenFilesModal(false)}
-              width={900}
+              width={1200}
               footer={null}
             ><FilesList />
             </Modal>
@@ -117,4 +125,3 @@ export default function SingleClient() {
     </div>
   )
 }
-

@@ -50,7 +50,7 @@ function App() {
       let token = localStorage[API_KEY];
       if (token) {
         let resp = await apiGet(USER_INFO);
-        console.log(resp);
+        // console.log(resp);
         setUser(resp);
         if (resp.role === 'Admin') {
           setLogin(2);

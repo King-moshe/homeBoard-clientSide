@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { AiOutlineDelete } from "react-icons/ai";
 import { toast } from 'react-toastify';
+import '../../style/colorKit.css'
 
 
 
@@ -65,25 +66,28 @@ export default function Files({ setFileResp }) {
     const lastDotIndex = fileUrl.lastIndexOf('.');
     return fileUrl.substring(lastDotIndex).toLowerCase();
   };
-  
+
   const isImageExtension = (extension) => {
     const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
     return imageExtensions.includes(extension);
   };
-  
+
 
   return (
-    <div className='h-[90vh] bg-slate-600 overflow-y-scroll '>
-      <div className=' flex justify-between'>
-        <div className='text-center m-3 w-[48%] mx-auto border-dashed border-2 p-3 rounded-lg border-blue-200 custom-shadow'>
+    <div className='md:h-[90vh] h-[70vh] colors2 overflow-y-scroll p-2 md:p-0'>
+      <div className='font-medium custom-shadow  text-neutral-300 m-2  p-3   flex justify-between colors2 rounded-lg'>
+        <span className="font-bold text-lg">העלאת מסמכים </span>
+      </div>
+      <div className=' md:flex  md:justify-between'>
+        <div className='text-center m-2 md:w-[48%] mx-auto border-dashed border-1 p-3 rounded-lg  custom-shadow'>
           <p className='text-blue-200 font-bold pb-2'>גרור קובץ לכאן </p>
           <input key={inputKey} type="file" className='text-blue-200 bg-slate-500 w-full  h-32 rounded-lg cursor-pointer' onChange={handleFileChange} />
           <button className='text-blue-200 mt-3 border-2 p-1 px-3 rounded-lg border-blue-200 ' onClick={handleUpload} onChange={handleClear}>שלח/י</button>
         </div>
-        <div className='text-center m-3 w-[48%] mx-auto border-2 p-3  rounded-lg border-blue-200 custom-shadow'>
+        <div className='text-center m-2 md:w-[48%] mx-auto p-3  rounded-lg custom-shadow'>
           {selectedFile && (
             <div>
-              <p className='text-blue-200 font-bold pb-2'>קובץ שהועלה:</p>
+              <p className='text-blue-200 font-bold pb-2'>קובץ שנבחר:</p>
 
               {selectedFile.type.startsWith('image/') ? (
                 <div>
@@ -112,24 +116,27 @@ export default function Files({ setFileResp }) {
         </div>
 
       </div>
-      <div className='flex flex-wrap p-2 m-3 rounded-lg border-blue-200 custom-shadow overflow-y-scroll overflow-x-scroll justify-around'>
-  {uploadedFiles.map((fileUrl, index) => {
-    const extension = getFileExtension(fileUrl);
-    return (
-      <div key={index} className="m-2 p-2  border-blue-200 custom-shadow rounded-lg text-white">
-        {isImageExtension(extension) ? (
-          <img
-            src={fileUrl}
-            alt="Uploaded File"
-            className='w-full max-w-full max-h-48 rounded-lg '
-          />
-        ) : (
-          <p>{fileUrl}</p>
-        )}
+      <div className='flex flex-wrap p-2 md:m-2 rounded-lg border-blue-200 custom-shadow overflow-y-scroll  justify-around'>
+        <p className='w-full text-blue-200 text-center m-2 text-lg underline'> - קבצים שהועלו -</p>
+        {uploadedFiles.map((fileUrl, index) => {
+          const extension = getFileExtension(fileUrl);
+          return (
+
+            <div key={index} className="m-2 p-2  border-blue-200 custom-shadow rounded-lg text-white">
+
+              {isImageExtension(extension) ? (
+                <img
+                  src={fileUrl}
+                  alt="Uploaded File"
+                  className='w-full max-w-full max-h-48 rounded-lg '
+                />
+              ) : (
+                <p>{fileUrl}</p>
+              )}
+            </div>
+          );
+        })}
       </div>
-    );
-  })}
-</div>
 
 
 </div>
