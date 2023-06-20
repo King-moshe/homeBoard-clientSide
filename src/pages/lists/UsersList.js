@@ -11,89 +11,123 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { FaSave } from "react-icons/fa";
-
+import '../single/scroll.css';
 
 export default function UsersList() {
   const [data, setData] = useState([]);
   const [edit, setEdit] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   const [query] = useSearchParams();
   const page = query.get("page") || 1;
 
   useEffect(() => {
     doApi();
-  }, [query])
+  }, [query]);
 
-
+  useEffect(() => {
+    setCurrentPage(parseInt(page));
+  }, [page]);
 
   const doApi = async () => {
     const url = API_URL + '/users/usersList';
     try {
-      const data = await apiGet(url);
-      console.log(data);
-      setData(data);
+      const response = await apiGet(url);
+      console.log(response);
+      setData(response);
     } catch (error) {
       console.log(error);
-
     }
-  }
-
+  };
 
   const editRole = async (id, role) => {
-    // user , editor , admin 
     const url = API_URL + `/users/changeRole/${id}/${role}`;
     try {
-      const data = await apiPatch(url);
-      if (data.modifiedCount) {
+      const response = await apiPatch(url);
+      if (response.modifiedCount) {
         doApi();
-        toast.success("Role change successfuly")
+        toast.success("Role changed successfully");
       }
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
-      toast.error("There problem, try again later")
+      toast.error("There was a problem, try again later");
     }
-  }
-
-
+  };
 
   const deleteUser = async (_idDel, _name) => {
     if (window.confirm(`להסיר את ${_name} מרשימת הלקוחות?`)) {
       try {
         const url = API_URL + "/users/" + _idDel;
-        const data = await apiDelete(url, "DELETE");
-        if (data.deletedCount) {
+        const response = await apiDelete(url, "DELETE");
+        if (response.deletedCount) {
           doApi();
-          toast.success("! לקוח הוסר בהצלחה מהרשימה")
+          toast.success("! לקוח הוסר בהצלחה מהרשימה");
         }
-      }
-      catch (err) {
+      } catch (err) {
         console.log(err);
-        toast.error("There problem")
+        toast.error("There was a problem");
       }
     }
-  }
+  };
+
+  const goToNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const goToPreviousPage = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+
+  const getPageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
+      const pageNumber = (
+        <Button
+          key={i}
+          onClick={() => setCurrentPage(i)}
+          className={`text-white ${currentPage === i ? 'text-red-500' : 'text-blue-700'}`}
+          style={{ backgroundColor: currentPage === i ? '#98750E' : '#1E40AF', margin: '3px' }}
+        >
+          {i}
+        </Button>
+      );
+      pageNumbers.push(pageNumber);
+    }
+    return pageNumbers;
+  };
 
 
 
+
+
+  // Pagination logic
+  const lastIndex = currentPage * itemsPerPage;
+  const firstIndex = lastIndex - itemsPerPage;
+  const currentData = data.slice(firstIndex, lastIndex);
 
   return (
     <div className='p-[10px] md:m-[10px] md:w-auto '>
       <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between login2'>
         <span className="pt-2">טבלת משתמשים</span>
         <div>
-          <Button><KeyboardArrowRightIcon className="text-white " /></Button>
-          <span>1</span>
-          <Button><KeyboardArrowLeftIcon className="text-white" /></Button>
+          <Button disabled={currentPage === 1} onClick={goToPreviousPage}>
+            <KeyboardArrowRightIcon className="text-white " />
+          </Button>
+          {getPageNumbers()}
+          <Button disabled={currentData.length < itemsPerPage} onClick={goToNextPage}>
+            <KeyboardArrowLeftIcon className="text-white" />
+          </Button>
         </div>
         <Button size="small" variant="contained" className='items-end' >
           <Link to='/users/newUser' className='hover:text-white p-1'>הוספת משתמש <PersonAddIcon /> </Link>
         </Button>
       </div>
-      <TableContainer component={Paper} className="drop-shadow-xl md:h-[68vh] mh-[400px]">
+      <TableContainer component={Paper} className="drop-shadow-xl  md:h-[70vh] mh-[80vh] overflow-scroll usersTable">
         <Table className="border-collapse border border-slate-400">
           <TableHead>
-            <TableRow className=" colors2 ">
+            <TableRow className="colors2">
               <TableCell className="border border-slate-300 text-white text-center">#</TableCell>
               <TableCell className="border border-slate-300 text-white text-center">שם</TableCell>
               <TableCell className="border border-slate-300 text-white text-center">אימייל</TableCell>
@@ -110,11 +144,11 @@ export default function UsersList() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row, i) => (
+            {currentData.map((row, i) => (
               <TableRow className="bg-slate-400" key={row._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell align='center'>{((page - 1) * 15) + i + 1}</TableCell>
+                <TableCell align='center'>{((currentPage - 1) * itemsPerPage) + i + 1}</TableCell>
                 <TableCell align="right" className="border border-slate-300"><AccountCircleIcon /> {row.name}</TableCell>
-              <TableCell align='center' className="border border-slate-300 hover:cursor-pointer hover:text-blue-700 underline underline-offset-1"><Link onClick={()=>window.location.href = `mailto:${row.email}`}>{row.email}</Link></TableCell>
+                <TableCell align='center' className="border border-slate-300 hover:cursor-pointer hover:text-blue-700 underline underline-offset-1"><Link onClick={() => window.location.href = `mailto:${row.email}`}>{row.email}</Link></TableCell>
                 <TableCell align='center' className="border border-slate-300">{row.phone}</TableCell>
                 <TableCell align='center' className="border border-slate-300">{row.p_name}</TableCell>
                 <TableCell align="center" className="border border-slate-300">{row.city_name}</TableCell>
@@ -122,8 +156,6 @@ export default function UsersList() {
                 <TableCell align='center' className="border border-slate-300">{row.building_name}</TableCell>
                 <TableCell align="center" className="border border-slate-300">{row.story}</TableCell>
                 <TableCell align='center' className="border border-slate-300">{row.apartment}</TableCell>
-
-                {/* print row._id send to function */}
                 <TableCell className="border border-slate-300">{!edit ? row.role :
                   <select defaultValue={row.role} onBlur={(e) => { row.role = e.target.value }}>
                     <option value={""} className="d-none"></option>
@@ -132,7 +164,6 @@ export default function UsersList() {
                     <option value={"Constructor"}>קבלן</option>
                   </select>}
                 </TableCell>
-
                 <TableCell align='center' className="border border-slate-300">{!edit ? <Button onClick={() => {
                   setEdit(!edit)
                 }} className="border border-blue-500 rounded-xl"> <EditIcon className=" hover:text-blue-700" /></Button> :
@@ -147,6 +178,15 @@ export default function UsersList() {
           </TableBody>
         </Table>
       </TableContainer>
+      <div className="mt-2">
+        <Button disabled={currentPage === 1} onClick={goToPreviousPage}>
+          <KeyboardArrowRightIcon className="text-white " />
+        </Button>
+        {getPageNumbers()}
+        <Button disabled={currentData.length < itemsPerPage} onClick={goToNextPage}>
+          <KeyboardArrowLeftIcon className="text-white" />
+        </Button>
+      </div>
     </div>
-  )
+  );
 }

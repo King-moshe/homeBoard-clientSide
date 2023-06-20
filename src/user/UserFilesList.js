@@ -1,29 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { API_URL } from '../../constant/url';
-import { apiDelete, apiGet } from '../../services/apiServices';
-import { useStateContext } from '../../context';
+import React, { useEffect, useState } from 'react'
 import { FileIcon } from 'react-file-icon';
-import '../../style/colorKit.css'
-import { Modal } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+import { API_URL } from '../constant/url';
+import { apiDelete } from '../services/apiServices';
+import { useStateContext } from '../context';
+import { Alert, AlertTitle } from '@mui/material';
 
-export default function FilesList() {
-
-    const { client } = useStateContext();
-    const fileClient = client.files
-    console.log(fileClient);
+export default function UserFilesList() {
     const [data, setData] = useState([]);
-    const nav = useNavigate()
-    const ID = client._id;
-
-
-    const [confirmModalVisible, setConfirmModalVisible] = useState(false);
-    const [selectedFileUrl, setSelectedFileUrl] = useState('');
-
+    const { userFile } = useStateContext();
+    const ID = userFile._id;
+    
+    const dataFiles = userFile.files;
+    console.log(dataFiles);
 
     useEffect(() => {
-    }, [client]);
+        setData(userFile);
+    }, [userFile]);
+
+
 
     const getFileType = (url) => {
         const fileExtension = url.split('.').pop().toLowerCase();
@@ -56,13 +50,11 @@ export default function FilesList() {
             const blob = await response.blob();
             const filename = getFilenameFromURL(url);
 
-            // Create a temporary link element
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
             link.download = filename;
             link.click();
 
-            // Clean up the temporary link element
             window.URL.revokeObjectURL(link.href);
             link.remove();
         } catch (error) {
@@ -76,33 +68,19 @@ export default function FilesList() {
     };
 
 
-    const showConfirmModal = (fileUrl) => {
-        setSelectedFileUrl(fileUrl);
-        setConfirmModalVisible(true);
-    };
-
-    const hideConfirmModal = () => {
-        setConfirmModalVisible(false);
-    };
-
-    const handleDelete = async () => {
-
+    const handleDelete = async (url) => {
         try {
-            const deleteUrl = API_URL + '/users/removeFile/' + ID + '/' + encodeURIComponent(selectedFileUrl);
+            const deleteUrl = API_URL + '/users/removeFile/' + ID + '/' + encodeURIComponent(url);
             const response = await apiDelete(deleteUrl);
-            if (response && response.status === 200) {
-                setData((prevData) => prevData.filter((file) => file !== selectedFileUrl));
-                toast.success("קובץ נמחק בהצלחה")
-                nav("/projects/singleProject")
+
+            if (response.status === 200) {
+                setData((prevData) => prevData.filter((file) => file !== url));
             } else {
-                console.log('Failed to delete file:', response && response.status);
+                console.log('Failed to delete file:', response.status);
             }
-        }
-        catch (error) {
+        } catch (error) {
             console.log('Error deleting file:', error);
         }
-        hideConfirmModal();
-
     };
 
 
@@ -117,7 +95,7 @@ export default function FilesList() {
 
                 <div className='w-24'>
                     <p className='text-white px-2'>סוג המסמך:</p>
-                    <p className='text-white px-2'>{fileType}</p>
+                    <p className='text-white px-2'>{fileType}</p>               
                 </div>
 
                 {fileType === 'image' ? (
@@ -231,35 +209,24 @@ export default function FilesList() {
     return (
         <div >
             <div className='font-medium text-neutral-300 mb-0.5 border-2 p-3 m-0.5 flex justify-between colors2 rounded-lg'>
-                <span className="font-bold text-lg"><span className="font-extralight">מסמכים של:</span> {client.name}</span>
-
+                <span className="font-bold text-lg"><span className="font-extralight">מסמכים של:</span> {userFile.name}</span>
             </div>
-            <div className="overflow-y-scroll max-h-[70vh] flex flex-wrap m-1 p-3 rounded-lg custom-shadow border-blue-200 custom-shadow justify-between colors2">
-                {fileClient.map((file, index) => (
-                    <div className="flex flex-wrap w-full sm:w-auto custom-shadow rounded-lg p-4 shadow-md mb-4" key={index}>
-                        {getDisplayURL(file)}
-                        <button
-                            className="text-red-200 border-2 border-red-200 px-2 py-1 ml-2 rounded-lg"
-                            onClick={() => showConfirmModal(file)}
-                        >
-                            Delete
-                        </button>
-                    </div>
-                ))}
-            </div>
-            <Modal
-                title="Confirm Delete"
-                visible={confirmModalVisible}
-                onOk={handleDelete}
-                onCancel={hideConfirmModal}
-                centered
-                maskClosable={false}
-                okText="Delete"
-                cancelText="Cancel"
-            >
-                <p>Are you sure you want to delete this file?</p>
-            </Modal>
+            {dataFiles.length === 0 ? <span className="font-bold mt-1 "><Alert severity='info'><AlertTitle>אין לך מסמכים  בתיקייה !</AlertTitle></Alert></span> :
+                <div className='overflow-y-scroll max-h-[70vh] flex flex-wrap m-1 p-3 rounded-lg custom-shadow border-blue-200 custom-shadow justify-between colors2'>
+                    {dataFiles.map((file, index) => (
+                        <div className="flex flex-wrap w-full sm:w-auto custom-shadow rounded-lg p-4 shadow-md mb-4" key={index}>
+                            {getDisplayURL(file)}
+                            <button
+                                className="text-red-200 border-2 border-red-200 px-2 py-1 ml-2 rounded-lg"
+                                onClick={() => handleDelete(file)}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    ))}
+                </div>
+            }
         </div>
 
-    );
+);
 }

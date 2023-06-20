@@ -28,7 +28,6 @@ export default function EditProject() {
       const data = await apiGet(url);
       console.log(data);
       setInfo(data)
-
     } catch (err) {
       console.log(err);
     }

@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 
 
-
-
 export default function AppBar() {
   const [nav, setNav] = useState(false)
   const hendleNav = () => {
@@ -20,10 +18,7 @@ export default function AppBar() {
     } else {
       setColor(false)
     }
-
   }
-
-
   window.addEventListener('scroll', changeColor)
 
 

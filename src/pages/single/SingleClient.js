@@ -9,9 +9,8 @@ import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettin
 import { Modal } from 'antd';
 import Files from './files';
 import Comments from '../cards/Comments';
- import FilesList from '../lists/FilesList';
+import FilesList from '../lists/FilesList';
 import { IoIosCloseCircle } from 'react-icons/io';
-
 
 
 export default function SingleClient() {
@@ -19,7 +18,6 @@ export default function SingleClient() {
   const [openModalComment, setOpenModalComment] = useState("")
   const [fileResp, setFileResp] = useState("")
   const [openFilesModal, setOpenFilesModal] = useState("")
-
   const [commentResp, setCommentResp] = useState("")
   const [openFiles, setOpenFiles] = useState("")
   const [myId, setMyId] = useState("")
@@ -34,6 +32,7 @@ export default function SingleClient() {
     delete newClient.date_created
     delete newClient.__v
     delete newClient.comments
+    setOpenModal(false)
     uploadFile(newClient, myId)
   }
 
@@ -43,9 +42,7 @@ export default function SingleClient() {
     console.log(data);
   }
 
-
   useEffect(() => {
-
     !client.name && nav("/projects")
     setMyId(client._id)
     console.log(client);

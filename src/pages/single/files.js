@@ -34,7 +34,6 @@ export default function Files({ setFileResp }) {
               (progressEvent.loaded * 100) / progressEvent.total
             );
             setUploadProgress(progress);
-
           },
         }
       );

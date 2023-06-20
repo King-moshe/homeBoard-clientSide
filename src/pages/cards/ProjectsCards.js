@@ -12,7 +12,6 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Alert, AlertTitle, Button } from "@mui/material";
 
 
-
 export default function ProjectCard() {
   const nav = useNavigate();
   const { sProject } = useStateContext();
@@ -22,7 +21,7 @@ export default function ProjectCard() {
 
   useEffect(() => {
     sProject.length < 1 ? nav('/projects') : doApi();
-   
+
     const projectId = sProject[2];
     localStorage.setItem('projectId', projectId);
     if (projectId) {
@@ -48,8 +47,6 @@ export default function ProjectCard() {
       const dataProject = await apiGet(url2);
       console.log(dataProject);
       setDataProject(dataProject);
-      // const projectId = dataProject._id;
-      // localStorage.setItem('projectId', projectId);
     } catch (error) {
       console.log(error);
     }

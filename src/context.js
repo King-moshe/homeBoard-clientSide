@@ -8,10 +8,11 @@ export const Context = ({ children }) => {
     const [sProject, setSProject] = useState([]);
     const [client, setClient] = useState([]);
     const [dataProject, setDataProject] = useState([]);
+    const [userFile, setUserFile] = useState([]);
 
     return (
         <StateContext.Provider
-            value={{ login, setLogin, user, setUser, currentMode, setCurrentMode, sProject, setSProject, client, setClient, dataProject, setDataProject }}
+            value={{ login, setLogin, user, setUser, currentMode, setCurrentMode, sProject, setSProject, client, setClient, dataProject, setDataProject, userFile, setUserFile }}
         >
             {children}
         </StateContext.Provider>
