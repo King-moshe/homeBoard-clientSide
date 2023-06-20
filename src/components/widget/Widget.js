@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import EngineeringOutlinedIcon from '@mui/icons-material/EngineeringOutlined';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import BusinessOutlinedIcon from '@mui/icons-material/BusinessOutlined';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import "./widget.scss"
 import { Link } from 'react-router-dom';
 import { API_URL } from '../../constant/url';
@@ -36,7 +36,7 @@ export default function Widget({ type, url, text }) {
         title: type.toUpperCase(),
         link: <Link className='hover:text-yellow-500' to='/comments'>{text}</Link>,
         icon:
-          <EngineeringOutlinedIcon className='icon' style={{ color: "rgb(2, 66, 2)", background: "rgba(0, 128, 0, 0.223)" }} />
+          <MailOutlineIcon className='icon' style={{ color: "rgb(2, 66, 4)", background: "rgba(0, 128, 0, 0.123)" }} />
       };
       break;
     default: break;

@@ -76,7 +76,7 @@ function Login() {
     }
 
     return (
-        <div className="h-screen">
+        <div className="h-screen bg-white">
             <Container maxWidth="xs">
                 <CssBaseline />
                 <Box

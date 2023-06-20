@@ -2,6 +2,8 @@ import React from "react";
 import Widget from "../../components/widget/Widget";
 import { useStateContext } from "../../context";
 import HomeUser from "../../user/HomeUser";
+import Cheat from "../../components/Cheat";
+import Mission from "../../components/Mission";
 
 
 
@@ -16,6 +18,10 @@ export default function Home() {
           <Widget type='projects' url='/projects/' text='פרוייקטים' />
           <Widget type='users' url='/users/' text='דיירים' />
           <Widget type='messages' url='/comments/' text='הודעות' />
+        </div>
+        <div className="text-white block md:flex me-10 pt-2">
+          <Cheat/>
+          {/* <Mission/> */}
         </div>
       </>}
       {login === 3 &&
