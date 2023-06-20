@@ -20,8 +20,8 @@ export default function Home() {
           <Widget type='messages' url='/comments/' text='הודעות' />
         </div>
         <div className="text-white block md:flex me-10 pt-2">
+          <Mission/>
           <Cheat/>
-          {/* <Mission/> */}
         </div>
       </>}
       {login === 3 &&
