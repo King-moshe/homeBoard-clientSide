@@ -12,6 +12,8 @@ import DomainAddIcon from '@mui/icons-material/DomainAdd';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import '../single/scroll.css';
+import HomeIcon from '@mui/icons-material/Home';
+
 
 export default function ProjectsList() {
   const [data, setData] = useState([]);
@@ -64,8 +66,8 @@ export default function ProjectsList() {
 
   return (
     <div className='p-[10px] md:m-[10px] md:w-auto'>
-      <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between login2'>
-        <span className="pt-2">טבלת פרוייקטים</span>
+      <div className='font-medium text-neutral-300 mb-1 border p-[10px] flex justify-between login2 rounded-t-lg'>
+        <span className="pt-2"> פרוייקטים</span>
         <div>
           {page > 1 && (
             <Button component={Link} to={`/projects?page=${page - 1}`}><KeyboardArrowRightIcon className="text-white " /></Button>
@@ -75,9 +77,12 @@ export default function ProjectsList() {
             <Button component={Link} to={`/projects?page=${page + 1}`}><KeyboardArrowLeftIcon className="text-white" /></Button>
           )}
         </div>
-        <Button size="small" variant="contained" className='items-end'>
+        <div >
+         <HomeIcon className=" ml-5 font-bold text-6xl cursor-pointer hover:text-yellow-500" onClick={()=> nav('/')}/>
+        <Button size="small" variant="contained" className='items-end '>
           <Link to='/projects/newProject' className='hover:text-white p-1'>הוספת פרוייקט <DomainAddIcon /></Link>
         </Button>
+        </div>     
       </div>
       <TableContainer component={Paper} className="drop-shadow-xl overflow-scroll md:h-[70vh] h-[80vh]">
         <Table className="border-collapse border border-slate-400">
@@ -96,7 +101,7 @@ export default function ProjectsList() {
           </TableHead>
           <TableBody>
             {paginatedData.map((row, i) => (
-              <TableRow key={row._id} className=" bg-slate-400">
+              <TableRow key={row._id} className="">
                 <TableCell align='center'>{startIndex + i + 1}</TableCell>
                 <TableCell align="right" className="border border-slate-300 ">{row.city_name}</TableCell>
                 <TableCell align="right" className="border border-slate-300 ">{row.street_name}</TableCell>

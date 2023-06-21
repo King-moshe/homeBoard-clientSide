@@ -6,6 +6,7 @@ import { API_URL } from "../../constant/url";
 import { apiPost } from "../../services/apiServices";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
+import HomeIcon from '@mui/icons-material/Home';
 
 
 export default function NewProject() {
@@ -69,18 +70,21 @@ export default function NewProject() {
   return (
 
     <div className="p-[20px] m-[20px]">
-      <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between bg-slate-700'>
+      <div className='font-medium text-neutral-300 mb-1 border p-[10px] flex justify-between login2 rounded-t-lg'>
         <span className="pt-2"> צור פרויקט חדש</span>
-        <Button size="small" variant="contained" className='items-end' >
-          <Link to='/projects' className='hover:text-white p-1'>חזור < ArrowBackIcon /></Link>
-        </Button>
+        <div >
+          <HomeIcon className=" ml-5 font-bold text-6xl cursor-pointer hover:text-yellow-500" onClick={() => nav('/')} />
+          <Button size="small" variant="contained" className='items-end' >
+            <Link to='/projects' className='hover:text-white p-1'>חזור < ArrowBackIcon /></Link>
+          </Button>
+        </div>
       </div>
-      <div className=" md:h-[400px] mh-[400px] border flex p-4 bg-slate-600  drop-shadow-xl">
+      <div className=" md:h-[400px] mh-[400px] border flex p-4 colors2  drop-shadow-xl rounded-b-lg">
         <form className="w-full " onSubmit={handleSubmit(onSubForm)}>
           <div className="md:flex block">
             <div className="md:w-1/2 md:pe-4 md:p-1">
               <label className="text-white">שם הפרויקט</label>
-              <input {...register("p_name", { required: true, minLength: 2 })} type="text" placeholder="הזן את שם הפרויקט" className="w-full p-2 mt-2 border-solid border-2 rounded-lg"  />
+              <input {...register("p_name", { required: true, minLength: 2 })} type="text" placeholder="הזן את שם הפרויקט" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
             </div>
             <div className="md:w-1/2 md:pe-4 md:p-1">
               <label className="text-white">קבלן מבצע</label>

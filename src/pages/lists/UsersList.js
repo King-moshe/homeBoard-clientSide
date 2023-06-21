@@ -2,7 +2,7 @@ import { Button, Paper, TableBody, TableCell, TableContainer, TableHead, TableRo
 import { API_URL } from '../../constant/url';
 import React, { useState, useEffect } from 'react';
 import { apiDelete, apiGet, apiPatch } from '../../services/apiServices';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -12,13 +12,14 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { FaSave } from "react-icons/fa";
 import '../single/scroll.css';
+import HomeIcon from '@mui/icons-material/Home';
 
 export default function UsersList() {
   const [data, setData] = useState([]);
   const [edit, setEdit] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
-
+const nav = useNavigate()
   const [query] = useSearchParams();
   const page = query.get("page") || 1;
 
@@ -88,7 +89,7 @@ export default function UsersList() {
           key={i}
           onClick={() => setCurrentPage(i)}
           className={`text-white ${currentPage === i ? 'text-red-500' : 'text-blue-700'}`}
-          style={{ backgroundColor: currentPage === i ? '#98750E' : '#1E40AF', margin: '3px' }}
+          style={{ backgroundColor: currentPage === i ? '#98750E' : '#1976D2', margin: '3px', padding: '1px' }}
         >
           {i}
         </Button>
@@ -99,9 +100,6 @@ export default function UsersList() {
   };
 
 
-
-
-
   // Pagination logic
   const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
@@ -109,8 +107,8 @@ export default function UsersList() {
 
   return (
     <div className='p-[10px] md:m-[10px] md:w-auto '>
-      <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between login2'>
-        <span className="pt-2">טבלת משתמשים</span>
+      <div className='font-medium text-neutral-300 mb-1 border p-[10px] flex justify-between login2 rounded-t-lg'>
+        <span className="pt-2">לקוחות</span>
         <div>
           <Button disabled={currentPage === 1} onClick={goToPreviousPage}>
             <KeyboardArrowRightIcon className="text-white " />
@@ -120,9 +118,12 @@ export default function UsersList() {
             <KeyboardArrowLeftIcon className="text-white" />
           </Button>
         </div>
-        <Button size="small" variant="contained" className='items-end' >
-          <Link to='/users/newUser' className='hover:text-white p-1'>הוספת משתמש <PersonAddIcon /> </Link>
-        </Button>
+        <div >
+          <HomeIcon className=" ml-5 font-bold text-6xl cursor-pointer hover:text-yellow-500" onClick={() => nav('/')} />
+          <Button size="small" variant="contained" className='items-end' >
+            <Link to='/users/newUser' className='hover:text-white p-1'>הוספת לקוח <PersonAddIcon /> </Link>
+          </Button>
+        </div>
       </div>
       <TableContainer component={Paper} className="drop-shadow-xl  md:h-[70vh] mh-[80vh] overflow-scroll usersTable">
         <Table className="border-collapse border border-slate-400">
@@ -145,7 +146,7 @@ export default function UsersList() {
           </TableHead>
           <TableBody>
             {currentData.map((row, i) => (
-              <TableRow className="bg-slate-400" key={row._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+              <TableRow className="" key={row._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell align='center'>{((currentPage - 1) * itemsPerPage) + i + 1}</TableCell>
                 <TableCell align="right" className="border border-slate-300"><AccountCircleIcon /> {row.name}</TableCell>
                 <TableCell align='center' className="border border-slate-300 hover:cursor-pointer hover:text-blue-700 underline underline-offset-1"><Link onClick={() => window.location.href = `mailto:${row.email}`}>{row.email}</Link></TableCell>

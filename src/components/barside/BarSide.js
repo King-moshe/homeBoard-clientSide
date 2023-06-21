@@ -65,13 +65,12 @@ export default function BarSide() {
   return (
     <>
       {login === 2 &&
-        <div className='border-e-2 border-e-slate-950 min-h-screen fixed hidden md:block text-white w-[20%] login2'>
-          <div className=' text-center h-[70px] '>
+        <div className='border-e-2 border-e-slate-600 min-h-screen fixed hidden md:block text-white w-[20%] login2'>
+          <div className=' text-center h-[70px] border-b border-b-slate-600'>
             <Button>
               <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-20' />
             </Button>
           </div>
-          <hr />
           <div className=' px-4 hidden md:block '>
             <ul className='px-2'>
               <p className='title text-gray-300 mt-6 '>MAIN</p>
@@ -81,7 +80,7 @@ export default function BarSide() {
                   <span className='mt-1 mx-2' >דף הבית</span>
                 </li>
               </Link>
-              <p className='title text-gray-300 mt-6'>LIST</p>
+              <p className='title text-gray-300'>LIST</p>
               <Link to='/users'>
                 <li className='ps-1 cursor-pointer mt-3 hover:text-yellow-500'>
                   <PeopleAltIcon />

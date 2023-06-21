@@ -7,6 +7,7 @@ import { apiPost } from "../../services/apiServices";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { apiGet } from "../../services/apiServices";
+import HomeIcon from '@mui/icons-material/Home';
 
 
 export default function NewUser() {
@@ -72,13 +73,16 @@ export default function NewUser() {
   return (
 
     <div className="p-[20px] m-[20px]">
-      <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between bg-slate-700'>
+      <div className='font-medium text-neutral-300 mb-1 border p-[10px] flex justify-between login2 rounded-t-lg'>
         <span className="pt-2"> צור משתמש חדש</span>
-        <Button size="small" variant="contained" className='items-end' >
-          <Link to='/users' className='hover:text-white p-1'>חזור < ArrowBackIcon /></Link>
-        </Button>
+        <div >
+          <HomeIcon className=" ml-5 font-bold text-6xl cursor-pointer hover:text-yellow-500" onClick={() => nav('/')} />
+          <Button size="small" variant="contained" className='items-end' >
+            <Link to='/users' className='hover:text-white p-1'>חזור < ArrowBackIcon /></Link>
+          </Button>
+        </div>
       </div>
-      <div className=" md:mh-[400px] mh-[400px] border flex p-4 bg-slate-600  drop-shadow-xl" style={{ borderRadius: '0 0 8px 8px' }}>
+      <div className=" md:mh-[400px] mh-[400px] border flex p-4 colors2 drop-shadow-xl" style={{ borderRadius: '0 0 8px 8px' }}>
         <form className="w-full " onSubmit={handleSubmit(onSubForm)}>
           <div className="md:flex block">
             <div className="md:w-1/2 md:pe-4 md:p-1">
@@ -112,7 +116,7 @@ export default function NewUser() {
                 })}
               </select>
             </div>
-          
+
             <div className="md:w-1/3 md:pe-3 md:p-1 mt-3">
               <label className="text-white">מספר קומה</label>
               <input placeholder="קומה..."  {...register("story", { required: true, minLength: 1 })} type="number" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
