@@ -115,7 +115,6 @@ export default function SingleClient() {
               footer={null}
             ><FilesList />
             </Modal>
-
           </div>
         </div>
       </div>

@@ -136,8 +136,6 @@ export default function Files({ setFileResp }) {
           );
         })}
       </div>
-
-
-</div>
-);
+    </div>
+  );
 };

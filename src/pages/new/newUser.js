@@ -40,7 +40,6 @@ export default function NewUser() {
       const url = API_URL + '/projects/projectsList';
       const data = await apiGet(url);
       console.log(data);
-
       setProjectsList(data)
     }
     catch (error) {

@@ -41,6 +41,7 @@ export default function ProjectCard() {
     }
   }
 
+  // Check for what need that Request??
   const doApiProject = async (projectId) => {
     const url2 = API_URL + `/projects/single/${projectId}`;
     try {
