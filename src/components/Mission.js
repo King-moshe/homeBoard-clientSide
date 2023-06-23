@@ -152,7 +152,7 @@ export default function Mission() {
   };
 
   return (
-    <div className='mission mr-[20px] md:flex block  justify-between h-[66vh] w-full md:w-2/3 mb-4 bg-stone-800 text-white rounded-lg'>
+    <div className='mission mr-[20px] md:flex block  justify-between h-[66vh] overflow-y-auto md:overflow-hidden w-full md:w-2/3 mb-4 bg-stone-800 text-white rounded-lg'>
       <div className='md:w-1/2 w-full md:border-l'>
         <div className='w-full h-5/6 overflow-y-auto'>
           {data.length === 0 ? <h2 className='w-full sticky-top overflow-hidden text-2xl bg-zinc-700 p-2 border-b border-b-slate-400 rounded-tr-lg'>אין משימות</h2> :
@@ -167,19 +167,19 @@ export default function Mission() {
                     </span>
                   ) : (
                     <span className="bg-green-500 border border-black text-white px-2 mr-2 rounded-lg">
-                      {mission.execution_status  === 'done' ? 'בוצע' : ''}
+                      {mission.execution_status === 'done' ? 'בוצע' : ''}
                     </span>
                   )}
                 </p>
               ))}
             </>
           }
-        </div>
-        <div className='w-full h-1/6 p-2 justify-around flex items-center  bg-stone-800 overflow-hidden border-t border-t-slate-600 rounded-br-lg'>
-          <button onClick={() => { nav('/users/newUser') }} className='w-1/4 bg-red-600 rounded-lg '>הוסף משתמש</button>
-          <button onClick={() => { nav('/projects/newProject') }} className='w-1/4 bg-lime-400 rounded-lg '>הוסף פרויקט</button>
-          <button onClick={() => { nav('/missions/newMission') }} className='w-1/4 bg-orange-400 rounded-lg '>הוסף משימה</button>
-        </div>
+        </div>     
+          <div className='w-full h-1/6 p-2 justify-around flex items-center  bg-stone-800 overflow-hidden border-t border-t-slate-600 rounded-br-lg'>
+            <button onClick={() => { nav('/users/newUser') }} className='w-1/4 bg-red-600 rounded-lg '>הוסף משתמש</button>
+            <button onClick={() => { nav('/projects/newProject') }} className='w-1/4 bg-lime-400 rounded-lg '>הוסף פרויקט</button>
+            <button onClick={() => { nav('/missions/newMission') }} className='w-1/4 bg-orange-400 rounded-lg '>הוסף משימה</button>
+          </div> 
       </div>
       <div className='md:w-1/2 w-full h-1/2 md:h-full '>
         <h2 className='w-full text-2xl border-b border-b-slate-400 rounded-tl-lg p-2'>נתונים באתר</h2>

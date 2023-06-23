@@ -12,9 +12,10 @@ import { Box, createTheme } from '@mui/system';
 import { Button, IconButton } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useStateContext } from '../../context';
-
+import ChecklistRtlIcon from '@mui/icons-material/ChecklistRtl';
+import logo from '../../pages/home/images/logo.png'
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 
 function MyApp() {
@@ -42,6 +43,7 @@ function MyApp() {
 }
 
 export default function BarSide() {
+  const nav = useNavigate()
   const { login } = useStateContext()
   const [mode, setMode] = React.useState('light');
   const colorMode = React.useMemo(
@@ -67,8 +69,8 @@ export default function BarSide() {
       {login === 2 &&
         <div className='border-e-2 border-e-slate-600 min-h-screen fixed hidden md:block text-white w-[20%] login2'>
           <div className=' text-center h-[70px] border-b border-b-slate-600'>
-            <Button>
-              <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-20' />
+            <Button onClick={()=>{nav('/')}}>
+              <img src={logo} alt='person' className=' rounded-full w-20' />
             </Button>
           </div>
           <div className=' px-4 hidden md:block overflow-y-scroll'>
@@ -94,6 +96,14 @@ export default function BarSide() {
                   <AccountTreeIcon />
                   <span className='mt-1 mx-2'>
                     פרוייקטים
+                  </span>
+                </li>
+              </Link>
+              <Link to='/missions'>
+                <li className='ps-1 mt-3  cursor-pointer hover:text-yellow-500'>
+                  <ChecklistRtlIcon />
+                  <span className='mt-1 mx-2'>
+                    משימות
                   </span>
                 </li>
               </Link>

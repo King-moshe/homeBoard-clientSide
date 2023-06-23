@@ -26,7 +26,7 @@ export default function NewMission() {
             // console.log(data);
             if (data._id) {
                 toast.success('משימה חדשה נוספה בהצלחה !')
-                nav('/')
+                nav('/missions')
             }
 
         } catch (error) {
@@ -77,7 +77,7 @@ export default function NewMission() {
                                 <option hidden disabled selected value="">בחר דייר מהרשימה</option>
                                 {list.map((userName) => {
                                     return (
-                                        <option key={userName._id} value={userName.name + "@" + userName.p_name + "@" + userName.city_name + "@" + userName.building_name + "@" + userName.story + '@' + userName.apartment}>{userName.name} - פרויקט: {userName.p_name}, עיר: {userName.city_name}, בניין: {userName.building_name}, קומה: {userName.story}, דירה: {userName.apartment}</option>
+                                        <option key={userName._id} >{userName.name} - פרויקט: {userName.p_name}, עיר: {userName.city_name}, בניין: {userName.building_name}, קומה: {userName.story}, דירה: {userName.apartment}</option>
                                     )
                                 })}
                             </select>
