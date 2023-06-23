@@ -155,19 +155,30 @@ export default function Mission() {
     <div className='mission mr-[20px] md:flex block  justify-between h-[66vh] w-full md:w-2/3 mb-4 bg-stone-800 text-white rounded-lg'>
       <div className='md:w-1/2 w-full md:border-l'>
         <div className='w-full h-5/6 overflow-y-auto'>
-          {data.length === 0 ? <h2 className='w-full sticky-top overflow-hidden text-2xl bg-zinc-700 p-2 border-b border-b-slate-400 rounded-tr-lg'>אין משימות</h2>:
+          {data.length === 0 ? <h2 className='w-full sticky-top overflow-hidden text-2xl bg-zinc-700 p-2 border-b border-b-slate-400 rounded-tr-lg'>אין משימות</h2> :
             <>
-            <h2 className='w-full sticky-top overflow-hidden text-2xl p-2 border-b border-b-slate-400 rounded-tr-lg bg-stone-800'>משימות</h2>
+              <h2 className='w-full sticky-top overflow-hidden text-2xl p-2 border-b border-b-slate-400 rounded-tr-lg bg-stone-800'>משימות</h2>
               {data.map((mission) => (
-                <p className='w-full h-[56px] text-right pr-3 cursor-pointer hover:bg-zinc-700 text-lg p-1 pt-3'><FiberManualRecordOutlinedIcon /> {mission.title}</p>
+                <p className='w-full h-[56px] text-right pr-3 cursor-pointer hover:bg-zinc-700 text-lg p-1 pt-3'>
+                  <FiberManualRecordOutlinedIcon /> {mission.title} -
+                  {mission.execution_status === 'waiting' ? (
+                    <span className="bg-orange-500 border border-black text-white px-2 mr-2 rounded-lg">
+                      ממתין
+                    </span>
+                  ) : (
+                    <span className="bg-green-500 border border-black text-white px-2 mr-2 rounded-lg">
+                      {mission.execution_status  === 'done' ? 'בוצע' : ''}
+                    </span>
+                  )}
+                </p>
               ))}
             </>
           }
         </div>
-        <div className='w-full h-1/6 p-3 justify-around flex items-center  bg-stone-800 overflow-hidden border-t border-t-slate-600 rounded-br-lg'>
-          <button onClick={() => { nav('/users/newUser') }} className='w-1/4 bg-red-600 rounded-lg mt-3 ml-3 mb-3'>הוסף משתמש</button>
-          <button onClick={() => { nav('/projects/newProject') }} className='w-1/4 bg-lime-400 rounded-lg mt-3 ml-3 mb-3'>הוסף פרויקט</button>
-          <button onClick={() => { nav('/users/newUser') }} className='w-1/4 bg-orange-400 rounded-lg mt-3 mb-3'>הוסף משימה</button>
+        <div className='w-full h-1/6 p-2 justify-around flex items-center  bg-stone-800 overflow-hidden border-t border-t-slate-600 rounded-br-lg'>
+          <button onClick={() => { nav('/users/newUser') }} className='w-1/4 bg-red-600 rounded-lg '>הוסף משתמש</button>
+          <button onClick={() => { nav('/projects/newProject') }} className='w-1/4 bg-lime-400 rounded-lg '>הוסף פרויקט</button>
+          <button onClick={() => { nav('/missions/newMission') }} className='w-1/4 bg-orange-400 rounded-lg '>הוסף משימה</button>
         </div>
       </div>
       <div className='md:w-1/2 w-full h-1/2 md:h-full '>

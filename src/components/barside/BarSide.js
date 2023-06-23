@@ -71,7 +71,7 @@ export default function BarSide() {
               <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-20' />
             </Button>
           </div>
-          <div className=' px-4 hidden md:block '>
+          <div className=' px-4 hidden md:block overflow-y-scroll'>
             <ul className='px-2'>
               <p className='title text-gray-300 mt-6 '>MAIN</p>
               <Link to='/'  >

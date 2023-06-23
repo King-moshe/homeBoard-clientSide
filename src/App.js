@@ -24,7 +24,7 @@ import ProjectCard from "./pages/cards/ProjectsCards";
 import SingleClient from "./pages/single/SingleClient";
 import UserInfo from "./pages/single/UserInfo";
 import Login from "./pages/logIn/LogIn";
-
+import NewMission from './pages/new/NewMission'
 
 
 
@@ -104,6 +104,7 @@ function App() {
                       <Route path="/users" element={<UsersList />} />                     
                       <Route path="/users/newUser" element={<NewUser />} />
 
+                      <Route path="/missions/newMission" element={<NewMission/>}/>
 
                       <Route path="/projects" element={<ProjectsList />} />
                       <Route path="/projects/newProject" element={<NewProject />} />
