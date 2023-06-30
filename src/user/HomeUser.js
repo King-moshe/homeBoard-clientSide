@@ -77,7 +77,7 @@ export default function HomeUser() {
 
     return (
         <>
-            <div className='font-medium mb-0.5 border-2 flex justify-between colors3 rounded-lg colors3 shadow-2xl h-[400px] p-4 m-3 text-lg text-white'>
+            <div className='mission  md:flex block  justify-between h-[66vh] overflow-y-auto md:overflow-hidden w-full mb-4 bg-stone-800 text-white rounded-lg'>
                 <div className="w-1/4 md:w-2/12 h-full">
                     <button className="w-full h-1/6 border mb-3 mt-4 rounded-lg bg-lime-700 hover:transition-colors" onClick={() => setOpenModalComment(true)}>צ'אט</button>
                     <button className="w-full h-1/6 border mb-3 rounded-lg bg-blue-900" onClick={() => setOpenFilesModal(true)}>מסמכים</button>
@@ -107,7 +107,8 @@ export default function HomeUser() {
                 centered
                 open={openFilesModal}
                 onCancel={() => setOpenFilesModal(false)}
-                width={1200}
+                width={1000}
+                height={650}
                 footer={null}
             >
                 <UserFilesList />

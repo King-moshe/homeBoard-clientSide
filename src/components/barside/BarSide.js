@@ -67,13 +67,13 @@ export default function BarSide() {
   return (
     <>
       {login === 2 &&
-        <div className='border-e-2 border-e-slate-600 min-h-screen fixed hidden md:block text-white w-[20%] login2'>
+        <div className='border-e-2 border-e-slate-600 min-h-screen fixed hidden md:block text-white w-[20%] login2  overflow-y-scroll'>
           <div className=' text-center h-[70px] border-b border-b-slate-600'>
             <Button onClick={()=>{nav('/')}}>
               <img src={logo} alt='person' className=' rounded-full w-20' />
             </Button>
           </div>
-          <div className=' px-4 hidden md:block overflow-y-scroll'>
+          <div className=' px-4 hidden md:block'>
             <ul className='px-2'>
               <p className='title text-gray-300 mt-6 '>MAIN</p>
               <Link to='/'  >
@@ -143,7 +143,7 @@ export default function BarSide() {
       }
       {/* Customer */}
       {login === 3 &&
-        <div className='border-e-2 border-e-slate-950 min-h-screen fixed hidden md:block text-white w-[20%] login3'>
+        <div className='border-e-2 border-e-slate-950 min-h-screen fixed hidden md:block text-white w-[20%] login3 overflow-auto'>
           <div className=' text-center h-[70px] '>
             <Button>
               <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-20' />

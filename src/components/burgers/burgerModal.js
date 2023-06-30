@@ -25,6 +25,8 @@ import { useTheme } from '@mui/private-theming';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useStateContext } from '../../context';
+import ChecklistRtlIcon from '@mui/icons-material/ChecklistRtl';
+import logo from '../../pages/home/images/logo.png'
 
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
@@ -119,6 +121,11 @@ export default function BurgerModal() {
               <Link to='/projects'>
                 <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><AccountTreeIcon />
                   <span className='mt-1 mx-2'>פרוייקטים</span>
+                </li>
+              </Link>
+              <Link to='/missions'>
+                <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><ChecklistRtlIcon />
+                  <span className='mt-1 mx-2'>משימות</span>
                 </li>
               </Link>
               <Link to='/contractors'>
@@ -241,7 +248,7 @@ export default function BurgerModal() {
               ))}
             </div>
             <Button className='text-center'>
-              <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-12' />
+              <img src={logo} alt='person' className=' rounded-full w-12' />
             </Button>
           </div>
         }
@@ -264,7 +271,7 @@ export default function BurgerModal() {
               ))}
             </div>
             <Button className='text-center'>
-              <img src='https://images.pexels.com/photos/936722/pexels-photo-936722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='person' className=' rounded-full w-12' />
+              <img src={logo} alt='person' className=' rounded-full w-12' />
             </Button>
           </div>
         }

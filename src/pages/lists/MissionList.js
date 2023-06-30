@@ -6,10 +6,9 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import DomainAddIcon from '@mui/icons-material/DomainAdd';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import BusinessIcon from '@mui/icons-material/Business';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function MissionList() {
@@ -59,7 +58,7 @@ export default function MissionList() {
                 <div >
                     <HomeIcon className=" ml-5 font-bold text-6xl cursor-pointer hover:text-yellow-500" onClick={() => nav('/')} />
                     <Button size="small" variant="contained" className='items-end '>
-                        <Link to='/missions/newMission' className='hover:text-white p-1'>הוספת משימה <DomainAddIcon /></Link>
+                        <Link to='/missions/newMission' className='hover:text-white p-1'><PlaylistAddIcon/> הוספת משימה</Link>
                     </Button>
                 </div>
             </div>

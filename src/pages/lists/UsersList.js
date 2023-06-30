@@ -121,7 +121,7 @@ const nav = useNavigate()
         <div >
           <HomeIcon className=" ml-5 font-bold text-6xl cursor-pointer hover:text-yellow-500" onClick={() => nav('/')} />
           <Button size="small" variant="contained" className='items-end' >
-            <Link to='/users/newUser' className='hover:text-white p-1'>הוספת לקוח <PersonAddIcon /> </Link>
+            <Link to='/users/newUser' className='hover:text-white p-1'><PersonAddIcon/> הוספת לקוח</Link>
           </Button>
         </div>
       </div>

@@ -30,14 +30,14 @@ export default function Cheat() {
 
     return (
         <div className='mr-[20px] justify-between h-[66vh] w-full md:w-1/3  mb-4 bg-stone-800 text-white cheat overflow-y-auto overflow-x-hidden rounded-lg'>
-         <div className='w-full sticky-top overflow-hidden'>
-          <h1 className='w-full  text-2xl bg-stone-800 p-[10px]  border-b border-b-slate-400'>צ'אטים</h1>
-          <input placeholder='חפש איש קשר..' className='w-full bg-stone-800 p-[10px] pe-2 pt-3'/>
-         </div>
+            <div className='w-full sticky-top overflow-hidden'>
+                <h1 className='w-full  text-2xl bg-stone-800 p-[10px]  border-b border-b-slate-400'>צ'אטים</h1>
+                <input placeholder='חפש איש קשר..' className='w-full bg-stone-800 p-[10px] pe-2 pt-3' />
+            </div>
             <div className=' w-full h-full block '>
-                {data.map((user)=>(
+                {data.map((user) => (
                     <>
-                    <button key={user._id} className=' w-full h-[56px] text-right pr-3  border-t-slate-50  hover:bg-zinc-700'><AccountCircleIcon className='ms-1 item'/> {user.name} - {user.p_name}</button><hr/>
+                        <button key={user._id} className=' w-full h-[56px] text-right pr-3  border-t-slate-50  hover:bg-zinc-700'><AccountCircleIcon className='ms-1 item' /> {user.name} - {user.p_name}</button><hr />
                     </>
                 ))}
             </div>

@@ -25,7 +25,7 @@ export default function Home() {
         </div>
       </>}
       {login === 3 &&
-        <div className="p-[10px] m-[10px]">
+        <div className="p-[20px] m-[20px]">
           <HomeUser/>                                                
         </div>
       }

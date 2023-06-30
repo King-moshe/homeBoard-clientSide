@@ -45,11 +45,12 @@ function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
+            // Post request - send Email and Password
             let resp = await apiPost(LOGIN_ROUTE, { email, password })
-
             if (resp.msg) {
                 setErr(resp.msg);
             }
+            // Response Token if user is authenticated, recognize the Role
             else if (resp.token) {
                 localStorage.setItem('token', resp.token)
                 if (resp.role === 'Admin') {

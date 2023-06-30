@@ -80,7 +80,7 @@ export default function ProjectsList() {
         <div >
          <HomeIcon className=" ml-5 font-bold text-6xl cursor-pointer hover:text-yellow-500" onClick={()=> nav('/')}/>
         <Button size="small" variant="contained" className='items-end '>
-          <Link to='/projects/newProject' className='hover:text-white p-1'>הוספת פרוייקט <DomainAddIcon /></Link>
+          <Link to='/projects/newProject' className='hover:text-white p-1'><DomainAddIcon/> הוספת פרויקט</Link>
         </Button>
         </div>     
       </div>

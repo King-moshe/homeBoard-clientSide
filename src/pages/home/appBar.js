@@ -3,7 +3,7 @@ import './homePage.css'
 import { VscChromeClose, VscThreeBars } from "react-icons/vsc";
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
-
+import logo from './images/logo.png'
 
 export default function AppBar() {
   const [nav, setNav] = useState(false)
@@ -34,7 +34,7 @@ export default function AppBar() {
             <li className='p-4'><button><a className=' hover:text-yellow-600 underline underline-offset-8' href='#contact'>צור קשר</a></button></li>
           </ul>
           <Button className='text-center'>
-            <img src='https://images.pexels.com/photos/955733/pexels-photo-955733.jpeg' alt='logo' className='md:w-12 w-10 mt-2 md:mt-0 rounded-full' />
+            <img src={logo} alt='logo' className='md:w-12 w-10 mt-2 md:mt-0 rounded-full' />
           </Button>
           <div onClick={hendleNav} className='block md:hidden text-white'>
             {nav ? <VscChromeClose size={30} /> : <VscThreeBars size={30} />}
@@ -42,7 +42,7 @@ export default function AppBar() {
           <div className={nav ? ' fixed right-0 top-0 h-full w-[50%] border-r border-r-gray-900 bg-gray-900  bg-opacity-95 ease-in-out duration-1000 ' : 'fixed right-[-100%] ease-out duration-500'}>
             <div className=' mt-4 mr-5 '>
               <Button>
-                <img src='https://images.pexels.com/photos/955733/pexels-photo-955733.jpeg' alt='logo' className='w-10 rounded-full' />
+                <img src={logo} alt='logo' className='w-10 rounded-full' />
               </Button>
             </div>
             <ul className='mt-4 p-4 uppercase text-white text-center '>
