@@ -73,7 +73,7 @@ export default function Files({ setFileResp }) {
 
 
   return (
-    <div className='md:h-[90vh] h-[70vh] colors2 overflow-y-scroll p-2 md:p-0'>
+    <div className='md:mh-[90vh] h-[70vh] colors2 overflow-y-scroll p-2 md:p-0'>
       <div className='font-medium custom-shadow  text-neutral-300 m-2  p-3   flex justify-between colors2 rounded-lg'>
         <span className="font-bold text-lg">העלאת מסמכים </span>
       </div>

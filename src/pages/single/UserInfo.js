@@ -5,7 +5,7 @@ import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettin
 import { useStateContext } from '../../context';
 import { API_URL } from '../../constant/url';
 import { apiGet } from '../../services/apiServices';
-
+import './missionUser.css'
 
 export default function UserInfo() {
     const { login } = useStateContext();
@@ -45,8 +45,8 @@ export default function UserInfo() {
     return (
         <>
             {login === 2 &&
-                <div className="p-[10px] m-[10px]">
-                    <div className='border-2 rounded-lg colors2 shadow-2xl h-full p-4  m-3 text-lg text-white'>
+                <div className="p-[10px] m-[10px] ">
+                    <div className='border-2 rounded-lg colors2 shadow-2xl h-full p-4  m-3 text-lg text-white mission'>
                         <h1 className='w-full mb-1 mt-1 p-1'><strong><BadgeOutlinedIcon /> פרטי משתמש : {data.name}</strong></h1>
                         <div className='border-2 block md:flex'>
                             <div className='flex flex-wrap md:w-1/2 rounded-xl p-6 ps-8 pe-8'>

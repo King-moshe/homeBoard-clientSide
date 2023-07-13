@@ -121,7 +121,7 @@ export default function FilesList() {
                 </div>
 
                 {fileType === 'image' ? (
-                    <img src={url} alt="Image" className="w-16 h-16 ml-2 rounded-lg " />
+                    <img src={url} alt="Image" className="w-16 h-16 ml-2 rounded-lg" />
                 ) : (
                     <div className="w-16 h-16 flex items-center justify-center ml-2" >
                         {fileType === 'docx' ? (

@@ -13,7 +13,6 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Clear, EngineeringRounded } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
-import { IconButton } from '@mui/material';
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -21,45 +20,13 @@ import DashboardCustomizeRoundedIcon from '@mui/icons-material/DashboardCustomiz
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useTheme } from '@mui/private-theming';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { useStateContext } from '../../context';
 import ChecklistRtlIcon from '@mui/icons-material/ChecklistRtl';
 import logo from '../../pages/home/images/logo.png'
 
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
-
-function MyApp() {
-  const theme = useTheme();
-  const colorMode = React.useContext(ColorModeContext);
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        bgcolor: 'bg-slate-700',
-        color: 'text.white',
-        borderRadius: 1,
-        p: 3,
-      }}
-    >
-      {theme.palette.mode} mode
-      <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
-        {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-      </IconButton>
-    </Box>
-  );
-}
-
-
 export default function BurgerModal() {
-
   const { login } = useStateContext()
-
   const [state, setState] = React.useState({
     left: false
   });
@@ -150,8 +117,6 @@ export default function BurgerModal() {
                   }}>יציאה</span>
                 </li>
               </Link>
-              <p className='title text-white mt-6'>DARK MODE</p>
-              <MyApp />
             </ul>
           </List>
         </Box>
@@ -217,8 +182,6 @@ export default function BurgerModal() {
                   }}>יציאה</span>
                 </li>
               </Link>
-              <p className='title text-white mt-6'>DARK MODE</p>
-              <MyApp />
             </ul>
           </List>
         </Box>

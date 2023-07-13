@@ -8,9 +8,10 @@ import { API_URL } from '../../constant/url';
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
 import { Modal } from 'antd';
 import Files from './files';
-import Comments from '../cards/Comments';
-import FilesList from '../lists/FilesList';
+import Comments from '../cards/Comments'
+import FilesList from '../lists/FilesList'
 import { IoIosCloseCircle } from 'react-icons/io';
+
 
 
 export default function SingleClient() {
@@ -18,6 +19,7 @@ export default function SingleClient() {
   const [openModalComment, setOpenModalComment] = useState("")
   const [fileResp, setFileResp] = useState("")
   const [openFilesModal, setOpenFilesModal] = useState("")
+
   const [commentResp, setCommentResp] = useState("")
   const [openFiles, setOpenFiles] = useState("")
   const [myId, setMyId] = useState("")
@@ -34,6 +36,7 @@ export default function SingleClient() {
     delete newClient.comments
     setOpenModal(false)
     uploadFile(newClient, myId)
+    // nav("/projects/singleProject")
   }
 
   const uploadFile = async (newClient, id) => {
@@ -43,22 +46,30 @@ export default function SingleClient() {
   }
 
   useEffect(() => {
+
     !client.name && nav("/projects")
     setMyId(client._id)
     console.log(client);
     fileResp.length > 0 && updateClient()
+
   }, [fileResp])
+
+
+  const onSendUserId = () => {
+    localStorage.setItem('userId', client._id)
+    nav('/missions/missionUser/:id')
+  }
 
   return (
     <div className="p-[10px] m-[10px]">
-      <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between login2 rounded-lg'>
+      <div className='font-medium text-neutral-300 mb-0.5 border-1 p-[10px] flex justify-between login2 rounded-t-lg'>
         <span className="pt-2 text-lg"><strong>שם הדייר :</strong> {client.name}</span>
         <Button size="small" variant="contained" className='items-end' >
           <Link to='/projects/singleProject' className='hover:text-white p-1'>חזור לרשימת הדיירים < ArrowBackIcon /></Link>
         </Button>
       </div>
-      <div className=" md:mh-[300px] mh-[400px] drop-shadow-xl  text-lg rounded-lg colors2 p-4 m-0.5 text-white mt-1.5 ">
-        <div className='border-2 mh-[35%] block md:flex rounded-lg'>
+      <div className=" md:mh-[300px] mh-[400px] drop-shadow-xl  text-lg rounded-b-lg colors2 p-4 mt-2 border-1 border-gray-300 text-white">
+        <div className='border-1 mh-[35%] block md:flex rounded-lg'>
           <div className='md:w-2/5 w-full h-1/2 md:h-full flex flex-wrap p-6 ps-8 pe-8'>
             <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong>שם הפרויקט :</strong> {client.p_name}</div>
             <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong>עיר :</strong> {client.city_name}</div>
@@ -71,15 +82,19 @@ export default function SingleClient() {
             <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong>טלפון :</strong> {client.phone}</div>
             <div className='w-full p-2 ps-2  mb-4 shadow-xl'><strong><AdminPanelSettingsOutlinedIcon /> :</strong> {client.role === 'Constructor' ? client.role : 'User'}</div>
           </div>
-          <div className='md:w-1/5 w-full md:block flex  border-r-2 p-4 justify-between'>
-            <button onClick={() => { setOpenModal(true) }} className='bg-orange-400 max-sm:text-lg text-xs lg:text-lg md:w-full w-[46%] border-1 p-2 rounded-lg text-center md:mt-3 mb-3 shadow-2xl hover:text-black hover:border-black'>
+          <div className='md:w-1/5 w-full md:block flex flex-wrap  border-r-2 p-4 justify-between'>
+            <button onClick={() => { setOpenModal(true) }} className='bg-pink-300 hover:bg-pink-400 hover:transition-colors text-black max-sm:text-lg text-xs lg:text-lg md:w-full w-[46%]  p-2 rounded-lg text-center md:mt-3 mb-3 shadow-2xl'>
               <div >העלה <br /> מסמכים</div>
             </button>
-            <button onClick={() => { setOpenModalComment(true) }} className='bg-green-600 max-sm:text-lg text-xs lg:text-lg md:w-full w-[46%] border-1 p-2 rounded-lg text-center md:mt-3 mb-3 shadow-2xl hover:text-black hover:border-black'>
+            <button onClick={() => { setOpenModalComment(true) }} className=' bg-green-300 hover:bg-green-400 text-black max-sm:text-lg text-xs lg:text-lg md:w-full w-[46%]  p-2 rounded-lg text-center md:mt-3 mb-3 shadow-2xl'>
               <div >צ'אט</div>
             </button>
-            <button onClick={() => { setOpenFilesModal(true) }} className='bg-green-600 max-sm:text-lg text-xs lg:text-lg md:w-full w-[46%] border-1 p-2 rounded-lg text-center md:mt-3 mb-3 shadow-2xl hover:text-black hover:border-black'>
+            <button onClick={() => { setOpenFilesModal(true) }} className='bg-purple-300 hover:bg-purple-400 text-black max-sm:text-lg text-xs lg:text-lg md:w-full w-[46%] p-2 rounded-lg text-center md:mt-3 mb-3 shadow-2xl'>
               <div >מסמכים</div>
+            </button>
+
+            <button onClick={() => { onSendUserId() }} className='bg-red-300 hover:bg-red-400 max-sm:text-lg text-black text-xs lg:text-lg md:w-full w-[46%] p-2 rounded-lg text-center md:mt-3 mb-3 shadow-2xl '>
+              <div >משימות</div>
             </button>
             {/* comments modal */}
             <Modal
@@ -115,6 +130,7 @@ export default function SingleClient() {
               footer={null}
             ><FilesList />
             </Modal>
+
           </div>
         </div>
       </div>

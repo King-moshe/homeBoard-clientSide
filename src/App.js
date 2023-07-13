@@ -26,21 +26,15 @@ import UserInfo from "./pages/single/UserInfo";
 import Login from "./pages/logIn/LogIn";
 import MissionList from "./pages/lists/MissionList";
 import NewMission from "./pages/new/NewMission";
+import MissionUser from "./pages/single/MissionUser";
+import UserMissionList from "./user/UserMissionList";
 
 
 
 function App() {
   const API_KEY = "token";
-
-
-
-  const [darkMode, setDarkMode] = useState(false)
   const { currentMode, setUser, login, setLogin } = useStateContext();
-  const theme = createTheme({
-    palette: {
-      type: darkMode ? "dark" : "light"
-    }
-  })
+
 
   useEffect(() => {    
     checkIfUserConnect();
@@ -70,7 +64,6 @@ function App() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
       <div className={currentMode === 'dark' ? 'dark' : 'light'}>
         <BrowserRouter>
           {login === 0 &&
@@ -107,6 +100,7 @@ function App() {
 
                       <Route path="/missions" element={<MissionList/>}/>
                       <Route path="/missions/newMission" element={<NewMission/>}/>
+                      <Route path="/missions/missionUser/:id" element={<MissionUser/>}/>
 
                       <Route path="/projects" element={<ProjectsList />} />
                       <Route path="/projects/newProject" element={<NewProject />} />
@@ -118,7 +112,7 @@ function App() {
                     </Routes>
                   </div >
                 </div >
-              </div>
+              </div> 
             </>
           }
           {login === 3 &&
@@ -135,6 +129,8 @@ function App() {
                     <Route path="/userProfile" element={<UserInfo />} />
                     <Route path="/contractors" element={<ContractorsList />} />
 
+                    <Route path="/userMission" element={<UserMissionList />} />
+
                     </Routes>
                   </div>
                 </div>
@@ -147,7 +143,6 @@ function App() {
         </BrowserRouter >
       </div >
 
-    </ThemeProvider >
   );
 }
 

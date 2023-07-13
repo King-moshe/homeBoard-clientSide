@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FileIcon } from 'react-file-icon';
 import { API_URL } from '../constant/url';
-import { apiDelete } from '../services/apiServices';
+import { apiDelete, apiGet } from '../services/apiServices';
 import { useStateContext } from '../context';
 import { Alert, AlertTitle } from '@mui/material';
 
@@ -9,7 +9,7 @@ export default function UserFilesList() {
     const [data, setData] = useState([]);
     const { userFile } = useStateContext();
     const ID = userFile._id;
-    
+
     const dataFiles = userFile.files;
     console.log(dataFiles);
 
@@ -95,7 +95,7 @@ export default function UserFilesList() {
 
                 <div className='w-24'>
                     <p className='text-white px-2'>סוג המסמך:</p>
-                    <p className='text-white px-2'>{fileType}</p>               
+                    <p className='text-white px-2'>{fileType}</p>
                 </div>
 
                 {fileType === 'image' ? (
@@ -228,5 +228,5 @@ export default function UserFilesList() {
             }
         </div>
 
-);
+    );
 }

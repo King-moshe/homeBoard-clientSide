@@ -7,7 +7,7 @@ import { apiPost } from "../../services/apiServices";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import HomeIcon from '@mui/icons-material/Home';
-
+import '../single/missionUser.css'
 
 export default function NewProject() {
 
@@ -69,7 +69,7 @@ export default function NewProject() {
 
   return (
 
-    <div className="p-[20px] m-[20px]">
+    <div className="m-[20px] rounded-lg mission">
       <div className='font-medium text-neutral-300 mb-1 border p-[10px] flex justify-between login2 rounded-t-lg'>
         <span className="pt-2"> צור פרויקט חדש</span>
         <div >
@@ -118,7 +118,7 @@ export default function NewProject() {
 
           </div>
           <div className="items-center justify-center flex mt-4">
-            <button className="border btn btn-primary">צור פרויקט חדש</button>
+            <button className="btn btn-primary">צור פרויקט חדש</button>
           </div>
         </form>
       </div>

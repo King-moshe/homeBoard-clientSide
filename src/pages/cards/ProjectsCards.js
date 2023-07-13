@@ -11,7 +11,6 @@ import { Link, useNavigate } from "react-router-dom";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Alert, AlertTitle, Button } from "@mui/material";
 
-
 export default function ProjectCard() {
   const nav = useNavigate();
   const { sProject } = useStateContext();
@@ -29,7 +28,6 @@ export default function ProjectCard() {
     }
   }, [])
 
-
   const doApi = async () => {
     const url = API_URL + `/users/singleProject/${sProject[0]}/${sProject[1]}`;
     try {
@@ -41,7 +39,6 @@ export default function ProjectCard() {
     }
   }
 
-  // Check for what need that Request??
   const doApiProject = async (projectId) => {
     const url2 = API_URL + `/projects/single/${projectId}`;
     try {
@@ -53,8 +50,6 @@ export default function ProjectCard() {
     }
   }
 
-
-
   const onSubShowUser = (user) => {
     setClient(user)
     nav('/projects/singleClient')
@@ -62,10 +57,9 @@ export default function ProjectCard() {
 
 
   return (
-
     <div className="p-[10px] m-[10px]">
       <div className='font-medium text-neutral-300 mb-0.5 border-2 p-[10px] flex justify-between login2'>
-        <span className="pt-2">רשימת דיירים בבנין </span>
+        <span className="pt-2"><strong>רשימת דיירים בבנין - </strong>{dataProject.p_name} {dataProject.building_name}</span>
         <Button size="small" variant="contained" className='items-end' >
           <Link to='/projects' className='hover:text-white p-1'>חזור < ArrowBackIcon /></Link>
         </Button>

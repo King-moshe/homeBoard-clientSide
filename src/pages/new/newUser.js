@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { apiGet } from "../../services/apiServices";
 import HomeIcon from '@mui/icons-material/Home';
-
+import '../single/missionUser.css'
 
 export default function NewUser() {
   const [projectsList, setProjectsList] = useState([])
@@ -25,7 +25,7 @@ export default function NewUser() {
       const url = API_URL + "/users";
       const data = await apiPost(url, _bodyData);
       if (data._id) {
-        toast.success("New Project added");
+        toast.success("New User added");
         nav("/users")
       }
     } catch (error) {
@@ -71,8 +71,8 @@ export default function NewUser() {
 
   return (
 
-    <div className="p-[20px] m-[20px]">
-      <div className='font-medium text-neutral-300 mb-1 border p-[10px] flex justify-between login2 rounded-t-lg'>
+    <div className=" m-[20px] mission rounded-lg">
+      <div className='font-medium text-neutral-300 p-[10px] flex justify-between login2 rounded-t-lg border mb-1'>
         <span className="pt-2"> צור משתמש חדש</span>
         <div >
           <HomeIcon className=" ml-5 font-bold text-6xl cursor-pointer hover:text-yellow-500" onClick={() => nav('/')} />
@@ -128,7 +128,7 @@ export default function NewUser() {
 
 
           <div className="items-center justify-center flex mt-4">
-            <button className="border btn btn-primary">צור משתמש חדש</button>
+            <button className="btn btn-primary">צור משתמש חדש</button>
           </div>
         </form>
       </div>
