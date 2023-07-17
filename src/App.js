@@ -28,6 +28,7 @@ import MissionList from "./pages/lists/MissionList";
 import NewMission from "./pages/new/NewMission";
 import MissionUser from "./pages/single/MissionUser";
 import UserMissionList from "./user/UserMissionList";
+import EditMission from './pages/edit/editMissions'
 
 
 
@@ -101,6 +102,7 @@ function App() {
                       <Route path="/missions" element={<MissionList/>}/>
                       <Route path="/missions/newMission" element={<NewMission/>}/>
                       <Route path="/missions/missionUser/:id" element={<MissionUser/>}/>
+                      <Route path="/missions/editMission/:id" element={<EditMission/>}/>
 
                       <Route path="/projects" element={<ProjectsList />} />
                       <Route path="/projects/newProject" element={<NewProject />} />

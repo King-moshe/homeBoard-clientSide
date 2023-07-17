@@ -25,12 +25,12 @@ export default function NewUser() {
       const url = API_URL + "/users";
       const data = await apiPost(url, _bodyData);
       if (data._id) {
-        toast.success("New User added");
+        toast.success("לקוח נוסף בהצלחה!");
         nav("/users")
       }
     } catch (error) {
       console.log(error);
-      toast.error('There problem, try again later')
+      toast.error('ישנה בעיה, נסו שוב מאוחר יותר')
     }
   }
 

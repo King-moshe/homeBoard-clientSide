@@ -41,12 +41,13 @@ export default function MissionUser() {
                 </div>
 
                 {missionUser.map((mission) => (
-                    <div className='text-white mb-2 p-2.5 rounded-lg mh-[50px] bg-stone-700 flex text-lg'>
+                    <div className='text-white mb-2 p-2.5 rounded-lg mh-[50px] bg-stone-700 flex text-lg mt-4'>
                         <div className='w-1/2 md:w-1/5'>| {mission.title} </div>
                         <div className='w-1/2 md:w-1/5'>| {mission.info} </div>
                         <div className='w-1/2 md:w-1/5'>| {mission.importance} </div>
                         <div className='w-1/2 md:w-1/5'>| {mission.execution_status}</div>
                         <div className='w-1/2 md:w-1/5'>| {mission.title}</div>
+                        <div className='w-1/2 md:w-1/5'>| {mission.date_line ? mission.date_line.split('-').reverse().join('-') : ''}</div>
                     </div>
                 ))}
             </div>

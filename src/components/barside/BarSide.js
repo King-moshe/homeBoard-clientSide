@@ -106,15 +106,7 @@ export default function BarSide() {
                     משימות
                   </span>
                 </li>
-              </Link>
-              <Link to='/listOfAll'>
-                <li className='ps-1 xl:ps-3 mt-3  cursor-pointer hover:text-yellow-500'>
-                  <PermMediaRoundedIcon />
-                  <span className='mt-1 mx-2 text-sm 2xl:text-lg'>
-                    קבצים ומסמכים
-                  </span>
-                </li>
-              </Link>
+              </Link>            
               <Link to='/contractors'>
                 <li className='ps-1 xl:ps-3 2xl:mb-12 mb:2 mt-3 cursor-pointer hover:text-yellow-500'><EngineeringRounded />
                   <span className='mt-1 mx-2 text-sm 2xl:text-lg'>קבלנים</span>
@@ -158,8 +150,8 @@ export default function BarSide() {
               </Link>
               <p className='title text-cyan-400 mt-6 2xl:text-lg'>LIST</p>
               <Link to='/contractors'>
-                <li className='ps-1 xl:ps-3 mb-12 mt-3 cursor-pointer hover:text-yellow-500'><EngineeringRounded />
-                  <span className='mt-1 mx-2 2xl:text-lg'>קבלנים</span>
+                <li className='ps-1 xl:ps-3 2xl:mb-12 mb:2 mt-3 cursor-pointer hover:text-yellow-500'><EngineeringRounded />
+                  <span className='mt-1 mx-2 text-sm 2xl:text-lg'>קבלנים</span>
                 </li>
               </Link>
               <p className='title text-cyan-400 mt-6 2xl:text-lg'>SERVICE</p>

@@ -30,7 +30,7 @@ export default function AppBar() {
   return (
     <div className={color ? ' sticky top-0 z-10 bg-slate-800 bg-opacity-90 ease-in-out duration-1000' : ''}>
       <div className='bar flex justify-between items-center px-4 mx-auto  h-24 '>
-        <ul className={color ? 'text-white md:flex hidden text-xl' : 'hidden md:flex text-black text-xl'}>
+        <ul className={color ? 'text-white md:flex hidden text-xl' : 'hidden md:flex text-white text-xl'}>
           <li className='p-4'><Link to='/login' className='bg-yellow-600 text-black font-bold mx-auto rounded-md h-3 p-2 hover:text-black'>כניסה</Link></li>
           <li className='p-4'><button ><a className=' hover:text-yellow-600  underline underline-offset-8 ' href='#home'>בית</a></button></li>
           <li className='p-4'><button><a className=' hover:text-yellow-600 underline underline-offset-8' href='#about'>עלינו</a></button></li>
@@ -41,7 +41,7 @@ export default function AppBar() {
           <img src={logo3} alt='logo' className='md:w-12 w-10 mt-2 md:mt-0 rounded-full' />
         </Button>
         <div onClick={hendleNav} className='block md:hidden text-black md:text-white'>
-          {nav ? <VscChromeClose size={30} /> : <VscThreeBars size={30} className='text-red-900' />}
+          {nav ? <VscChromeClose size={30} /> : <VscThreeBars size={30} className='text-white' />}
         </div>
         <div className={nav ? ' fixed right-0 top-0 h-full w-[50%] border-r border-r-gray-900 bg-gray-900  bg-opacity-95 ease-in-out duration-1000 ' : 'fixed right-[-100%] ease-out duration-500'}>
           <div className=' mt-4 mr-5 '>

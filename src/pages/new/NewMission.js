@@ -10,10 +10,6 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import '../single/missionUser.css'
 
 
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-
-
 
 export default function NewMission() {
   const nav = useNavigate();
@@ -91,10 +87,10 @@ export default function NewMission() {
 
 
           <div className="block md:flex">
-            {/* <div className="md:w-1/3 md:pe-2 md:p-1 mt-3">
+            <div className="md:w-1/3 md:pe-2 md:p-1 mt-3">
               <label className="text-white">דד-ליין לביצוע </label>
-              <input {...register("info", { required: true, minLength: 2 })} type="text" placeholder="פרטים נוספים" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
-            </div> */}
+              <input {...register("date_line", { required: true, minLength: 2 })} type="date" placeholder="פרטים נוספים" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
+            </div>
             <div className="md:w-1/3 md:pe-3 md:p-1 mt-3">
               <label className="text-white">סטטוס ביצוע</label>
               <select {...register("execution_status", { required: true, minLength: 2 })} className="w-full p-2 mt-2 border-solid border-2 rounded-lg">
@@ -119,7 +115,7 @@ export default function NewMission() {
             </div>
           </div>
           <div className="block md:flex">
-            <div className="md:pe-2 md:p-1 mt-3 md:w-1/2">
+            <div className="md:pe-2 md:p-1 mt-3 w-full ">
               <label className="text-white">פרטי משימה</label>
               <textarea {...register("info", { required: true, minLength: 2 })} type="text" placeholder="פרטים נוספים" className="w-full p-2 mt-2 border-solid border-2 rounded-lg" />
             </div>

@@ -99,7 +99,7 @@ const BarNav = () => {
       )}
       <Modal
         title={`הודעות אחרונות`}
-        visible={modalVisible}
+        open={modalVisible}
         onCancel={() => setModalVisible(false)}
         footer={null}
         className="custom-modal" // Add custom CSS class name

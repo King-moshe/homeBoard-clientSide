@@ -56,12 +56,12 @@ export default function NewProject() {
       const url = API_URL + "/projects";
       const data = await apiPost(url, _bodyData);
       if (data._id) {
-        toast.success("New Project added");
+        toast.success("פרוייקט נוסף בהצלחה");
         nav("/projects")
       }
     } catch (error) {
       console.log(error);
-      toast.error('There problem, try again later')
+      toast.error('ישנה בעיה, נסו שוב מאוחר יותר')
     }
   }
 

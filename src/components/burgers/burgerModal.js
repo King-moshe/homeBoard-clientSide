@@ -100,10 +100,7 @@ export default function BurgerModal() {
                   <span className='mt-1 mx-2'>קבלנים</span>
                 </li>
               </Link>
-              <p className='title text-gray-300 mt-6'>SERVICE</p>
-              <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><ConnectWithoutContactIcon />
-                <span className='mt-1 mx-2'>צור קשר</span>
-              </li>
+              <p className='title text-gray-300 mt-6'>SERVICE</p>           
               <Link to='userProfile'>
                 <li className='px-3 mt-3 cursor-pointer hover:text-yellow-500'><AssignmentIndIcon />
                   <span className='mt-1 mx-2'>פרופיל</span>

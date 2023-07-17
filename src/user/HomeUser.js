@@ -9,7 +9,6 @@ import UserFilesList from './UserFilesList';
 import { useStateContext } from '../context';
 import Comments from '../pages/cards/Comments'
 import ApartmentIcon from '@mui/icons-material/Apartment';
-import { BiTask } from "react-icons/bi";
 
 export default function HomeUser() {
     const [data, setData] = useState([]);
